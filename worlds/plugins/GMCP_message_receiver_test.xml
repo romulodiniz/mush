@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+
+<muclient>
+<plugin
+   name="GMCP_message_receiver_test"
+   author="Nick Gammon"
+   id="b35ff32bccfac9d02023ad3b"
+   language="Lua"
+   purpose="Test OnPluginBroadcast for GMCP"
+   save_state="n"
+   date_written="2015-05-06 08:00:31"
+   requires="4.90"
+   version="1.0"
+   >
+
+</plugin>
+
+<!--  Script  -->
+
+<script>
+<![CDATA[
+
+require "tprint"
+require "json"
+  
+function getStats (what)
+  result, value = CallPlugin("3e7dedbe37e44942dd46d264", "gmcpval", what)
+  if result ~= 0 then
+    ColourNote ("orange", "", "Warning: Could not get stats for " .. what)
+    return nil
+  end -- if
+  return value
+end -- getStats
+
+function gotCharacterVitals (vitals)
+  --tprint (vitals)
+
+  --example:
+  --print ("HP is now:", tonumber (vitals.hp))
+  
+	local hp = tonumber (vitals.hp)
+	local maxhp = tonumber (vitals.maxhp)
+	local lag = tonumber (vitals.lag)
+	local monhp = tonumber (vitals.monhp)
+	local maxmonhp = tonumber (vitals.maxmonhp)
+
+	if hp ~= nil then
+		execScript("setGmcpHp", hp)
+	end
+	
+	if maxhp ~= nil then
+		execScript("setGmcpMaxHp", maxhp)	
+	end	
+	
+	if lag ~= nil then
+		execScript("updateLag", lag)
+	end	
+	
+	if monhp ~= nil then
+		execScript("setGmcpMonHp", monhp)
+	end	
+
+	if maxmonhp ~= nil then
+		execScript("setGmcpMaxMonHp", maxmonhp)
+	end	
+
+end  -- gotCharacterVitals
+
+function ExecuteNoEcho (command)
+  SetOption ("display_my_input", 0)
+  Execute (command)
+  SetOption ("display_my_input", 1)
+end -- function
+
+function gotCharacterStatus (status)
+	--tprint (status)
+	
+	playername = status.character_name
+	
+	charclass = status.class
+	charrace = status.race
+	
+	--Note("p1 " .. charclass)
+	
+	moblvl = status.opponent_level
+	mobname = status.opponent_name
+	mobhealth = status.opponent_health
+	
+	tableaffect = status.affects
+	
+	shapetime = nil
+
+	if tableaffect ~= nil then
+		spellstime = ""
+		sanctime = ""
+		
+		if tableaffect["sanctuary"] ~= nil then
+			sanctime = tableaffect["sanctuary"]
+		end
+		
+		if tableaffect["iron monk"] ~= nil then
+			sanctime = tableaffect["iron monk"]
+		end
+		
+		if tableaffect["shapeshift"] ~= nil then
+			shapetime = tableaffect["shapeshift"]
+		end
+		
+		spellstime = tableaffect.foci
+	end
+	
+	if moblvl ~= nil then
+		execScript("setGmcpMobLvl", moblvl)
+	end
+	
+	if mobname ~= nil then
+		execScript("setGmcpMobName", mobname)
+	end
+
+	if mobhealth ~= nil then
+		execScript("updateMobHealth", mobhealth)
+	end
+
+	if sanctime ~= nil then
+		execScript("setGmcpSancTime", sanctime)
+	end
+	
+	if spellstime ~= nil then
+		execScript("setGmcpSpellsTime", spellstime)
+	end
+	
+	if charclass ~= nil then
+		execScript("detectClass", charclass)
+	end
+
+	if charrace ~= nil then
+		execScript("detectRace", charrace)
+	end
+
+	if playername ~= nil then
+		execScript("charLogin", playername)
+	end
+
+	if shapetime ~= nil then
+		execScript("checkShape", shapetime)
+	end
+	
+	ExecuteNoEcho("/UpdateInfoBar()")
+end  -- gotCharacterStatus
+
+function execScript(func, param)
+	ExecuteNoEcho("/" .. func .. "(\"" ..  param .. "\")")
+end
+
+function gotGroupieAdd (groupie)
+	for k, v in pairs (groupie) do 
+		ExecuteNoEcho("/addGroupie(\"" .. v.name .. "\"" .. getQuoted(v.hp) .. getQuoted(v.maxhp) .. getQuoted(v.mp) .. getQuoted(v.maxmp) .. getQuoted(tostring(v.leader)) .. getQuoted(v.align) .. getQuoted(string.upper(v.class)) .. getQuoted(string.upper(v.race)) ..  getQuoted(tonumber(string.match(v.level, '%s*%d*'))) .. ")")
+	end
+	
+	ExecuteNoEcho("/updateGMCPGroupWindow()")
+end  -- gotGroupieAdd
+
+function getQuoted(value)
+	local tVar = ",\"" .. value .. "\""
+	--Note(tVar)
+	return tVar
+end
+
+function gotItemRemove (msg)
+	--tprint (msg)
+	
+	name = msg.item.name
+	
+	if string.match(name, "wall of thorns") then
+		execScript("Note", name .. " down")
+	elseif string.match(name, "a dome of stone all around") then
+		execScript("Note", name .. " down")
+	end
+
+end  -- gotItemRemove
+
+
+function clearNills(str)
+	local retorno = ""
+
+ 	for i = 1, #str do
+		local c = str:sub(i,i)
+		if string.byte(c) ~= 27 then
+			retorno = retorno .. c
+		end
+	end  
+
+	return retorno
+end
+
+function gotItemAdd (msg)
+	local location = msg.location
+ 	local id = msg.item.id
+	local name = msg.item.name
+	local type = msg.item.type
+
+	if string.match(type, "weapon") then
+		strWeapon = string.gsub(name, '.%d;%d%dm', '')
+		clearStrWeapon = clearNills(strWeapon)
+		scapedStrWeapon = string.gsub(clearStrWeapon, '"', '\\"')
+		
+		if string.match(location, "room") then
+			execScript("pickPsiWeaponOnGround", id .. "#" ..  scapedStrWeapon)
+		elseif string.match(location, "inv")  then
+			execScript("passPsiWeaponOwner", id .. "#" ..  scapedStrWeapon)
+		end
+	elseif string.match(location, "room") and string.match(name, "a blood pool") and string.match(type, "trash") then
+		ExecuteNoEcho("/noticePoolCreated()")
+	end
+
+end  -- gotItemAdd
+
+function gotRoomInfo (info)
+--  tprint (info)
+end  -- gotRoomInfo
+
+function gotRoomPlayers (players)
+	for k, v in pairs (players) do 
+		keyNum = tonumber(k)
+		if keyNum then
+			execScript("attackById", keyNum)
+		end
+	end
+	
+	--tprint (players)
+end  -- gotRoomPlayers
+
+function gotWrongDirection (dir)
+--  print ("Could not head: ", dir [1])
+  Sound ("ding.wav")
+end -- gotWrongDirection
+
+function gotAddPlayer (player)
+	for k, v in pairs (player) do 
+		execScript("detectWalking", v)
+	end
+end -- gotAddPlayer
+
+function gotRemovePlayer (which)
+  tprint (which)
+end -- gotRemovePlayer
+
+function gotCharacterName (name)
+  tprint (name)
+end -- gotCharacterName
+
+function gotCharacterStatusVars (status)
+  -- tprint (status)
+end -- gotCharacterStatusVars
+
+function gotCharacterAfflictionsList (affs)
+  tprint (affs)
+end -- gotCharacterAfflictionsList
+
+function gotCharacterAfflictionsAdd (what)
+  tprint (what)
+end -- gotCharacterAfflictionsAdd
+
+function gotCharacterDefencesList (defs)
+  tprint (defs)
+end -- gotCharacterDefencesList
+
+function gotCharacterDefencesAdd (add)
+  tprint (add)
+end -- gotCharacterDefencesAdd
+
+function gotCharacterAfflictionsRemove (what)
+  tprint (what)
+end -- gotCharacterAfflictionsRemove
+
+-- WARNING: Put handlers table AFTER the handler functions
+--          Make names lower case, as we do a lower-case conversion for the lookup
+
+handlers = {
+    ["char.vitals"]           = gotCharacterVitals,
+    ["char.status"]           = gotCharacterStatus,
+	
+    ["char.items.remove"]     = gotItemRemove,
+    ["char.items.add"]     = gotItemAdd,
+	["char.group.list"]     = gotGroupieAdd,
+	--["char.name"]             = gotCharacterName,
+  --["char.statusvars"]       = gotCharacterStatusVars,
+  --["char.afflictions.list"] = gotCharacterAfflictionsList,
+  --["char.afflictions.add"]  = gotCharacterAfflictionsAdd,
+  --["char.afflictions.remove"] = gotCharacterAfflictionsRemove,
+  --["char.defences.list"]    = gotCharacterDefencesList,
+  --["char.defences.add"]     = gotCharacterDefencesAdd,
+  
+  --["room.info"]             = gotRoomInfo,
+  ["room.players"]          = gotRoomPlayers,
+  --["room.wrongdir"]         = gotWrongDirection,
+  --["room.removeplayer"]     = gotRemovePlayer,
+  --["room.addplayer"]        = gotAddPlayer
+  
+  } -- end of handlers
+  
+function OnPluginBroadcast (msg, id, name, text)
+ if id == "74f8c420df7d59ad5aa66246" then  -- GMCP_handler_NJG
+  
+  --Note("text: " .. text)
+  
+   -- pull out GMCP message, plus the data belonging to it
+   message, params = string.match (text, "([%a.]+)%s+(.*)")
+  
+   -- no match? oops!
+   if not message then
+      return
+   end -- if
+           
+   -- ensure we have an array or object
+   if not string.match (params, "^[%[{]") then
+      params =  "[" .. params .. "]"  -- JSON hack, make msg first element of an array.
+   end -- if 
+   
+   -- decode it
+   result = assert (json.decode (params))
+   
+   -- debugging
+   --ColourNote ("yellow", "", "GMCP: " .. message)
+   
+   -- find a handler for this message type
+   local handler = handlers [message:lower ()]
+   
+   -- warn if not found
+   if not handler then
+     --ColourNote ("red", "", "Warning: No handler for: " .. message)
+     return
+   end -- no handler
+   
+   -- call the handler, pass in whatever we got
+   handler (result)
+  end -- if GMCP message
+end -- OnPluginBroadcast
+
+]]>
+</script>
+
+</muclient>

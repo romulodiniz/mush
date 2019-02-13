@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on sábado, outubro 06, 2018, 7:26  -->
+<!-- MuClient version 5.05 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+
+<!-- Plugin state saved. Plugin: "Chat_Capture_Miniwindow". World: "aaaaaaaaaaa - Copia (47)". -->
+
+<muclient>
+
+<!-- variables -->
+
+<variables
+   muclient_version="5.05"
+   world_file_version="15"
+   date_saved="2018-10-06 07:26:27"
+  >
+  <variable name="WINDOW_HEIGHT">97</variable>
+  <variable name="WINDOW_WIDTH">815</variable>
+  <variable name="date_format">[%H:%M:%S] </variable>
+  <variable name="echo">true</variable>
+  <variable name="enabled">true</variable>
+  <variable name="mw_565dae21eb816a2fdb8d50f9_windowflags">2</variable>
+  <variable name="mw_565dae21eb816a2fdb8d50f9_windowmode">6</variable>
+  <variable name="mw_565dae21eb816a2fdb8d50f9_windowx">0</variable>
+  <variable name="mw_565dae21eb816a2fdb8d50f9_windowy">0</variable>
+  <variable name="timestamp">true</variable>
+</variables>
+</muclient>
