@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on terça-feira, fevereiro 12, 2019, 1:26  -->
+<!-- Saved on quinta-feira, fevereiro 14, 2019, 6:54  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
 
    auto_log_file_name="C:\MUSHclient\logs\log %Y-%m-%d .txt"
    auto_say_override_prefix="-"
@@ -122,7 +122,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
   <trigger
    enabled="y"
@@ -231,7 +231,6 @@ sr</send>
   <send>addLotto("%1", false)</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -262,7 +261,6 @@ wear all</send>
   <send>setleader notanker</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    match="* doesn't NEED rescuing!"
    send_to="12"
@@ -271,7 +269,6 @@ wear all</send>
   <send>setRescue(true)</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    match="* doesn't need your help."
    send_to="12"
@@ -357,7 +354,6 @@ end
 </send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    keep_evaluating="y"
    match="* is DEAD!!"
@@ -428,7 +424,6 @@ end
 Execute("bbb")</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    ignore_case="y"
@@ -516,7 +511,6 @@ Execute("bbb")</send>
 c clarify %1</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    match="* pokes you in the ribs."
@@ -552,7 +546,6 @@ rescue %1</send>
 remGroupie("%1")</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    match="* successfully rescues you from *!"
    send_to="12"
@@ -708,13 +701,24 @@ SendNoEcho("s2")
   </trigger>
   <trigger
    expand_variables="y"
-   group="classstm"
+   group="classbld"
    keep_evaluating="y"
    match="* tell* the group 'off run'"
    send_to="12"
    sequence="100"
   >
-  <send>EnableTrigger("youfollowstm", false)
+  <send>SendNoEcho("bladetrance break")</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="Outros"
+   keep_evaluating="y"
+   match="* tell* the group 'off run'"
+   send_to="12"
+   sequence="100"
+  >
+  <send>
+Execute("cq")
 
 
 </send>
@@ -735,27 +739,16 @@ EnableTimer("autocastarea", false)
   </trigger>
   <trigger
    expand_variables="y"
-   group="Outros"
+   group="classstm"
    keep_evaluating="y"
    match="* tell* the group 'off run'"
    send_to="12"
    sequence="100"
   >
-  <send>
-Execute("cq")
+  <send>EnableTrigger("youfollowstm", false)
 
 
 </send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="classbld"
-   keep_evaluating="y"
-   match="* tell* the group 'off run'"
-   send_to="12"
-   sequence="100"
-  >
-  <send>SendNoEcho("bladetrance break")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -949,7 +942,6 @@ Execute("btyp")
 stand</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -980,6 +972,7 @@ recall</send>
 end</send>
   </trigger>
   <trigger
+   enabled="y"
    expand_variables="y"
    group="autosend"
    keep_evaluating="y"
@@ -1008,7 +1001,6 @@ sleep</send>
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    expand_variables="y"
    group="mday"
    ignore_case="y"
@@ -1021,7 +1013,6 @@ sleep</send>
   <send>%2</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    keep_evaluating="y"
    match="* tells you 'area *'"
@@ -1033,7 +1024,6 @@ sleep</send>
 aa</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="* tells you 'bark'"
@@ -1138,7 +1128,6 @@ c 'remove curse' %1</send>
 --Execute("c sanct %1")</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="* tells you 'steel'"
@@ -1189,7 +1178,6 @@ enter portal</send>
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    ignore_case="y"
@@ -1201,7 +1189,6 @@ enter portal</send>
   <send>avaliarRescue("%3")</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    ignore_case="y"
@@ -1214,7 +1201,6 @@ enter portal</send>
   </trigger>
   <trigger
    custom_colour="6"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    ignore_case="y"
@@ -1244,7 +1230,6 @@ enter portal</send>
   </trigger>
   <trigger
    custom_colour="6"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    ignore_case="y"
@@ -1326,7 +1311,6 @@ EnableTrigger ("multilottoadd", false)
 EnableTrigger ("multilottostop", false)</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="*: you can't carry that * *."
@@ -2385,7 +2369,6 @@ put corpse xmain</send>
   <send>give lumin grogbert</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="Bladetrance depth: *"
@@ -2611,7 +2594,6 @@ give torch grogbert</send>
   <send>sneak=sneak</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    keep_evaluating="y"
@@ -2675,6 +2657,7 @@ give torch grogbert</send>
   <send>TELL SELF Forage Site - UP, UP, SOUTH</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="Kra tells you 'Your devotion to prayers is commendable, but I am not yet ready to aid you further.'"
@@ -2684,6 +2667,7 @@ give torch grogbert</send>
   <send>remActionQueue("c prayer Stupefy")</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="Kra's presence disappears."
@@ -2741,7 +2725,6 @@ give torch grogbert</send>
   <send>Note("(DONT GO DOWN)")</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="One of your Exhaust timers has elapsed. (*)"
@@ -3192,6 +3175,7 @@ end
   <send>getpassleader("key", false)</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="The presence of Kra fills you, and you feel more astute with stunning blows."
@@ -3227,7 +3211,6 @@ end
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_sanc"
    keep_evaluating="y"
    match="The protective aura fades from around your body."
@@ -3357,7 +3340,6 @@ EnableTrigger ("multilottostop", true)
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -3426,6 +3408,7 @@ EnableTrigger ("multilottostop", true)
 </send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="Werredan clears your thoughts, allowing you to focus on critical hits."
@@ -3435,6 +3418,7 @@ EnableTrigger ("multilottostop", true)
   <send>remActionQueue("c prayer precision")</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="Werredan surrounds you with blinding light in response to your prayer."
@@ -3444,6 +3428,7 @@ EnableTrigger ("multilottostop", true)
   <send>remActionQueue("c prayer 'Malice aura'")</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="Werredan tells you 'Your devotion to prayers is commendable, but I am not yet ready to aid you further.'"
@@ -3453,6 +3438,7 @@ EnableTrigger ("multilottostop", true)
   <send>remActionQueue("c prayer precision")</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="Werredan's presence disappears."
@@ -3542,7 +3528,6 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_sanc"
    keep_evaluating="y"
    match="You are already Glowing!"
@@ -3591,6 +3576,7 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
+   enabled="y"
    group="q_frenzy_quicken"
    keep_evaluating="y"
    match="You are already in a frenzy."
@@ -3601,7 +3587,6 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_frenzy"
    keep_evaluating="y"
    match="You are already in a frenzy."
@@ -3612,7 +3597,6 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_sanc"
    keep_evaluating="y"
    match="You are already in sanctuary."
@@ -3650,6 +3634,7 @@ addActionQueue("bladetrance enter")
   <send>remActionQueue("stance veil")</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="You are already zealous."
@@ -3678,6 +3663,7 @@ addActionQueue("bladetrance enter")
   <send>EnableTriggerGroup ("InvList", true)</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="You are consumed by holy zeal."
@@ -3687,7 +3673,6 @@ addActionQueue("bladetrance enter")
   <send>remActionQueue("c 'holy zeal'")</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -3708,7 +3693,6 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_frenzy"
    keep_evaluating="y"
    match="You are filled with rage."
@@ -3719,6 +3703,7 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
+   enabled="y"
    group="q_frenzy_quicken"
    keep_evaluating="y"
    match="You are filled with rage."
@@ -3744,7 +3729,6 @@ end
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -3766,7 +3750,6 @@ end
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_sanc"
    keep_evaluating="y"
    match="You are surrounded by a * aura."
@@ -3865,7 +3848,6 @@ end
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    match="You can't see anything!"
@@ -3916,7 +3898,6 @@ shapeNext()</send>
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_sanc"
    keep_evaluating="y"
    match="You concentrate on the Iron Monk style."
@@ -3984,7 +3965,6 @@ shapeNext()</send>
   <send>setKilling(true)</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    ignore_case="y"
@@ -4054,7 +4034,6 @@ sleep</send>
   <send>heig</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    match="You fail to rescue *"
    send_to="12"
@@ -4063,7 +4042,6 @@ sleep</send>
   <send>setRescue(true)</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="You failed your * due to lack of concentration!"
@@ -4352,7 +4330,6 @@ end
   <send>cast water</send>
   </trigger>
   <trigger
-   enabled="y"
    group="mday"
    keep_evaluating="y"
    match="You feel less fatigued. (*)"
@@ -4373,6 +4350,7 @@ Execute("alert")
 Execute("alert")</send>
   </trigger>
   <trigger
+   enabled="y"
    group="classpal"
    keep_evaluating="y"
    match="You feel less zealous."
@@ -4856,7 +4834,6 @@ Execute("ww")</send>
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="q_frenzy"
    keep_evaluating="y"
@@ -4867,6 +4844,7 @@ Execute("ww")</send>
   <send>remActionQueue("c frenzy")</send>
   </trigger>
   <trigger
+   enabled="y"
    expand_variables="y"
    group="q_frenzy_quicken"
    keep_evaluating="y"
@@ -4991,7 +4969,6 @@ doAfter (300, "stand=stand")</send>
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_frenzy"
    keep_evaluating="y"
    match="You slowly come out of your rage."
@@ -5002,6 +4979,7 @@ doAfter (300, "stand=stand")</send>
   </trigger>
   <trigger
    custom_colour="3"
+   enabled="y"
    group="q_frenzy_quicken"
    keep_evaluating="y"
    match="You slowly come out of your rage."
@@ -5052,7 +5030,6 @@ doAfter (300, "stand=stand")</send>
   <send>Send("bladetrance break")</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    keep_evaluating="y"
    match="You successfully rescue *"
@@ -5075,7 +5052,6 @@ end</send>
   <send>ff</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -5109,7 +5085,6 @@ end</send>
   </trigger>
   <trigger
    custom_colour="3"
-   enabled="y"
    group="q_sanc"
    keep_evaluating="y"
    match="Your Iron Monk style fades."
@@ -5379,7 +5354,6 @@ end
 c gurney %1</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    ignore_case="y"
@@ -5396,7 +5370,6 @@ end
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    ignore_case="y"
@@ -5517,7 +5490,6 @@ doAfter(5, "recall")</send>
   >
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    match="^(\*)*(.*?)(\*)* tells the group \'add me\'$"
    regexp="y"
@@ -5546,7 +5518,6 @@ doAfter(5, "recall")</send>
 end</send>
   </trigger>
   <trigger
-   enabled="y"
    group="autorescue"
    match="^(\*)*(.*?)(\*)* tells the group \'remove me\'$"
    regexp="y"
@@ -5603,7 +5574,6 @@ addDamage("%1", "%4")</send>
 </send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    keep_evaluating="y"
@@ -5704,7 +5674,6 @@ elseif "%3" == "Blackmail" then
 end</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -5728,7 +5697,6 @@ c 'chill touch'
 c 'cure light'</send>
   </trigger>
   <trigger
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -6134,7 +6102,7 @@ runAfter(10, 'EnableTimer ("autocastarea", true)')
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
   <alias
    match="*=c plane *"
@@ -6214,7 +6182,6 @@ Note("autobash on")</send>
   <alias
    name="RescueListAddCurrentSelection"
    match="addCurSelRescue"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    send_to="12"
@@ -6260,7 +6227,6 @@ give ruby alleg</send>
   </alias>
   <alias
    match="allrc"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6296,7 +6262,6 @@ Note("Set leadership")
   </alias>
   <alias
    match="aug *"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6346,7 +6311,6 @@ Note("Set leadership")
   </alias>
   <alias
    match="bt"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6358,7 +6322,6 @@ Note("Set leadership")
   </alias>
   <alias
    match="bte"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6427,7 +6390,6 @@ u
   </alias>
   <alias
    match="cc *"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6449,7 +6411,6 @@ u
   </alias>
   <alias
    match="cla"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6472,7 +6433,6 @@ u
   </alias>
   <alias
    match="clearrescue"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    send_to="12"
@@ -6540,7 +6500,6 @@ SendNoEcho("look")
   </alias>
   <alias
    match="dd *"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -6575,7 +6534,6 @@ Execute("score")</send>
   </alias>
   <alias
    match="eulo *"
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -7089,7 +7047,6 @@ leadership switch mastermind</send>
   </alias>
   <alias
    match="mm"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -7125,7 +7082,6 @@ end&#9;</send>
   </alias>
   <alias
    match="ms"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -7173,7 +7129,6 @@ Note("autobash false")</send>
   </alias>
   <alias
    match="offboss"
-   enabled="y"
    group="mday"
    sequence="100"
   >
@@ -7428,7 +7383,6 @@ Note("vizfinalrites off")</send>
   </alias>
   <alias
    match="offrun"
-   enabled="y"
    group="mday"
    sequence="100"
   >
@@ -7641,7 +7595,6 @@ Execute("offpsiwield")</send>
   </alias>
   <alias
    match="onboss"
-   enabled="y"
    group="mday"
    sequence="100"
   >
@@ -7901,7 +7854,6 @@ Note("vizfinalrites on")</send>
   </alias>
   <alias
    match="onrun"
-   enabled="y"
    group="mday"
    send_to="10"
    sequence="100"
@@ -7924,7 +7876,6 @@ Note("keepSanc on")</send>
   </alias>
   <alias
    match="onsend *"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8123,7 +8074,6 @@ Note("windowMon on")</send>
   </alias>
   <alias
    match="oo *"
-   enabled="y"
    group="mday"
    send_to="12"
    sequence="100"
@@ -8133,7 +8083,6 @@ Note("windowMon on")</send>
   </alias>
   <alias
    match="ooo * *"
-   enabled="y"
    group="mday"
    send_to="12"
    sequence="100"
@@ -8152,7 +8101,6 @@ Note("windowMon on")</send>
   </alias>
   <alias
    match="pan"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8164,7 +8112,6 @@ Note("windowMon on")</send>
   </alias>
   <alias
    match="pc"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8176,7 +8123,6 @@ Note("windowMon on")</send>
   </alias>
   <alias
    match="ps"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8231,7 +8177,6 @@ remCurSelGroup()</send>
   <alias
    name="RescueListRemoveCurrentSelection"
    match="remCurSelRescue"
-   enabled="y"
    group="autorescue"
    send_to="12"
    menu="y"
@@ -8280,7 +8225,6 @@ repair 30.</send>
   </alias>
   <alias
    match="rescueadd *"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    send_to="12"
@@ -8291,7 +8235,6 @@ repair 30.</send>
   </alias>
   <alias
    match="rescuerem *"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    send_to="12"
@@ -8302,7 +8245,6 @@ repair 30.</send>
   </alias>
   <alias
    match="rescueset"
-   enabled="y"
    group="mday"
    sequence="100"
   >
@@ -8377,7 +8319,6 @@ config -savespell</send>
   </alias>
   <alias
    match="salv *"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8404,7 +8345,6 @@ Note("Buffer size set to " .. "%1" .. " (min 200, max 500.000)")
   </alias>
   <alias
    match="setfilter"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="10"
@@ -8452,7 +8392,6 @@ Note("Tier set to %1")</send>
   </alias>
   <alias
    match="setwf"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8525,7 +8464,6 @@ end</send>
   </alias>
   <alias
    match="showrescue"
-   enabled="y"
    expand_variables="y"
    group="autorescue"
    send_to="12"
@@ -8555,7 +8493,6 @@ end</send>
   </alias>
   <alias
    match="ssv"
-   enabled="y"
    expand_variables="y"
    group="mday"
    send_to="12"
@@ -8597,7 +8534,6 @@ leadership switch take cover</send>
   </alias>
   <alias
    match="wakeresc"
-   enabled="y"
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -8643,7 +8579,7 @@ spit</send>
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
   <timer name="autocastarea" second="5.00" offset_second="0.00" group="autoCastArea" >
   <send>ms</send>
@@ -8662,7 +8598,7 @@ group="antiafk" >
   <send>c psyphon</send>
 
   </timer>
-  <timer name="groupStatsUpdate" enabled="y" second="5.00" offset_second="0.00"    send_to="12"
+  <timer name="groupStatsUpdate" second="5.00" offset_second="0.00"    send_to="12"
 group="groupStatsUpdate" >
   <send>groupStatsUpdateAction()</send>
 
@@ -8674,7 +8610,7 @@ group="groupStatsUpdate" >
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
 
   <macro name="up" type="send_now" >
@@ -8778,21 +8714,21 @@ group="groupStatsUpdate" >
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
   <variable name="currentPlane"></variable>
   <variable name="dverbsIntensity">intensity|viciousness|strength|passion|force|power|might|ferocity|rage|savagery|brutality</variable>
   <variable name="dverbsShort">pathetic|weak|punishing|surprising|amazing|astonishing|mauling|decimating|devastating|pulverizing|maiming|eviscerating|mutilating|disemboweling|dismembering|massacring|mangling|demolishing|obliterating|annihilating|eradicating|vaporizing|destructive|extreme|porcine|divine|daunting|terminal</variable>
   <variable name="gravitasMob"></variable>
-  <variable name="groupleader">Cunno</variable>
+  <variable name="groupleader">Marble</variable>
   <variable name="lastdirmoved"></variable>
   <variable name="monDamList">You</variable>
   <variable name="mw_statusAlts_windowflags">2</variable>
   <variable name="mw_statusAlts_windowmode">0</variable>
   <variable name="mw_statusAlts_windowx">517</variable>
   <variable name="mw_statusAlts_windowy">4</variable>
-  <variable name="playerclass">WAR</variable>
-  <variable name="playername">Zup</variable>
+  <variable name="playerclass">PAL</variable>
+  <variable name="playername">Xing</variable>
   <variable name="strOrder">xxxorder</variable>
 </variables>
 
@@ -8801,7 +8737,7 @@ group="groupStatsUpdate" >
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
 
 <ansi>
@@ -8858,7 +8794,7 @@ group="groupStatsUpdate" >
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
 
   <key name="0" >
@@ -8972,7 +8908,7 @@ group="groupStatsUpdate" >
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-12 13:26:37"
+   date_saved="2019-02-14 18:54:12"
   >
 
 <ansi>
@@ -9000,7 +8936,7 @@ group="groupStatsUpdate" >
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\captureChat.xml" plugin="y" />
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\Reconnecter.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
-<include name="C:\MUSHCLIENT\WORLDS\PLUGINS\AvatarAllegs.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
+<include name="C:\MUSHCLIENT\WORLDS\PLUGINS\AvatarAllegs.xml" plugin="y" />
 </muclient>
