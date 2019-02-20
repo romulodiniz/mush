@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on quarta-feira, fevereiro 20, 2019, 10:39  -->
+<!-- Saved on quarta-feira, fevereiro 20, 2019, 6:13  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
 
    auto_log_file_name="C:\MUSHclient\logs\log %Y-%m-%d .txt"
    auto_say_override_prefix="-"
@@ -122,7 +122,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
   <trigger
    enabled="y"
@@ -332,6 +332,20 @@ addWeaponsAlt("%2","%1")
   <send>longShotFleer("%2")</send>
   </trigger>
   <trigger
+   group="autorescue"
+   keep_evaluating="y"
+   match="* is DEAD!!"
+   send_to="12"
+   sequence="100"
+  >
+  <send>setRescue(true)
+
+if isMday() then
+  Execute("onchain") 
+end
+</send>
+  </trigger>
+  <trigger
    group="classviz"
    keep_evaluating="y"
    match="* is DEAD!!"
@@ -350,20 +364,6 @@ addWeaponsAlt("%2","%1")
   >
   <send>if getTierChar() == "Lord" then
   SendNoEcho("ctr push stay")
-end
-</send>
-  </trigger>
-  <trigger
-   group="autorescue"
-   keep_evaluating="y"
-   match="* is DEAD!!"
-   send_to="12"
-   sequence="100"
-  >
-  <send>setRescue(true)
-
-if isMday() then
-  Execute("onchain") 
 end
 </send>
   </trigger>
@@ -401,17 +401,6 @@ end
   <send>remActionQueue("c sanct %1")</send>
   </trigger>
   <trigger
-   expand_variables="y"
-   group="Outros"
-   keep_evaluating="y"
-   match="* is hurt and suspicious ... you can't sneak up."
-   send_to="12"
-   sequence="100"
-  >
-  <send>killCurrentTarget()
-Execute("bbb")</send>
-  </trigger>
-  <trigger
    enabled="y"
    expand_variables="y"
    group="Outros"
@@ -422,6 +411,17 @@ Execute("bbb")</send>
   >
   <send>killCurrentTarget()
 </send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="Outros"
+   keep_evaluating="y"
+   match="* is hurt and suspicious ... you can't sneak up."
+   send_to="12"
+   sequence="100"
+  >
+  <send>killCurrentTarget()
+Execute("bbb")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -701,6 +701,19 @@ SendNoEcho("s2")
   </trigger>
   <trigger
    expand_variables="y"
+   group="classstm"
+   keep_evaluating="y"
+   match="* tell* the group 'off run'"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTrigger("youfollowstm", false)
+
+
+</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
    group="autocast"
    keep_evaluating="y"
    match="* tell* the group 'off run'"
@@ -709,29 +722,6 @@ SendNoEcho("s2")
   >
   <send>Execute("offcast")
 EnableTimer("autocastarea", false)
-
-
-</send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="classbld"
-   keep_evaluating="y"
-   match="* tell* the group 'off run'"
-   send_to="12"
-   sequence="100"
-  >
-  <send>SendNoEcho("bladetrance break")</send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="classstm"
-   keep_evaluating="y"
-   match="* tell* the group 'off run'"
-   send_to="12"
-   sequence="100"
-  >
-  <send>EnableTrigger("youfollowstm", false)
 
 
 </send>
@@ -752,15 +742,13 @@ Execute("cq")
   </trigger>
   <trigger
    expand_variables="y"
-   group="classprs"
+   group="classbld"
    keep_evaluating="y"
-   match="* tell* the group 'on boss'"
+   match="* tell* the group 'off run'"
    send_to="12"
    sequence="100"
   >
-  <send>SendNoEcho("aug 2")
-EnableTimer("autoheal", true)
-</send>
+  <send>SendNoEcho("bladetrance break")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -793,13 +781,15 @@ SendNoEcho("s5")
   </trigger>
   <trigger
    expand_variables="y"
-   group="classbld"
+   group="classprs"
    keep_evaluating="y"
-   match="* tell* the group 'on run'"
+   match="* tell* the group 'on boss'"
    send_to="12"
    sequence="100"
   >
-  <send>SendNoEcho("stance veil")</send>
+  <send>SendNoEcho("aug 2")
+EnableTimer("autoheal", true)
+</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -812,6 +802,16 @@ SendNoEcho("s5")
   <send>Execute("scar=scar")
 
 </send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="classbld"
+   keep_evaluating="y"
+   match="* tell* the group 'on run'"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho("stance veil")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -1075,7 +1075,7 @@ cp %1</send>
 c div %2</send>
   </trigger>
   <trigger
-   group="classprs"
+   group="autostartsalv"
    keep_evaluating="y"
    match="* tells you 'div'"
    send_to="10"
@@ -1085,7 +1085,7 @@ c div %2</send>
 c div %1</send>
   </trigger>
   <trigger
-   group="autostartsalv"
+   group="classprs"
    keep_evaluating="y"
    match="* tells you 'div'"
    send_to="10"
@@ -1263,16 +1263,6 @@ EnableTrigger("stabNameControl",false)</send>
   </trigger>
   <trigger
    expand_variables="y"
-   group="detectClass"
-   keep_evaluating="y"
-   match="*/*Hp */*Ma *Mv *Xp La*"
-   send_to="12"
-   sequence="100"
-  >
-  <send>EnableTriggerGroup ("detectClass", false)</send>
-  </trigger>
-  <trigger
-   expand_variables="y"
    group="RoomCheck"
    keep_evaluating="y"
    match="*/*Hp */*Ma *Mv *Xp La*"
@@ -1296,6 +1286,16 @@ checkRoom()
 Note("InventoryList set")
 SendNoEcho("config +condition")
 SendNoEcho("config +label")</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="detectClass"
+   keep_evaluating="y"
+   match="*/*Hp */*Ma *Mv *Xp La*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTriggerGroup ("detectClass", false)</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -3210,6 +3210,17 @@ end
 </send>
   </trigger>
   <trigger
+   custom_colour="3"
+   group="q_sanc"
+   keep_evaluating="y"
+   match="The protective aura fades from around your body."
+   send_to="12"
+   sequence="100"
+  >
+  <send>addActionQueue("sanc")
+--addActionQueue("t lynn sanc")</send>
+  </trigger>
+  <trigger
    expand_variables="y"
    group="classprs"
    match="The protective aura fades from around your body."
@@ -3224,17 +3235,6 @@ end
 end
 
 </send>
-  </trigger>
-  <trigger
-   custom_colour="3"
-   group="q_sanc"
-   keep_evaluating="y"
-   match="The protective aura fades from around your body."
-   send_to="12"
-   sequence="100"
-  >
-  <send>addActionQueue("sanc")
---addActionQueue("t lynn sanc")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -3566,13 +3566,13 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   group="q_frenzy"
+   group="classbzk"
    keep_evaluating="y"
    match="You are already in a frenzy."
    send_to="12"
    sequence="100"
   >
-  <send>remActionQueue("c frenzy")</send>
+  <send>remActionQueue("scar")</send>
   </trigger>
   <trigger
    custom_colour="3"
@@ -3587,13 +3587,13 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   group="classbzk"
+   group="q_frenzy"
    keep_evaluating="y"
    match="You are already in a frenzy."
    send_to="12"
    sequence="100"
   >
-  <send>remActionQueue("scar")</send>
+  <send>remActionQueue("c frenzy")</send>
   </trigger>
   <trigger
    custom_colour="3"
@@ -3683,6 +3683,17 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
+   enabled="y"
+   group="q_frenzy_quicken"
+   keep_evaluating="y"
+   match="You are filled with rage."
+   send_to="12"
+   sequence="100"
+  >
+  <send>remActionQueue("quicken 9=c frenzy=quicken off")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
    group="classbzk"
    keep_evaluating="y"
    match="You are filled with rage."
@@ -3700,17 +3711,6 @@ addActionQueue("bladetrance enter")
    sequence="100"
   >
   <send>remActionQueue("c frenzy")</send>
-  </trigger>
-  <trigger
-   custom_colour="3"
-   enabled="y"
-   group="q_frenzy_quicken"
-   keep_evaluating="y"
-   match="You are filled with rage."
-   send_to="12"
-   sequence="100"
-  >
-  <send>remActionQueue("quicken 9=c frenzy=quicken off")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -4616,16 +4616,6 @@ remActionQueue("c 'protective vigil'")</send>
 c 'minds eye'</send>
   </trigger>
   <trigger
-   expand_variables="y"
-   group="RaceDRC"
-   match="You have been KILLED!!"
-   sequence="100"
-  >
-  <send>stand
-c eulogy
-look</send>
-  </trigger>
-  <trigger
    enabled="y"
    expand_variables="y"
    group="Outros"
@@ -4638,12 +4628,13 @@ quicken off</send>
   </trigger>
   <trigger
    expand_variables="y"
-   group="autotrackwalk"
-   match="You have found your quarry!!"
-   send_to="12"
+   group="RaceDRC"
+   match="You have been KILLED!!"
    sequence="100"
   >
-  <send>EnableTriggerGroup ("autotrackwalk", false)</send>
+  <send>stand
+c eulogy
+look</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -4652,6 +4643,15 @@ quicken off</send>
    sequence="100"
   >
   <send>emo found his quarry!!</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="autotrackwalk"
+   match="You have found your quarry!!"
+   send_to="12"
+   sequence="100"
+  >
+  <send>EnableTriggerGroup ("autotrackwalk", false)</send>
   </trigger>
   <trigger
    enabled="y"
@@ -4959,6 +4959,17 @@ doAfter (300, "stand=stand")</send>
   </trigger>
   <trigger
    custom_colour="3"
+   enabled="y"
+   group="q_frenzy_quicken"
+   keep_evaluating="y"
+   match="You slowly come out of your rage."
+   send_to="12"
+   sequence="100"
+  >
+  <send>addActionQueue("quicken 9=c frenzy=quicken off")</send>
+  </trigger>
+  <trigger
+   custom_colour="3"
    group="classbzk"
    keep_evaluating="y"
    match="You slowly come out of your rage."
@@ -4976,17 +4987,6 @@ doAfter (300, "stand=stand")</send>
    sequence="100"
   >
   <send>addActionQueue("c frenzy")</send>
-  </trigger>
-  <trigger
-   custom_colour="3"
-   enabled="y"
-   group="q_frenzy_quicken"
-   keep_evaluating="y"
-   match="You slowly come out of your rage."
-   send_to="12"
-   sequence="100"
-  >
-  <send>addActionQueue("quicken 9=c frenzy=quicken off")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -5724,19 +5724,6 @@ gt back to ee after death :(</send>
 </send>
   </trigger>
   <trigger
-   enabled="y"
-   group="Outros"
-   keep_evaluating="y"
-   match="^You see your quarry\'s trail head (north|south|east|west|up|down) from here\!$"
-   regexp="y"
-   send_to="12"
-   sequence="100"
-  >
-  <send>
-ColourNote ("white", "red", "Track dir is " .. string.upper("%1"))
-</send>
-  </trigger>
-  <trigger
    group="autotrack"
    keep_evaluating="y"
    match="^You see your quarry\'s trail head (north|south|east|west|up|down) from here\!$"
@@ -5747,6 +5734,19 @@ ColourNote ("white", "red", "Track dir is " .. string.upper("%1"))
 emo track points |bc|%1
 
 
+</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="Outros"
+   keep_evaluating="y"
+   match="^You see your quarry\'s trail head (north|south|east|west|up|down) from here\!$"
+   regexp="y"
+   send_to="12"
+   sequence="100"
+  >
+  <send>
+ColourNote ("white", "red", "Track dir is " .. string.upper("%1"))
 </send>
   </trigger>
   <trigger
@@ -5815,6 +5815,16 @@ end
   <trigger
    enabled="y"
    expand_variables="y"
+   group="corp_loot"
+   keep_evaluating="y"
+   match="help but stop and give silent homage to this colossus of trees."
+   sequence="100"
+  >
+  <send>get bark</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
    group="room_desc"
    keep_evaluating="y"
    match="help but stop and give silent homage to this colossus of trees."
@@ -5822,16 +5832,6 @@ end
    sequence="100"
   >
   <send>Note("(Get Bark)")</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   group="corp_loot"
-   keep_evaluating="y"
-   match="help but stop and give silent homage to this colossus of trees."
-   sequence="100"
-  >
-  <send>get bark</send>
   </trigger>
   <trigger
    enabled="y"
@@ -6102,7 +6102,7 @@ runAfter(10, 'EnableTimer ("autocastarea", true)')
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
   <alias
    match="*=c plane *"
@@ -8520,6 +8520,15 @@ end</send>
 leadership switch take cover</send>
   </alias>
   <alias
+   match="tc *"
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>t cunno cunno %1</send>
+  </alias>
+  <alias
    match="ug *"
    enabled="y"
    group="Outros"
@@ -8585,7 +8594,7 @@ spit</send>
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
   <timer name="autocastarea" second="5.00" offset_second="0.00" group="autoCastArea" >
   <send>ms</send>
@@ -8616,7 +8625,7 @@ group="groupStatsUpdate" >
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
 
   <macro name="up" type="send_now" >
@@ -8720,13 +8729,13 @@ group="groupStatsUpdate" >
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
   <variable name="currentPlane"></variable>
   <variable name="dverbsIntensity">intensity|viciousness|strength|passion|force|power|might|ferocity|rage|savagery|brutality</variable>
   <variable name="dverbsShort">pathetic|weak|punishing|surprising|amazing|astonishing|mauling|decimating|devastating|pulverizing|maiming|eviscerating|mutilating|disemboweling|dismembering|massacring|mangling|demolishing|obliterating|annihilating|eradicating|vaporizing|destructive|extreme|porcine|divine|daunting|terminal</variable>
   <variable name="gravitasMob"></variable>
-  <variable name="groupleader">notanker</variable>
+  <variable name="groupleader">Maybe</variable>
   <variable name="lastdirmoved"></variable>
   <variable name="monDamList">You</variable>
   <variable name="mw_statusAlts_windowflags">2</variable>
@@ -8743,7 +8752,7 @@ group="groupStatsUpdate" >
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
 
 <ansi>
@@ -8800,7 +8809,7 @@ group="groupStatsUpdate" >
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
 
   <key name="0" >
@@ -8914,7 +8923,7 @@ group="groupStatsUpdate" >
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-20 10:39:23"
+   date_saved="2019-02-20 18:13:59"
   >
 
 <ansi>
@@ -8941,8 +8950,8 @@ group="groupStatsUpdate" >
 <!-- plugins -->
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\captureChat.xml" plugin="y" />
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\Reconnecter.xml" plugin="y" />
-<include name="AvatarMobNames.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\AvatarAllegs.xml" plugin="y" />
+<include name="AvatarMobNames.xml" plugin="y" />
 </muclient>
