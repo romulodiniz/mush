@@ -48,6 +48,17 @@
   >
   <send>SubNameLord(%1,watcher)</send>
   </trigger>
+ <trigger
+   enabled="y"
+   group="mobnames_karn"
+   keep_evaluating="n"
+   match="*A dark robed figure looks up from his sacrificial rite."
+   omit_from_output="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>SubNameLord(%1,warlock)</send>
+  </trigger>  
   <trigger
    enabled="y"
    group="mobnames_astral"
@@ -58,6 +69,28 @@
    sequence="100"
   >
   <send>SubNameLord(%1,fae)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="mobnames_astral"
+   keep_evaluating="n"
+   match="*A husky kzinti with long sharp claws."
+   omit_from_output="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>SubNameLord(%1,guardian)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="mobnames_astral"
+   keep_evaluating="n"
+   match="*A tall thin Kzinti stands here."
+   omit_from_output="y"
+   send_to="10"
+   sequence="100"
+  >
+  <send>SubNameLord(%1,emissary)</send>
   </trigger>
   <trigger
    enabled="y"

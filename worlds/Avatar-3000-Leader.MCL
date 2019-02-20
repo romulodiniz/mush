@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on quinta-feira, fevereiro 14, 2019, 6:54  -->
+<!-- Saved on quarta-feira, fevereiro 20, 2019, 10:39  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
 
    auto_log_file_name="C:\MUSHclient\logs\log %Y-%m-%d .txt"
    auto_say_override_prefix="-"
@@ -122,7 +122,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
   <trigger
    enabled="y"
@@ -401,6 +401,17 @@ end
   <send>remActionQueue("c sanct %1")</send>
   </trigger>
   <trigger
+   expand_variables="y"
+   group="Outros"
+   keep_evaluating="y"
+   match="* is hurt and suspicious ... you can't sneak up."
+   send_to="12"
+   sequence="100"
+  >
+  <send>killCurrentTarget()
+Execute("bbb")</send>
+  </trigger>
+  <trigger
    enabled="y"
    expand_variables="y"
    group="Outros"
@@ -411,17 +422,6 @@ end
   >
   <send>killCurrentTarget()
 </send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="Outros"
-   keep_evaluating="y"
-   match="* is hurt and suspicious ... you can't sneak up."
-   send_to="12"
-   sequence="100"
-  >
-  <send>killCurrentTarget()
-Execute("bbb")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -701,30 +701,6 @@ SendNoEcho("s2")
   </trigger>
   <trigger
    expand_variables="y"
-   group="classbld"
-   keep_evaluating="y"
-   match="* tell* the group 'off run'"
-   send_to="12"
-   sequence="100"
-  >
-  <send>SendNoEcho("bladetrance break")</send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="Outros"
-   keep_evaluating="y"
-   match="* tell* the group 'off run'"
-   send_to="12"
-   sequence="100"
-  >
-  <send>
-Execute("cq")
-
-
-</send>
-  </trigger>
-  <trigger
-   expand_variables="y"
    group="autocast"
    keep_evaluating="y"
    match="* tell* the group 'off run'"
@@ -739,6 +715,16 @@ EnableTimer("autocastarea", false)
   </trigger>
   <trigger
    expand_variables="y"
+   group="classbld"
+   keep_evaluating="y"
+   match="* tell* the group 'off run'"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho("bladetrance break")</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
    group="classstm"
    keep_evaluating="y"
    match="* tell* the group 'off run'"
@@ -746,6 +732,20 @@ EnableTimer("autocastarea", false)
    sequence="100"
   >
   <send>EnableTrigger("youfollowstm", false)
+
+
+</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   group="Outros"
+   keep_evaluating="y"
+   match="* tell* the group 'off run'"
+   send_to="12"
+   sequence="100"
+  >
+  <send>
+Execute("cq")
 
 
 </send>
@@ -793,6 +793,16 @@ SendNoEcho("s5")
   </trigger>
   <trigger
    expand_variables="y"
+   group="classbld"
+   keep_evaluating="y"
+   match="* tell* the group 'on run'"
+   send_to="12"
+   sequence="100"
+  >
+  <send>SendNoEcho("stance veil")</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
    group="classbzk"
    keep_evaluating="y"
    match="* tell* the group 'on run'"
@@ -802,16 +812,6 @@ SendNoEcho("s5")
   <send>Execute("scar=scar")
 
 </send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="classbld"
-   keep_evaluating="y"
-   match="* tell* the group 'on run'"
-   send_to="12"
-   sequence="100"
-  >
-  <send>SendNoEcho("stance veil")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -1075,7 +1075,7 @@ cp %1</send>
 c div %2</send>
   </trigger>
   <trigger
-   group="autostartsalv"
+   group="classprs"
    keep_evaluating="y"
    match="* tells you 'div'"
    send_to="10"
@@ -1085,7 +1085,7 @@ c div %2</send>
 c div %1</send>
   </trigger>
   <trigger
-   group="classprs"
+   group="autostartsalv"
    keep_evaluating="y"
    match="* tells you 'div'"
    send_to="10"
@@ -3210,17 +3210,6 @@ end
 </send>
   </trigger>
   <trigger
-   custom_colour="3"
-   group="q_sanc"
-   keep_evaluating="y"
-   match="The protective aura fades from around your body."
-   send_to="12"
-   sequence="100"
-  >
-  <send>addActionQueue("sanc")
---addActionQueue("t lynn sanc")</send>
-  </trigger>
-  <trigger
    expand_variables="y"
    group="classprs"
    match="The protective aura fades from around your body."
@@ -3235,6 +3224,17 @@ end
 end
 
 </send>
+  </trigger>
+  <trigger
+   custom_colour="3"
+   group="q_sanc"
+   keep_evaluating="y"
+   match="The protective aura fades from around your body."
+   send_to="12"
+   sequence="100"
+  >
+  <send>addActionQueue("sanc")
+--addActionQueue("t lynn sanc")</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -3566,13 +3566,13 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   group="classbzk"
+   group="q_frenzy"
    keep_evaluating="y"
    match="You are already in a frenzy."
    send_to="12"
    sequence="100"
   >
-  <send>remActionQueue("scar")</send>
+  <send>remActionQueue("c frenzy")</send>
   </trigger>
   <trigger
    custom_colour="3"
@@ -3587,13 +3587,13 @@ addActionQueue("bladetrance enter")
   </trigger>
   <trigger
    custom_colour="3"
-   group="q_frenzy"
+   group="classbzk"
    keep_evaluating="y"
    match="You are already in a frenzy."
    send_to="12"
    sequence="100"
   >
-  <send>remActionQueue("c frenzy")</send>
+  <send>remActionQueue("scar")</send>
   </trigger>
   <trigger
    custom_colour="3"
@@ -4616,6 +4616,16 @@ remActionQueue("c 'protective vigil'")</send>
 c 'minds eye'</send>
   </trigger>
   <trigger
+   expand_variables="y"
+   group="RaceDRC"
+   match="You have been KILLED!!"
+   sequence="100"
+  >
+  <send>stand
+c eulogy
+look</send>
+  </trigger>
+  <trigger
    enabled="y"
    expand_variables="y"
    group="Outros"
@@ -4628,13 +4638,12 @@ quicken off</send>
   </trigger>
   <trigger
    expand_variables="y"
-   group="RaceDRC"
-   match="You have been KILLED!!"
+   group="autotrackwalk"
+   match="You have found your quarry!!"
+   send_to="12"
    sequence="100"
   >
-  <send>stand
-c eulogy
-look</send>
+  <send>EnableTriggerGroup ("autotrackwalk", false)</send>
   </trigger>
   <trigger
    expand_variables="y"
@@ -4643,15 +4652,6 @@ look</send>
    sequence="100"
   >
   <send>emo found his quarry!!</send>
-  </trigger>
-  <trigger
-   expand_variables="y"
-   group="autotrackwalk"
-   match="You have found your quarry!!"
-   send_to="12"
-   sequence="100"
-  >
-  <send>EnableTriggerGroup ("autotrackwalk", false)</send>
   </trigger>
   <trigger
    enabled="y"
@@ -5724,19 +5724,6 @@ gt back to ee after death :(</send>
 </send>
   </trigger>
   <trigger
-   group="autotrack"
-   keep_evaluating="y"
-   match="^You see your quarry\'s trail head (north|south|east|west|up|down) from here\!$"
-   regexp="y"
-   sequence="100"
-  >
-  <send>
-emo track points |bc|%1
-
-
-</send>
-  </trigger>
-  <trigger
    enabled="y"
    group="Outros"
    keep_evaluating="y"
@@ -5747,6 +5734,19 @@ emo track points |bc|%1
   >
   <send>
 ColourNote ("white", "red", "Track dir is " .. string.upper("%1"))
+</send>
+  </trigger>
+  <trigger
+   group="autotrack"
+   keep_evaluating="y"
+   match="^You see your quarry\'s trail head (north|south|east|west|up|down) from here\!$"
+   regexp="y"
+   sequence="100"
+  >
+  <send>
+emo track points |bc|%1
+
+
 </send>
   </trigger>
   <trigger
@@ -5815,16 +5815,6 @@ end
   <trigger
    enabled="y"
    expand_variables="y"
-   group="corp_loot"
-   keep_evaluating="y"
-   match="help but stop and give silent homage to this colossus of trees."
-   sequence="100"
-  >
-  <send>get bark</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
    group="room_desc"
    keep_evaluating="y"
    match="help but stop and give silent homage to this colossus of trees."
@@ -5832,6 +5822,16 @@ end
    sequence="100"
   >
   <send>Note("(Get Bark)")</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="corp_loot"
+   keep_evaluating="y"
+   match="help but stop and give silent homage to this colossus of trees."
+   sequence="100"
+  >
+  <send>get bark</send>
   </trigger>
   <trigger
    enabled="y"
@@ -6102,7 +6102,7 @@ runAfter(10, 'EnableTimer ("autocastarea", true)')
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
   <alias
    match="*=c plane *"
@@ -8189,39 +8189,45 @@ remCurSelGroup()</send>
    match="repairall"
    enabled="y"
    group="Outros"
+   send_to="12"
    sequence="100"
   >
-  <send>
-repair 1.
-repair 2.
-repair 3.
-repair 4.
-repair 5.
-repair 6.
-repair 7.
-repair 8.
-repair 9.
-repair 10.
-repair 11.
-repair 12.
-repair 13.
-repair 14.
-repair 15.
-repair 16.
-repair 17.
-repair 18.
-repair 19.
-repair 20.
-repair 21.
-repair 22.
-repair 23.
-repair 24.
-repair 25.
-repair 26.
-repair 27.
-repair 28.
-repair 29.
-repair 30.</send>
+  <send>if GetVariable("playername") == "Mecao" then
+ Execute("repair 1.")
+ Execute("repair 2.")
+ Execute("repair 3.")
+ Execute("repair 4.")
+ Execute("repair 5.")
+ Execute("repair 6.")
+ Execute("repair 7.")
+ Execute("repair 8.")
+ Execute("repair 9.")
+ Execute("repair 10.")
+ Execute("repair 11.")
+ Execute("repair 12.")
+ Execute("repair 13.")
+ Execute("repair 14.")
+ Execute("repair 15.")
+ Execute("repair 16.")
+ Execute("repair 17.")
+ Execute("repair 18.")
+ Execute("repair 19.")
+ Execute("repair 20.")
+ Execute("repair 21.")
+ Execute("repair 22.")
+ Execute("repair 23.")
+ Execute("repair 24.")
+ Execute("repair 25.")
+ Execute("repair 26.")
+ Execute("repair 27.")
+ Execute("repair 28.")
+ Execute("repair 29.")
+ Execute("repair 30.")
+else
+ Execute("say nono")
+end
+
+</send>
   </alias>
   <alias
    match="rescueadd *"
@@ -8579,7 +8585,7 @@ spit</send>
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
   <timer name="autocastarea" second="5.00" offset_second="0.00" group="autoCastArea" >
   <send>ms</send>
@@ -8610,7 +8616,7 @@ group="groupStatsUpdate" >
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
 
   <macro name="up" type="send_now" >
@@ -8714,13 +8720,13 @@ group="groupStatsUpdate" >
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
   <variable name="currentPlane"></variable>
   <variable name="dverbsIntensity">intensity|viciousness|strength|passion|force|power|might|ferocity|rage|savagery|brutality</variable>
   <variable name="dverbsShort">pathetic|weak|punishing|surprising|amazing|astonishing|mauling|decimating|devastating|pulverizing|maiming|eviscerating|mutilating|disemboweling|dismembering|massacring|mangling|demolishing|obliterating|annihilating|eradicating|vaporizing|destructive|extreme|porcine|divine|daunting|terminal</variable>
   <variable name="gravitasMob"></variable>
-  <variable name="groupleader">Marble</variable>
+  <variable name="groupleader">notanker</variable>
   <variable name="lastdirmoved"></variable>
   <variable name="monDamList">You</variable>
   <variable name="mw_statusAlts_windowflags">2</variable>
@@ -8737,7 +8743,7 @@ group="groupStatsUpdate" >
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
 
 <ansi>
@@ -8794,7 +8800,7 @@ group="groupStatsUpdate" >
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
 
   <key name="0" >
@@ -8908,7 +8914,7 @@ group="groupStatsUpdate" >
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-14 18:54:12"
+   date_saved="2019-02-20 10:39:23"
   >
 
 <ansi>

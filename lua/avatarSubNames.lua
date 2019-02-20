@@ -42,8 +42,13 @@ function SubNameLord(pref, name)
 
 end
 
-function SubNameAlleg(name)
-	ColourNote ("orange", "black", "Allegaagse says '" .. name .. "'")
+function SubNameAlleg(name, moreInfo)
+	if moreInfo == nil then
+		ColourNote ("orange", "black", "Allegaagse says '" .. name .. "'")
+	else
+		ColourNote ("orange", "black", "Allegaagse says '" .. name .. " (" .. moreInfo .. ")'")
+	end
+
 	SetClipboard(name)
 end
 

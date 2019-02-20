@@ -97,7 +97,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("heavy shroud (locker)")</send>
+  <send>SubNameAlleg("heavy shroud", "locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -169,7 +169,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("blue psi-blade (cabeca)")</send>
+  <send>SubNameAlleg("blue psi-blade","cabeca")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -229,7 +229,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("pair of kzinti slaughter gloves (locker)")</send>
+  <send>SubNameAlleg("pair of kzinti slaughter gloves","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -264,7 +264,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a dagger of dark rites (boi)")</send>
+  <send>SubNameAlleg("a dagger of dark rites","boi")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -311,7 +311,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("panthrodrine-skin leggings (the blade of discord -&gt; haggler - quatro)")</send>
+  <send>SubNameAlleg("panthrodrine-skin leggings","quatro")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -346,7 +346,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("Water: an ice hound's tooth")</send>
+  <send>SubNameAlleg("an ice hound's tooth","water locker")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -382,7 +382,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("AIR: an ice collar")</send>
+  <send>SubNameAlleg("an ice collar","air")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -454,7 +454,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("Stone: a lavabomb")</send>
+  <send>SubNameAlleg("a lavabomb","stone")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -490,7 +490,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("Fire: a lavabomb")</send>
+  <send>SubNameAlleg("a lavabomb","fire")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -514,7 +514,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a blueish-white stone (devilish talisman -&gt; chandler - quatro)")</send>
+  <send>SubNameAlleg("a blueish-white stone","quatro")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -657,7 +657,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("black sword of the keep (locker)")</send>
+  <send>SubNameAlleg("black sword of the keep","locker")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -705,7 +705,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("Water: an ice collar")</send>
+  <send>SubNameAlleg("an ice collar","water")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -777,7 +777,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a sun staff (grande)")</send>
+  <send>SubNameAlleg("a sun staff","grande")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -837,7 +837,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a buckler bracelet (grande)")</send>
+  <send>SubNameAlleg("a buckler bracelet","grande")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -885,7 +885,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("pair of wind-ravaged boots (a storm-skin cloak -&gt; chandler - quatro)")</send>
+  <send>SubNameAlleg("pair of wind-ravaged boots","quatro")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -942,7 +942,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a side of venison")</send>
+  <send>SubNameAlleg("a side of venison","locker")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -976,7 +976,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("yellow psi-blade (cabeca)")</send>
+  <send>SubNameAlleg("yellow psi-blade","cabeca")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -988,7 +988,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("baleflame (noone)")</send>
+  <send>SubNameAlleg("baleflame","noone")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -1024,7 +1024,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("Air: an ice hound's tooth")</send>
+  <send>SubNameAlleg("an ice hound's tooth","air")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -1203,7 +1203,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a grim bone shield (locker)")</send>
+  <send>SubNameAlleg("a grim bone shield","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -1394,7 +1394,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("massive slate-grey sledgehammer (locker)")</send>
+  <send>SubNameAlleg("massive slate-grey sledgehammer","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -1655,7 +1655,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("an obsidian sledgehammer (locker)")</send>
+  <send>SubNameAlleg("an obsidian sledgehammer","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -1739,7 +1739,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a bloodletter flail (noone)")</send>
+  <send>SubNameAlleg("a bloodletter flail","noone")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -1975,7 +1975,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("axe of the third plane (locker)")</send>
+  <send>SubNameAlleg("axe of the third plane","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -1998,7 +1998,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a faerie script (Ashara, Ceilican, Laz)")</send>
+  <send>SubNameAlleg("a faerie script","Ashara, Ceilican, Laz")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -2009,7 +2009,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("coarse leather boots (iron web shield -&gt; haggler - quatro)")</send>
+  <send>SubNameAlleg("coarse leather boots","quatro")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -2115,7 +2115,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("iron dha (locker)")</send>
+  <send>SubNameAlleg("iron dha","locker")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -2127,7 +2127,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("sacrifical knife (boi)")</send>
+  <send>SubNameAlleg("a sacrificial knife","boi")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -2138,7 +2138,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("green psi-blade (cabeca)")</send>
+  <send>SubNameAlleg("green psi-blade","cabeca")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -2161,7 +2161,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a stone hammer (locker)")</send>
+  <send>SubNameAlleg("a stone hammer","locker")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -2196,7 +2196,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a rock hammer")</send>
+  <send>SubNameAlleg("a rock hammer","locker")</send>
   </trigger>
   <trigger
    enabled="y"
@@ -2363,7 +2363,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("a suit of dress plate")</send>
+  <send>SubNameAlleg("a suit of dress plate","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
@@ -2387,7 +2387,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("clear psi-blade (cabeca)")</send>
+  <send>SubNameAlleg("clear psi-blade","cabeca")</send>
   </trigger>
 </triggers>
 

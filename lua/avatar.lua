@@ -123,7 +123,7 @@ function setup()
 	addWeaponsAlt("Opa", "A BIG ANT CHAKRAM")
 	
 	addWeaponsAlt("Fido", "CUNNO'S TRICK")
-	addWeaponsAlt("Fido", "KUNT'S LOVE")
+	addWeaponsAlt("Fido", "KENT'S LOVE")
 	
 	setupWin()
 end
