@@ -146,19 +146,24 @@ function gotCharacterStatus (status)
 		execScript("checkShape", shapetime)
 	end
 	
-	ExecuteNoEcho("/UpdateInfoBar()")
+	--ExecuteNoEcho("/UpdateInfoBar()")
+	CallPlugin ("3a023d177bc699161cab5075", "UpdateInfoBar")
+	
 end  -- gotCharacterStatus
 
 function execScript(func, param)
-	ExecuteNoEcho("/" .. func .. "(\"" ..  param .. "\")")
+	--ExecuteNoEcho("/" .. func .. "(\"" ..  param .. "\")")
+	CallPlugin ("3a023d177bc699161cab5075", func, param)
 end
 
 function gotGroupieAdd (groupie)
 	for k, v in pairs (groupie) do 
-		ExecuteNoEcho("/addGroupie(\"" .. v.name .. "\"" .. getQuoted(v.hp) .. getQuoted(v.maxhp) .. getQuoted(v.mp) .. getQuoted(v.maxmp) .. getQuoted(tostring(v.leader)) .. getQuoted(v.align) .. getQuoted(string.upper(v.class)) .. getQuoted(string.upper(v.race)) ..  getQuoted(tonumber(string.match(v.level, '%s*%d*'))) .. ")")
+		--ExecuteNoEcho("/addGroupie(\"" .. v.name .. "\"" .. getQuoted(v.hp) .. getQuoted(v.maxhp) .. getQuoted(v.mp) .. getQuoted(v.maxmp) .. getQuoted(tostring(v.leader)) .. getQuoted(v.align) .. getQuoted(string.upper(v.class)) .. getQuoted(string.upper(v.race)) ..  getQuoted(tonumber(string.match(v.level, '%s*%d*'))) .. ")")
+		CallPlugin ("3a023d177bc699161cab5075", "addGroupie", v.name, v.hp, v.maxhp, v.mp, v.maxmp, tostring(v.leader), v.align, string.upper(v.class), string.upper(v.race), tonumber(string.match(v.level, '%s*%d*')))
 	end
 	
-	ExecuteNoEcho("/updateGMCPGroupWindow()")
+	--ExecuteNoEcho("/updateGMCPGroupWindow()")	
+	CallPlugin ("3a023d177bc699161cab5075", "updateGMCPGroupWindow")
 end  -- gotGroupieAdd
 
 function getQuoted(value)
@@ -211,7 +216,8 @@ function gotItemAdd (msg)
 			execScript("passPsiWeaponOwner", id .. "#" ..  scapedStrWeapon)
 		end
 	elseif string.match(location, "room") and string.match(name, "a blood pool") and string.match(type, "trash") then
-		ExecuteNoEcho("/noticePoolCreated()")
+		--ExecuteNoEcho("/noticePoolCreated()")
+		CallPlugin ("3a023d177bc699161cab5075", "noticePoolCreated")
 	end
 
 end  -- gotItemAdd
