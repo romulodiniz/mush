@@ -9717,6 +9717,7 @@ function addRoomList(name)
 end
 
 function addGroupie(name, hp, maxHp, mana, maxMana, leader, align, class, race, level)
+	--Note("groupList[" .. name .. "] = {hp=" .. hp .. ", maxHp=" .. maxHp .. ", mana=" .. mana .. ", maxMana=" .. maxMana)
 	groupList[name] = {hp=hp, maxHp=maxHp, mana=mana, maxMana=maxMana, leader=leader, align=align, class=class, race=race, level=level}
 end
 
@@ -9859,7 +9860,7 @@ function drawCharStatus()
 			hpLeftSize = barWidth - barWidth*v1.hp/v1.maxHp
 			hpTakenSize = barWidth - hpLeftSize
 
-			if v1.maxMana ~= 0 then
+			if tonumber(v1.maxMana) ~= 0 then
 				manaLeftSize = barWidth - barWidth*v1.mana/v1.maxMana
 			else
 				manaLeftSize = barWidth - barWidth
