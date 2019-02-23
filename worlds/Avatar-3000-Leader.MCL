@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on sexta-feira, fevereiro 22, 2019, 6:28  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +7,6 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
 
    auto_log_file_name="C:\MUSHclient\logs\log %Y-%m-%d .txt"
    auto_say_override_prefix="-"
@@ -28,7 +26,7 @@
    script_language="Lua"
    script_prefix="/"
    site="avatar.outland.org"
-   spam_message="i"
+   spam_message="inv"
    speed_walk_prefix="."
    terminal_identification="mushclient"
 
@@ -75,6 +73,7 @@
    mud_can_change_link_colour="y"
    mud_can_change_options="y"
    note_text_colour="#060000"
+   omit_date_from_save_files="y"
    output_font_height="9"
    output_font_weight="400"
    output_font_charset="1"
@@ -121,7 +120,6 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 </triggers>
 
@@ -130,7 +128,6 @@
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 </aliases>
 
@@ -139,7 +136,6 @@
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 </timers>
 
@@ -148,7 +144,6 @@
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 
   <macro name="up" type="send_now" >
@@ -252,7 +247,6 @@
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 </variables>
 
@@ -261,7 +255,6 @@
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 
 <ansi>
@@ -318,7 +311,6 @@
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 
   <key name="0" >
@@ -432,7 +424,6 @@
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2019-02-22 18:28:12"
   >
 
 <ansi>
