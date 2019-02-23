@@ -159,7 +159,7 @@ end
 function gotGroupieAdd (groupie)
 	for k, v in pairs (groupie) do 
 		--ExecuteNoEcho("/addGroupie(\"" .. v.name .. "\"" .. getQuoted(v.hp) .. getQuoted(v.maxhp) .. getQuoted(v.mp) .. getQuoted(v.maxmp) .. getQuoted(tostring(v.leader)) .. getQuoted(v.align) .. getQuoted(string.upper(v.class)) .. getQuoted(string.upper(v.race)) ..  getQuoted(tonumber(string.match(v.level, '%s*%d*'))) .. ")")
-		CallPlugin ("3a023d177bc699161cab5075", "addGroupie", v.name, v.hp, v.maxhp, v.mp, v.maxmp, tostring(v.leader), v.align, string.upper(v.class), string.upper(v.race), tonumber(string.match(v.level, '%s*%d*')))
+		CallPlugin ("3a023d177bc699161cab5075", "addGroupie", v.name, tonumber(v.hp), tonumber(v.maxhp), tonumber(v.mp), tonumber(v.maxmp), tostring(v.leader), tonumber(v.align), string.upper(v.class), string.upper(v.race), tonumber(string.match(v.level, '%s*%d*')))
 	end
 	
 	--ExecuteNoEcho("/updateGMCPGroupWindow()")	
