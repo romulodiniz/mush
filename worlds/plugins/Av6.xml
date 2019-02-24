@@ -4952,7 +4952,7 @@ ColourNote("red", "white", "Lotto list cleared")</send>
   </trigger>
   <trigger
    expand_variables="y"
-   group="autostab"
+   group="Outros"
    keep_evaluating="y"
    match="*/*Hp */*Ma *Mv *Xp La*"
    name="stabNameControl"
@@ -5919,10 +5919,11 @@ Execute("bbb")</send>
   </trigger>
   <trigger
    expand_variables="y"
-   group="autostab"
+   group="Outros"
    match="You scan your surroundings..."
    send_to="12"
    sequence="100"
+   name="scanDisableStab"
   >
   <send>setDisabledStabName(true)
 EnableTrigger("stabNameControl",true)</send>
@@ -7238,39 +7239,6 @@ Note("Groupie Death Info OFF")</send>
   >
   <send>Execute("%1")
 planeTo("%2")</send>
-  </alias>
-  <alias
-   match="SubName(*,*)"
-   enabled="y"
-   expand_variables="y"
-   group="subs"
-   send_to="12"
-   keep_evaluating="y"
-   sequence="100"
-  >
-  <send>SubName('%1','%2')</send>
-  </alias>
-  <alias
-   match="SubNameAggie(*,*)"
-   enabled="y"
-   expand_variables="y"
-   group="subs"
-   send_to="12"
-   keep_evaluating="y"
-   sequence="100"
-  >
-  <send>SubNameAggie('%1','%2')</send>
-  </alias>
-  <alias
-   match="SubNameLord(*,*)"
-   enabled="y"
-   expand_variables="y"
-   group="subs"
-   send_to="12"
-   keep_evaluating="y"
-   sequence="100"
-  >
-  <send>SubNameLord('%1','%2')</send>
   </alias>
   <alias
    match="onshape"
@@ -10124,6 +10092,8 @@ end
 --On/off functions
 function onStab(action)
 	setStabStatus(true)
+	
+	EnableTrigger("scanDisableStab",true)
 
 	if action and action ~= "" and action ~= " " then 
 		setStabAction(action)
@@ -10132,6 +10102,7 @@ end
 
 function offStab()
 	setStabStatus(false)
+	EnableTrigger("scanDisableStab",false)
 end
 
 function onStabById(action)
@@ -10621,14 +10592,21 @@ end
 
 --Sub names functions
 function SubName(pref, name)
+	--Note("aaa")
 	ColourNote ("dodgerblue", "black", pref .. name)
+	
+	if disabledStabName == false then --quem define é o scan feito nas classes stabbers	
+		if getCanStab() == true then --quem define é a classe, pode ser desabilitado pelo offstab
+			Execute(stabAction .. " " .. name)
+		end
+	end
 end
 
 function SubNameAggie(pref, name)
 	ColourNote ("red", "black", pref .. name)
 	
-	if disabledStabName == false then
-		if isKillingWalking == true then --quem define é o scan feito nas classes stabbers	
+	if disabledStabName == false then --quem define é o scan feito nas classes stabbers	
+		if isKillingWalking == true then 
 			Execute(stabAction .. " " .. name)	
 		elseif getCanStab() == true then --quem define é a classe, pode ser desabilitado pelo offstab
 			Execute(stabAction .. " " .. name)
@@ -10642,10 +10620,10 @@ end
 function SubNameLord(pref, name)
 	ColourNote ("red", "black", pref .. name)
 	
-	if disabledStabName == false then
+	if disabledStabName == false then --quem define é o scan feito nas classes stabbers	
 		if canSlip == true then --quem define é o player manualmente, pode ser desabilitado pelo offslip				
 			autoSlip(name)
-		elseif isKillingWalking == true then --quem define é o scan feito nas classes stabbers	
+		elseif isKillingWalking == true then 
 			Execute(stabAction .. " " .. name)	
 		elseif getCanStab() == true then --quem define é a classe, pode ser desabilitado pelo offstab
 			Execute(stabAction .. " " .. name)

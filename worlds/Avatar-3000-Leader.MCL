@@ -137,7 +137,7 @@
    keep_evaluating="y"
    sequence="90"
   >
-  <send>CallPlugin ("3a023d177bc699161cab5075", "%1", "%1")</send>
+  <send>CallPlugin ("3a023d177bc699161cab5075", "%1", "%2")</send>
   </alias>
   <alias
    match="px *"
