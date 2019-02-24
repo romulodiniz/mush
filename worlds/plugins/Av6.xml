@@ -1217,18 +1217,6 @@ Execute("cq")
   <trigger
    enabled="y"
    expand_variables="y"
-   group="Lotto"
-   keep_evaluating="y"
-   match="* stops following you."
-   send_to="12"
-   sequence="100"
-  >
-  <send>remLotto("%1")
-remGroupie("%1")</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
    group="corp_loot"
    keep_evaluating="y"
    match="You get a summons from Alastar from corpse of *"
@@ -3832,7 +3820,7 @@ stand</send>
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
-   match="* tells the group 'plane *'"
+   match="* tells the group 'xplane *'"
    sequence="100"
   >
   <send>c plane %2</send>
@@ -4017,6 +4005,8 @@ hpmon = tonumber("%1")
 if getTierChar() == "Lord" then
   limite = 20000
 elseif getTierChar() == "Hero" then
+  limite = 1000
+else
   limite = 1000
 end
 
@@ -8901,10 +8891,7 @@ function addTableCounter(name)
 	if found == 1 then
 	  ColourNote("red", "white", name .. " already in the dmg list!")
 	else
-		dmgGroupieFormat = "/damList.%s = {totalDmg=%d, pathetic=%d, weak=%d, punishing=%d, surprising=%d, amazing=%d, astonishing=%d, mauling=%d, decimating=%d, devastating=%d, pulverizing=%d, maiming=%d, eviscerating=%d, mutilating=%d, disemboweling=%d, dismembering=%d, massacring=%d, mangling=%d, demolishing=%d, obliterating=%d, annihilating=%d, eradicating=%d, vaporizing=%d, destructive=%d, extreme=%d, porcine=%d, divine=%d, daunting=%d, terminal=%d}"
-		dmgGroupieText = string.format(dmgGroupieFormat, name, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-		Execute(dmgGroupieText)
-		--XXX
+		damList[name] = {totalDmg=0, pathetic=0, weak=0, punishing=0, surprising=0, amazing=0, astonishing=0, mauling=0, decimating=0, devastating=0, pulverizing=0, maiming=0, eviscerating=0, mutilating=0, disemboweling=0, dismembering=0, massacring=0, mangling=0, demolishing=0, obliterating=0, annihilating=0, eradicating=0, vaporizing=0, destructive=0, extreme=0, porcine=0, divine=0, daunting=0, terminal=0}
 		SetVariable("monDamList", keys_to_list(damList))
 	end
 	
@@ -8950,14 +8937,8 @@ function addDamage(person, verb)
 	local currTotalDmg = damList[modPerson]["totalDmg"]
 	local currVerbDmg = damList[modPerson][minVerb]
 	
-	dmgFormat = "/damList.%s.%s = %d"
-
-	dmgText = string.format(dmgFormat, modPerson, "totalDmg", currTotalDmg + dam)
-	verbText = string.format(dmgFormat, modPerson, minVerb, currVerbDmg + 1)
-	
-	--XXX
-	Execute(dmgText)
-	Execute(verbText)
+	damList[modPerson]["totalDmg"] = currTotalDmg + dam
+	damList[modPerson][minVerb] = currVerbDmg + 1
 end
 
 function calculateTotalDamNum()
@@ -9718,12 +9699,12 @@ end
 
 function addGroupie(name, hp, maxHp, mana, maxMana, leader, align, class, race, level)
 	--Note("groupList[" .. name .. "] = {hp=" .. hp .. ", maxHp=" .. maxHp .. ", mana=" .. mana .. ", maxMana=" .. maxMana)
+	--Romulo - aqui está ok
 	groupList[name] = {hp=hp, maxHp=maxHp, mana=mana, maxMana=maxMana, leader=leader, align=align, class=class, race=race, level=level}
 end
 
 function remGroupie(name)
-	--XXX
-	Execute("/groupList[\"" .. name   .. "\"] = nil")
+	groupList[name] = nil
 end
 
 function showGroupList()
@@ -10467,21 +10448,8 @@ function  addWeaponsAlt(altName, weaponName)
 	local weaponData = weaponsWithIdOwnerList[string.upper(weaponName)]
 	
 	if not weaponData then
-		weaponFormat1 = "/weaponsWithIdOwnerList[%q] = {}"
-		weaponText1 = string.format(weaponFormat1, string.upper(weaponName))	
-		--XXX
-		--Execute(weaponText1)
-
-
-		
-		
-		
-		--XXX
-		weaponFormat2 = "/weaponsWithIdOwnerList[%q][%q] = %q"
-		weaponText2 = string.format(weaponFormat2, string.upper(weaponName), "owner", altName)	
-		--Execute(weaponText2)
-		--weaponText2
-
+		weaponsWithIdOwnerList[string.upper(weaponName)] = {}
+		weaponsWithIdOwnerList[string.upper(weaponName)]["owner"] = altName
 	end
 end
 

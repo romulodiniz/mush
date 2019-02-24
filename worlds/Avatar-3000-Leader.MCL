@@ -129,6 +129,26 @@
    muclient_version="5.05"
    world_file_version="15"
   >
+  <alias
+   match="px * *"
+   enabled="y"
+   expand_variables="y"
+   send_to="12"
+   keep_evaluating="y"
+   sequence="90"
+  >
+  <send>CallPlugin ("3a023d177bc699161cab5075", "%1", "%1")</send>
+  </alias>
+  <alias
+   match="px *"
+   enabled="y"
+   expand_variables="y"
+   send_to="12"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>CallPlugin ("3a023d177bc699161cab5075", "%1")</send>
+  </alias>
 </aliases>
 
 <!-- timers -->
