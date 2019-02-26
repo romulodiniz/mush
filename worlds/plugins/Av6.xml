@@ -6077,7 +6077,6 @@ ColourNote("red", "white", "Shape List cleared")</send>
    sequence="100"
   >
   <send>EnableTriggerGroup ("iskilling", false)
-updateTriggerStatusList()
 Note("iskilling off")</send>
   </alias>
   <alias
@@ -6317,16 +6316,6 @@ for i = 1, #rescuelist do
     ColourNote("red", "white", rescuelist[i])
   end
 end</send>
-  </alias>
-  <alias
-   match="offtrigger"
-   enabled="y"
-   group="triggertoggler"
-   send_to="12"
-   sequence="100"
-  >
-  <send>offWindowTrigger()
-Note("windowTrigger off")</send>
   </alias>
   <alias
    match="lottors"
@@ -7001,7 +6990,6 @@ Note("autobash false")</send>
    sequence="100"
   >
   <send>setGroupValue("autorescue", true)
-updateTriggerStatusList()
 Note("autorescue on")</send>
   </alias>
   <alias
@@ -7189,7 +7177,6 @@ Note("brand off")</send>
    sequence="100"
   >
   <send>setLag0Cast(false)
-updateTriggerStatusList()
 Note("autocast off")</send>
   </alias>
   <alias
@@ -7271,7 +7258,6 @@ planeTo("%2")</send>
    sequence="100"
   >
   <send>setSlipStatus(true)
-updateTriggerStatusList()
 Note("slip on")</send>
   </alias>
   <alias
@@ -7340,7 +7326,6 @@ Execute("cast homeshift")</send>
    sequence="100"
   >
   <send>EnableTriggerGroup ("iskilling", true)
-updateTriggerStatusList()
 Note("iskilling on")</send>
   </alias>
   <alias
@@ -7616,16 +7601,6 @@ Note("autotrackwalk true")</send>
   >
   <send>sendToAllWorlds("/castcc('%1')")
 </send>
-  </alias>
-  <alias
-   match="ontrigger"
-   enabled="y"
-   group="triggertoggler"
-   send_to="12"
-   sequence="100"
-  >
-  <send>onWindowTrigger()
-Note("windowTrigger on")</send>
   </alias>
   <alias
    match="cfr*"
@@ -8071,7 +8046,6 @@ Note("repeat false")</send>
    sequence="100"
   >
   <send>setGroupValue("autorescue", false)
-updateTriggerStatusList()
 Note("autorescue off")</send>
   </alias>
   <alias
@@ -8367,7 +8341,6 @@ Note("keepSanc off")</send>
    sequence="100"
   >
   <send>setSlipStatus(false)
-updateTriggerStatusList()
 Note("slip off")</send>
   </alias>
   <alias
@@ -8397,7 +8370,6 @@ Note("brand on")</send>
    sequence="100"
   >
   <send>setLag0Cast(true)
-updateTriggerStatusList()
 Note("autocast on")</send>
   </alias>
   <alias
@@ -8604,7 +8576,6 @@ killing = false
 isKillingWalking = false
 isStabingById = false
 isBashOn = false
-showTriggerWindow = false
 showVizPool = false
 vizDmgOn = false
 vizHealOn = false
@@ -8973,7 +8944,6 @@ function resetLoggedChar()
 	resetTimers()
 	resetVars()
 	setWindowShow(false)
-	setWindowShowTrigger(false)
 end
 
 function resetClasses()
@@ -9080,7 +9050,6 @@ function resetVars()
 	killing = false
 	stabAll = false
 	isKillingWalking = false
-	showTriggerWindow = false
 	lag0Cast = false
 	
 	gmcpsanctime = ""
@@ -9128,8 +9097,6 @@ function detectClass(className)
 	elseif className == "Cleric"  then setupClassCLE()
 	elseif className == "Vizier"  then setupClassVIZ()
 	end	
-	
-	updateTriggerStatusList()
 end
 
 function detectRace(raceName)
@@ -9501,12 +9468,10 @@ end
 --Functions to set values
 function setStabStatus(value)
 	canStab = value
-	updateTriggerStatusList()
 end
 
 function setSlipStatus(value)
 	canSlip = value
-	updateTriggerStatusList()	
 end
 
 function setWindowShow(param)
@@ -9514,19 +9479,12 @@ function setWindowShow(param)
 	EnableTimer("groupStatsUpdate", param)
 end
 
-function setWindowShowTrigger(param)
-	showTriggerWindow = param
-	updateTriggerStatusList()
-end
-
 function setStabAction(action)
 	stabAction = action
-	updateTriggerStatusList()
 end
 
 function setStabingById(value)
 	isStabingById = value
-	updateTriggerStatusList()
 end
 
 function setBash(status, offhand)
@@ -9541,7 +9499,6 @@ end
 
 function setKilling(value)
 	killing = value
-	updateTriggerStatusList()
 end
 
 function setGroupValue(group, value)
@@ -9559,12 +9516,10 @@ end
 
 function setVizFinalRiteCasted(value)
 	vizFinalRiteCasted = value
-	updateTriggerStatusList()
 end
 
 function setRescue(resc)
 	canRescue = resc
-	updateTriggerStatusList()
 end
 
 function setDisabledStabName(value)
@@ -9798,14 +9753,6 @@ function updateGMCPGroupWindow()
 	drawCharStatus()
 end
 
-function onWindowTrigger()
-	setWindowShowTrigger(true)
-end
-
-function offWindowTrigger()
-	setWindowShowTrigger(false)
-end
-
 function drawCharStatus()
 	count = 0
 	
@@ -9894,66 +9841,6 @@ function drawCharStatus()
 
 end
 
-function drawTriggerStatus()
-	local mwWidth = 200
-	local mwHeight = 200
-
---------------------------------------------------
-
-	WindowCreate (winTrigger, 500, 2, mwWidth, mwHeight, miniwin.pos_top_center, 6, ColourNameToRGB(mwBgColor))  -- create window
-	WindowFont (winTrigger, "f", mwFont, mwFontSize, true, false, false, false) -- define font
-
---------------------------------------------------
-
-		for j = 1, #triggerStatusList do
-			
-				WindowText (winTrigger, "f",
-                triggerStatusList[j],   -- text
-                1,(j-1)*mwLineSize, 0, 0,        -- rectangle
-                ColourNameToRGB (mwFontColor), -- colour
-                false)              -- not Unicode
-
-			end
-	
-	--setWindowShowTrigger(true)
-end
-
-function updateTriggerStatusList()
-	if showTriggerWindow == true then
-
-		triggerStatusList = {}
-		
-		text1 = "PlayerName: " .. GetVariable("playername")
-		text2 = "PlayerClass: " .. GetVariable("playerclass")
-		text3 = "Rescue: " .. tostring(isTriggerOn("autorescue"))
-		text4 = "Cast: " .. tostring(lag0Cast)
-		text5 = "Target: " .. tostring(isTriggerOn("iskilling"))
-		text6 = "Stab: " .. tostring(canStab)
-		text7 = "Slip: " .. tostring(canSlip)
-		text8 = "Walking: " .. tostring(isKillingWalking)
-		text9 = "StabAction: " .. stabAction
-		text10 = "vizFinalRiteCasted: " .. tostring(vizFinalRiteCasted)
-		text11 = "vizMinLimit: " .. tostring(lowVizHealthLimit)
-		text12 = "vizMaxLimit: " .. tostring(highVizHealthLimit)
-
-		
-		table.insert (triggerStatusList, text1)
-		table.insert (triggerStatusList, text2)
-		table.insert (triggerStatusList, text3)
-		table.insert (triggerStatusList, text4)
-		table.insert (triggerStatusList, text5)
-		table.insert (triggerStatusList, text6)
-		table.insert (triggerStatusList, text7)
-		table.insert (triggerStatusList, text8)
-		table.insert (triggerStatusList, text9)
-		table.insert (triggerStatusList, text10)
-		table.insert (triggerStatusList, text11)
-		table.insert (triggerStatusList, text12)
-		
-		drawTriggerStatus()
-	end
-	WindowShow (winTrigger,  showTriggerWindow)
-end
 
 -- Inventory / lotto functions
 function addInventoryItem(item, qtde)
@@ -10160,14 +10047,10 @@ function onWalking(action)
 	if action and action ~= "" and action ~= " " then 
 		setStabAction(action)
 	end
-	
-	updateTriggerStatusList()
 end
 
 function offWalking()
 	isKillingWalking = false
-	
-	updateTriggerStatusList()
 end
 
 -- Update functions
@@ -10237,7 +10120,6 @@ end
 --Vizier Functions
 function checkVizAction(numvalue)
 	if numvalue == 0 then
-		updateTriggerStatusList()
 		setVizFinalRiteCasted(false)
 	elseif numvalue < lowVizHealthLimit and vizDmgOn == true then
 		if getTierChar() == "Hero" and vizFinalRiteCasted == false then
@@ -10256,26 +10138,22 @@ end
 
 function castPhlebotomize(target)
 	Send("c phlebotomize " .. target)
-	updateTriggerStatusList()
 end
 
 function castEnervate(target)
 	Send("c enervate " .. target)
-	updateTriggerStatusList()
 end
 
 function castFinalRites(target)
 	Note("casting final rites")
 	Send("c 'final rites' " .. target)
 	setVizFinalRiteCasted(true)
-	updateTriggerStatusList()
 end
 
 function castSanguenPax()
 	Note("Casting SanguenPax")
 	Send("c 'sanguen pax' pool")			
 	setVizFinalRiteCasted(false)
-	updateTriggerStatusList()
 end
 
 function castVitaeFlux()
@@ -10283,7 +10161,6 @@ function castVitaeFlux()
 	Send("c 'vitae flux' pool")	
 	Send("stance soul")	
 	setVizFinalRiteCasted(false)
-	updateTriggerStatusList()
 end
 
 function noticePoolCreated()
