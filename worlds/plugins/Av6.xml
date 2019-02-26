@@ -7297,6 +7297,28 @@ Note("stab on")
 </send>
   </alias>
   <alias
+   match="staball*"
+   enabled="y"
+   expand_variables="y"
+   group="triggertoggler"
+   send_to="12"
+   sequence="100"
+  >
+  <send>onStabAll("%1")
+</send>
+  </alias>
+  <alias
+   match="offstaball"
+   enabled="y"
+   expand_variables="y"
+   group="triggertoggler"
+   send_to="12"
+   sequence="100"
+  >
+  <send>offStabAll()
+</send>
+  </alias>
+  <alias
    match="c home"
    enabled="y"
    expand_variables="y"
@@ -8577,6 +8599,7 @@ disabledStabName = false
 canRescue = true
 canStab = false
 canSlip = false
+stabAll = false
 killing = false
 isKillingWalking = false
 isStabingById = false
@@ -9055,6 +9078,7 @@ function resetVars()
 	nextPlayer = "" 
 	setStabAction("")
 	killing = false
+	stabAll = false
 	isKillingWalking = false
 	showTriggerWindow = false
 	lag0Cast = false
@@ -9622,11 +9646,6 @@ function isMday()
 	end
 end
 
-function getCanStab()
-	--Note("entrou get can stab: " .. safeStringValue(canStab))
-	return canStab
-end
-
 -- Groupies functions
 
 function groupMake()
@@ -9909,7 +9928,7 @@ function updateTriggerStatusList()
 		text3 = "Rescue: " .. tostring(isTriggerOn("autorescue"))
 		text4 = "Cast: " .. tostring(lag0Cast)
 		text5 = "Target: " .. tostring(isTriggerOn("iskilling"))
-		text6 = "Stab: " .. tostring(getCanStab())
+		text6 = "Stab: " .. tostring(canStab)
 		text7 = "Slip: " .. tostring(canSlip)
 		text8 = "Walking: " .. tostring(isKillingWalking)
 		text9 = "StabAction: " .. stabAction
@@ -10041,7 +10060,7 @@ end
 
 function attackById(idMob)
 	if isStabingById == true then
-		Note("Atacking mob id " .. idMob)
+		--Note("Atacking mob id " .. idMob)
 		Send(stabAction .. " " .. idMob)
 	end
 end
@@ -10103,6 +10122,24 @@ end
 function offStab()
 	setStabStatus(false)
 	EnableTrigger("scanDisableStab",false)
+end
+
+function onStabAll(action)
+	stabAll = true
+	
+	EnableTrigger("scanDisableStab",true)
+
+	if action and action ~= "" and action ~= " " then 
+		setStabAction(action)
+	end
+	Note("stabAll true")
+end
+
+function offStabAll()
+	stabAll = false
+	setStabStatus(false)
+	EnableTrigger("scanDisableStab",false)
+	Note("stabAll false")
 end
 
 function onStabById(action)
@@ -10596,7 +10633,7 @@ function SubName(pref, name)
 	ColourNote ("dodgerblue", "black", pref .. name)
 	
 	if disabledStabName == false then --quem define é o scan feito nas classes stabbers	
-		if getCanStab() == true then --quem define é a classe, pode ser desabilitado pelo offstab
+		if stabAll == true then 
 			Execute(stabAction .. " " .. name)
 		end
 	end
@@ -10608,7 +10645,9 @@ function SubNameAggie(pref, name)
 	if disabledStabName == false then --quem define é o scan feito nas classes stabbers	
 		if isKillingWalking == true then 
 			Execute(stabAction .. " " .. name)	
-		elseif getCanStab() == true then --quem define é a classe, pode ser desabilitado pelo offstab
+		elseif stabAll == true then 
+			Execute(stabAction .. " " .. name)	
+		elseif canStab == true then --quem define é a classe, pode ser desabilitado pelo offstab
 			Execute(stabAction .. " " .. name)
 			if isMday() then
 				Execute(stabAction .. " 2." .. name)
@@ -10625,7 +10664,9 @@ function SubNameLord(pref, name)
 			autoSlip(name)
 		elseif isKillingWalking == true then 
 			Execute(stabAction .. " " .. name)	
-		elseif getCanStab() == true then --quem define é a classe, pode ser desabilitado pelo offstab
+		elseif stabAll == true then 
+			Execute(stabAction .. " " .. name)	
+		elseif canStab == true then --quem define é a classe, pode ser desabilitado pelo offstab
 			Execute(stabAction .. " " .. name)
 			if isMday() then
 				Execute(stabAction .. " 2." .. name)

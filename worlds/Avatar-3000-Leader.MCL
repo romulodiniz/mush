@@ -149,6 +149,24 @@
   >
   <send>CallPlugin ("3a023d177bc699161cab5075", "%1")</send>
   </alias>
+  <alias
+   match="tta *"
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>tell asmoday comm %1</send>
+  </alias>
+  <alias
+   match="ttt *"
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>tell january comm %1</send>
+  </alias>
 </aliases>
 
 <!-- timers -->
@@ -471,8 +489,8 @@
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\captureChat.xml" plugin="y" />
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\Reconnecter.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
+<include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="C:\MUSHCLIENT\WORLDS\PLUGINS\AvatarAllegs.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
-<include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
 </muclient>
