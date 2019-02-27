@@ -1435,7 +1435,7 @@ Execute("bp")
    send_to="12"
    sequence="100"
   >
-  <send>setRescue(true)
+  <send>canRescue = true
 
 if GetVariable("playername") == "Ica" then
  -- Send("ff")
@@ -2980,7 +2980,7 @@ c gurney %1</send>
    send_to="12"
    sequence="100"
   >
-  <send>setRescue(true)</send>
+  <send>canRescue = true</send>
   </trigger>
   <trigger
    enabled="y"
@@ -3831,7 +3831,7 @@ stand</send>
    send_to="12"
    sequence="100"
   >
-  <send>setRescue(true)</send>
+  <send>canRescue = true</send>
   </trigger>
   <trigger
    custom_colour="8"
@@ -3868,7 +3868,7 @@ recall</send>
    send_to="12"
    sequence="100"
   >
-  <send>setRescue(true)</send>
+  <send>canRescue = true</send>
   </trigger>
   <trigger
    group="autoalert"
@@ -4014,7 +4014,7 @@ end
 
   if hpmon ~= nil and hpmon &lt; limite then
     Execute("rescue") 
-    setRescue(false)
+    canRescue = false
     Execute("offchain") 
   end
 end
@@ -4333,12 +4333,10 @@ beep self
    expand_variables="y"
    group="Outros"
    match="The unlucky adventurer whispers the word &quot;*&quot;"
-   send_to="12"
+   send_to="10"
    sequence="100"
   >
-  <send>Note("%1")
-Note("%1")
-Note("%1")</send>
+  <send>gt Password is: %1</send>
   </trigger>
   <trigger
    enabled="y"
@@ -4532,7 +4530,7 @@ addActionQueue("bladetrance enter")
    send_to="12"
    sequence="100"
   >
-  <send>setRescue(true)
+  <send>canRescue = true
 
 if isMday() then
   Execute("onchain") 
@@ -4589,7 +4587,7 @@ end
    send_to="12"
    sequence="100"
   >
-  <send>setVizFinalRiteCasted(false)
+  <send>vizFinalRiteCasted = false
 </send>
   </trigger>
   <trigger
@@ -4614,7 +4612,7 @@ emo track points |bc|%1
    send_to="12"
    sequence="100"
   >
-  <send>setKilling(true)</send>
+  <send>killing = true</send>
   </trigger>
   <trigger
    enabled="y"
@@ -4959,7 +4957,7 @@ ColourNote("red", "white", "Lotto list cleared")</send>
    send_to="12"
    sequence="100"
   >
-  <send>setDisabledStabName(false)
+  <send>disabledStabName = false
 EnableTrigger("stabNameControl",false)</send>
   </trigger>
   <trigger
@@ -5158,7 +5156,7 @@ cp %1</send>
    send_to="12"
    sequence="100"
   >
-  <send>setKilling("false")</send>
+  <send>killing = false</send>
   </trigger>
   <trigger
    custom_colour="3"
@@ -5287,7 +5285,7 @@ c div %1</send>
    send_to="12"
    sequence="100"
   >
-  <send>setKilling(false)
+  <send>killing = false
 execActionQueue()</send>
   </trigger>
   <trigger
@@ -5599,7 +5597,7 @@ if tier == "Lady" then
   tier = "Lord"
 end
   
-setTierChar(tier)
+tierChar = tier
 
 defineStabAction("%2")
 
@@ -5627,7 +5625,7 @@ end</send>
    sequence="100"
    other_text_colour="yellow"
   >
-  <send>setKilling(true)</send>
+  <send>killing = true</send>
   </trigger>
   <trigger
    custom_colour="4"
@@ -5688,7 +5686,7 @@ runAfter(10, 'EnableTrigger("shattertrigger", true)')</send>
    sequence="100"
    other_text_colour="yellow"
   >
-  <send>setKilling(true)</send>
+  <send>killing = true</send>
   </trigger>
   <trigger
    enabled="y"
@@ -5925,7 +5923,7 @@ Execute("bbb")</send>
    sequence="100"
    name="scanDisableStab"
   >
-  <send>setDisabledStabName(true)
+  <send>disabledStabName = true
 EnableTrigger("stabNameControl",true)</send>
   </trigger>
   <trigger
@@ -6022,7 +6020,7 @@ c steel %1</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setTierChar("%1")
+  <send>tierChar = "%1"
 Note("Tier set to %1")</send>
   </alias>
   <alias
@@ -6345,7 +6343,7 @@ end</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizDmg(false)
+  <send>vizDmgOn = false
 Note("vizdmg off")</send>
   </alias>
   <alias
@@ -6382,7 +6380,7 @@ Note("vizdmg off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizFr(false)
+  <send>vizFrOn = false
 Note("vizfr off")</send>
   </alias>
   <alias
@@ -6404,7 +6402,7 @@ Note("vizfr off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizHeal(false)
+  <send>vizHealOn = false
 Note("vizheal off")</send>
   </alias>
   <alias
@@ -6415,7 +6413,7 @@ Note("vizheal off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setShowVizPool(false)
+  <send>showVizPool = false
 Note("show viz pool off")</send>
   </alias>
   <alias
@@ -6958,7 +6956,7 @@ Note("keep alert off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setAwfulCast(false)
+  <send>awfulCast = false
 Note("awfulCast off")
 Execute("oncast")
 Execute("onpsiwield")</send>
@@ -7176,7 +7174,7 @@ Note("brand off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setLag0Cast(false)
+  <send>lag0Cast = false
 Note("autocast off")</send>
   </alias>
   <alias
@@ -7257,7 +7255,7 @@ planeTo("%2")</send>
    send_to="12"
    sequence="100"
   >
-  <send>setSlipStatus(true)
+  <send>canSlip = true
 Note("slip on")</send>
   </alias>
   <alias
@@ -7620,7 +7618,7 @@ Note("autotrackwalk true")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizDmg(true)
+  <send>vizDmgOn = true
 Note("vizdmg on")</send>
   </alias>
   <alias
@@ -7642,7 +7640,7 @@ Note("vizdmg on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizFr(true)
+  <send>vizFrOn = true
 Note("vizfr on")</send>
   </alias>
   <alias
@@ -7825,7 +7823,7 @@ Note("Set leadership")
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizHeal(true)
+  <send>vizHealOn = true
 Note("vizheal on")</send>
   </alias>
   <alias
@@ -7847,7 +7845,7 @@ ColourNote("red", "white", "Rescue List cleared")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setShowVizPool(true)
+  <send>showVizPool = true
 Note("show viz pool on")</send>
   </alias>
   <alias
@@ -7869,7 +7867,7 @@ ColourNote("red", "white", "Queue list cleared!")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizSs(true)
+  <send>vizSsOn = true
 Note("vizss on")</send>
   </alias>
   <alias
@@ -8056,7 +8054,7 @@ Note("autorescue off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setVizSs(false)
+  <send>vizSsOn = false
 Note("vizss off")</send>
   </alias>
   <alias
@@ -8164,7 +8162,7 @@ Note("keep alert on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setAwfulCast(true)
+  <send>awfulCast = true
 Note("awfulCast on")
 Execute("offcast")
 Execute("offpsiwield")</send>
@@ -8307,7 +8305,7 @@ Note("leader set to %1")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setStabAction("%1")</send>
+  <send>stabAction = "%1"</send>
   </alias>
   <alias
    match="offsanc"
@@ -8340,7 +8338,7 @@ Note("keepSanc off")</send>
    send_to="12"
    sequence="100"
   >
-  <send>setSlipStatus(false)
+  <send>canSlip = false
 Note("slip off")</send>
   </alias>
   <alias
@@ -8369,7 +8367,7 @@ Note("brand on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>setLag0Cast(true)
+  <send>lag0Cast = true
 Note("autocast on")</send>
   </alias>
   <alias
@@ -8634,7 +8632,6 @@ function setupWin()
 		windowinfo = movewindow.install (win, miniwin.pos_top_right, miniwin.create_transparent, false, nil, nil,{x=1, y=1})
 	end
 	
-	
 	WindowCreate (win, windowinfo.window_left, windowinfo.window_top, mwWidth, mwHeight, miniwin.pos_top_center, bit.bor (windowinfo.window_flags, mwFlag), ColourNameToRGB(mwBgColor))  -- create window
 	
 	--WindowCreate (win, 10, 10, mwWidth, mwHeight, 20, mwFlag, ColourNameToRGB(mwBgColor))  -- create window
@@ -8709,230 +8706,6 @@ function storeTyphus()
 	Send("get xbrand xmain=g typhus xbrand=put typhus xmain=put xbrand xmain")
 	brandcurrent = -1
 	UpdateInfoBar()
-end
-
---Run counters functions
-
-function counterCommand(args)
-	local arg1, arg2 = ""
-	if string.find(args, " ") ~= nil then
-		arg1 = string.sub(args, 0, string.find(args, " ") - 1)
-		arg2 = string.sub(args, string.find(args, " ") + 1)
-	else
-		arg1 = args
-		arg2 = ""
-	end
-	
-	if arg1 == "add" then
-		if string.upper(arg2) == string.upper(world.GetVariable("playername")) then
-			addTableCounter("You")
-		else
-			addTableCounter(arg2)		
-		end
-	end
-	
-	if arg1 == "clear" or arg1 == "reset" then
-		clearDamList()
-		Note("Dmg cleared")
-	end
-	
-	if arg1 == "show" then
-		calculateTotalDamNum()
-		world.Note("Monitoring:")
-		
-		for k, v in pairs (damList) do 
-			Note(dmgTableToString(k, v))
-		end	
-	end
-	
-	if arg1 == "populate" then		
-		EnableTrigger("GroupGrabDmg", true)
-		Send("group")
-		runAfter (5, 'EnableTriggerGroup ("Counters", true)')
-		runAfter (5, 'EnableTrigger("GroupGrabDmg", false)')
-	end
-	
-	if arg1 == "report" then
-		calculateTotalDamNum()
-		world.Note("Monitoring:")
-		
-		for k, v in pairs (damList) do 
-			Send("gt " .. dmgTableToString(k, v))
-		end	
-	end
-end
-
-function dmgTableToString(name, tab)
-	local repName = name
-
-	if repName == "You" then
-		repName = 	GetVariable("playername")
-	end
-	
-	percentDam = string.format("%.1f",(tab["totalDmg"]/totalDamNum)*100) 
-
-	retorno = repName .. " dmg: (|BC|" .. percentDam .. "|N|%)"
-		
-	local verb = ""
-	local val = 0
-	
-	verb = "pathetic"          
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "weak"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "punishing"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "surprising"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "amazing"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "astonishing"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "mauling"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "decimating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "devastating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "pulverizing"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "maiming"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "eviscerating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "mutilating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "disemboweling"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "dismembering"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "massacring"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "mangling"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "demolishing"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "obliterating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "annihilating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "eradicating"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "vaporizing"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "destructive"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "extreme"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "porcine"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "divine"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "daunting"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-	verb = "terminal"
-	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
-
-	return retorno
-
- end	
-
-function addTableCounter(name)
-	found = 0
-
-	for k,v in pairs(damList) do
-		if string.upper(k) == string.upper(name) then 
-			found = 1 
-		end
-	end
-	
-	if damList == nil then
-		ColourNote("red", "white", " nil list")
-	end
-	
-	if found == 1 then
-	  ColourNote("red", "white", name .. " already in the dmg list!")
-	else
-		damList[name] = {totalDmg=0, pathetic=0, weak=0, punishing=0, surprising=0, amazing=0, astonishing=0, mauling=0, decimating=0, devastating=0, pulverizing=0, maiming=0, eviscerating=0, mutilating=0, disemboweling=0, dismembering=0, massacring=0, mangling=0, demolishing=0, obliterating=0, annihilating=0, eradicating=0, vaporizing=0, destructive=0, extreme=0, porcine=0, divine=0, daunting=0, terminal=0}
-		SetVariable("monDamList", keys_to_list(damList))
-	end
-	
-	world.ColourNote("red", "white", name .. " has been added!")	
-end
-
-function findDamage(line)
-	for i = 1, table.getn(dverbs) do
-		if string.find(line, dverbs[i]) ~= nil then
-			local fWord = string.sub(line, 0, string.find(line, " ") - 1)
-			
-			for k, v in pairs (damList) do 
-				if string.find(string.upper(fWord), string.upper(k)) ~= nil then
-					local sFind = string.find(line, dverbs[i])
-					local dVerb = string.sub(line, sFind, string.find(line, " ", sFind))	
-					addDamage(k, dVerb)
-					return
-				end
-			end
-		end
-	end
-end
-
-function addDamage(person, verb)
-	local dam = 0	
-	local minVerb = string.lower(string.match(verb, "%a+"))
-	local modPerson = ""
-	
-	if person == "Your" then
-		modPerson = "You"
-	else
-		modPerson = person
-	end
-	
-	modPerson = firstToUpper(string.lower(modPerson))
-	
-	for i = 1, table.getn(dverbs) do
-		if string.find(verb, dverbs[i]) ~= nil then
-			dam = tonumber(dvalues[i])
-		end
-	end
-	
-	local currTotalDmg = damList[modPerson]["totalDmg"]
-	local currVerbDmg = damList[modPerson][minVerb]
-	
-	damList[modPerson]["totalDmg"] = currTotalDmg + dam
-	damList[modPerson][minVerb] = currVerbDmg + 1
-end
-
-function calculateTotalDamNum()
-	totalDamNum = 0
-	
-	for k, v in pairs (damList) do 
-		totalDamNum = totalDamNum + v["totalDmg"]
-	end	
-end
-
-function addExp(value)
-	gainedxp = gainedxp + tonumber(value)
-	expKills = expKills + 1
-	UpdateInfoBar()
-end
-
-function afterLevel(hpgain, managain, pracgain)
-	Note("")
-	Send("emote increases in power!! |by|" .. hpgain .. " |n|hps, |by|" .. managain .. " |n|mana, |by|" .. pracgain .. " |n|practices.")
-	Send("save")
-	gainedlevel = gainedlevel + 1
-end
-
-function runreport()
-	Send("gtell |bw|Run stats: |bc|" .. gainedxp .. " |bw|xp, |bc|" .. gainedlevel .. " |bw|level(s).")
-end
-
-function runreset()
-	gainedxp = 0
-	gainedlevel = 0
-	UpdateInfoBar()
-	Note("Counters reseted")
 end
 
 -- Reset functions
@@ -9029,9 +8802,9 @@ function resetTimers()
 end
 
 function resetVars()
-	setStabStatus(false)
-	setSlipStatus(false)
-	setStabingById(false)
+	canStab = false
+	canSlip = false
+	isStabingById = false
 	SetVariable("lastdirmoved", "") 
 	SetVariable("currentPlane", "") 
 	clearActionQueue()
@@ -9046,7 +8819,7 @@ function resetVars()
 	brandmax = 0
 	tierChar = ""
 	nextPlayer = "" 
-	setStabAction("")
+	stabAction = ""
 	killing = false
 	stabAll = false
 	isKillingWalking = false
@@ -9063,12 +8836,12 @@ function resetVars()
 	gmcpmonhp = ""
 	gmcpmaxmonhp = ""
 	
-	setAwfulCast(false)
-	setVizFinalRiteCasted(false)
-	setShowVizPool(false)
-	setVizDmg(false)
-	setVizHeal(false)
-	setVizSs(false)
+	awfulCast = false
+	vizFinalRiteCasted = false
+	showVizPool = false
+	vizDmgOn = false
+	vizHealOn = false
+	vizSsOn = false
 end
 
 -- Setup race/class functions
@@ -9127,10 +8900,10 @@ function setupClassSOR()
 	EnableTriggerGroup ("autocast", true)
 
 	if (GetVariable("playername") == "Hoje" and isMday() == false) then
-		setLag0Cast(false)
+		lag0Cast = false
 		EnableTriggerGroup ("iskilling", false)
 	else
-		setLag0Cast(true)
+		lag0Cast = true
 	end
 end
 
@@ -9171,7 +8944,7 @@ function setupClassASN()
 	end
 	
 	EnableTriggerGroup ("autoalert", true)
-	setStabStatus(true)
+	canStab = true
 	EnableTriggerGroup ("autostab", true)
 end
 
@@ -9194,7 +8967,7 @@ function setupClassWZD()
 	EnableTriggerGroup ("addme", true)
 	EnableTriggerGroup ("iskilling", true)
 	EnableTriggerGroup ("autocast", true)
-	setLag0Cast(true)
+	lag0Cast = true
 	EnableTriggerGroup ("areacaster", true)
 	EnableTriggerGroup ("autosalv", true)
 	EnableTriggerGroup ("autosend", true)
@@ -9231,27 +9004,11 @@ function setupClassPSI()
 	end
 	
 	EnableTriggerGroup ("autocast", true)
-	setLag0Cast(true)
+	lag0Cast = true
 	EnableTriggerGroup ("autosalv", true)
 	EnableTriggerGroup ("autosend", true)
 	EnableTriggerGroup ("autodecept", true)
 	
-end
-
-function psiSolo(value)
-	if value == true then
-		EnableTriggerGroup ("q_frenzy", false)
-		EnableTriggerGroup ("autocast", false)
-		setLag0Cast(false)
-		EnableTrigger("psiwield",false)
-		EnableTrigger("folmay",true)
-	else
-		EnableTriggerGroup ("q_frenzy", true)
-		EnableTriggerGroup ("autocast", true)
-		setLag0Cast(true)
-		EnableTrigger("psiwield",true)
-		EnableTrigger("folmay",false)
-	end
 end
 
 function setupClassMAG()
@@ -9261,7 +9018,7 @@ function setupClassMAG()
 	EnableTriggerGroup ("addme", true)
 	EnableTriggerGroup ("iskilling", true)
 	EnableTriggerGroup ("autocast", true)
-	setLag0Cast(true)
+	lag0Cast = true
 	EnableTriggerGroup ("areacaster", true)
 	EnableTriggerGroup ("autosalv", true)
 	EnableTriggerGroup ("autosend", true)
@@ -9275,7 +9032,7 @@ function setupClassMND()
 	EnableTriggerGroup ("addme", true)
 	EnableTriggerGroup ("iskilling", true)
 	EnableTriggerGroup ("autocast", true)
-	setLag0Cast(true)
+	lag0Cast = true
 	EnableTriggerGroup ("autosalv", true)
 	EnableTriggerGroup ("autosend", true)
 	EnableTriggerGroup ("singlecaster", true)
@@ -9305,7 +9062,7 @@ function setupClassBCI()
 		EnableTriggerGroup ("q_frenzy_quicken", true)
 	end
 	
-	setStabStatus(true)
+	canStab = true
 	EnableTriggerGroup ("autoalert", true)
 	EnableTriggerGroup ("autostab", true)
 end
@@ -9325,7 +9082,7 @@ function setupClassROG()
 	end
 	
 	EnableTriggerGroup ("autoalert", true)
-	setStabStatus(true)
+	canStab = true
 	EnableTriggerGroup ("autostab", true)
 end
 
@@ -9365,10 +9122,10 @@ function setupClassVIZ()
 	EnableTriggerGroup ("iskilling", true)
 	EnableTriggerGroup ("autosend", true)
 	EnableTriggerGroup ("autorc", true)
-	setVizDmg(true)
-	setVizHeal(true)
-	setVizFr(true)
-	setVizSs(true)
+	vizDmgOn = true
+	vizHealOn = true
+	vizFrOn = true
+	vizSsOn = true
 end
 
 function setupClassPAL()
@@ -9466,25 +9223,25 @@ function setupClassRAN()
 end
 
 --Functions to set values
-function setStabStatus(value)
-	canStab = value
-end
-
-function setSlipStatus(value)
-	canSlip = value
+function psiSolo(value)
+	if value == true then
+		EnableTriggerGroup ("q_frenzy", false)
+		EnableTriggerGroup ("autocast", false)
+		lag0Cast = false
+		EnableTrigger("psiwield",false)
+		EnableTrigger("folmay",true)
+	else
+		EnableTriggerGroup ("q_frenzy", true)
+		EnableTriggerGroup ("autocast", true)
+		lag0Cast = true
+		EnableTrigger("psiwield",true)
+		EnableTrigger("folmay",false)
+	end
 end
 
 function setWindowShow(param)
 	WindowShow (win,  param)
 	EnableTimer("groupStatsUpdate", param)
-end
-
-function setStabAction(action)
-	stabAction = action
-end
-
-function setStabingById(value)
-	isStabingById = value
 end
 
 function setBash(status, offhand)
@@ -9497,59 +9254,15 @@ function setBash(status, offhand)
 	end
 end
 
-function setKilling(value)
-	killing = value
-end
-
 function setGroupValue(group, value)
 	EnableAliasGroup (group, value)
 	EnableTriggerGroup (group, value)
-end
-
-function setTierChar(tier)
-	tierChar = tier
-end
-
-function setShowVizPool(value)
-	showVizPool = value
-end
-
-function setVizFinalRiteCasted(value)
-	vizFinalRiteCasted = value
-end
-
-function setRescue(resc)
-	canRescue = resc
-end
-
-function setDisabledStabName(value)
-	disabledStabName = value
-end
-
-function setVizDmg(value)
-	vizDmgOn = value
-end
-
-function setVizHeal(value)
-	vizHealOn = value
-end
-
-function setVizFr(value)
-	vizFrOn = value
-end
-
-function setVizSs(value)
-	vizSsOn = value
 end
 
 function setVizLimits(lowValue, highValue)
 	lowVizHealthLimit = tonumber(lowValue)
 	highVizHealthLimit = tonumber(highValue)
 	Note("Viz limits set to min " .. lowValue .. ", max " .. highValue)
-end
-
-function setAwfulCast(value)
-	awfulCast = value
 end
 
 function setGmcpSancTime(value)
@@ -9584,15 +9297,7 @@ function setGmcpMaxMonHp(value)
 	gmcpmaxmonhp = value
 end
 
-function setLag0Cast(value)
-	lag0Cast = value
-end
-
 --Functions to get values
-function isKilling()
-	return killing
-end
-
 function isMday()
 	if isTriggerOn("mdayorder") == true then
 		return true
@@ -9960,7 +9665,7 @@ function autoSlip(mob)
 		usingBow = true
 	end
 	
-	setStabStatus(false)
+	canStab = false
 	
 	if usingBow == true then
 		if lastdirmoved == "north" then
@@ -9992,22 +9697,22 @@ function autoSlip(mob)
 		end
 	end
 	
-	setStabStatus(true)	
+	canStab = true
 end	
 
 --On/off functions
 function onStab(action)
-	setStabStatus(true)
+	canStab = true
 	
 	EnableTrigger("scanDisableStab",true)
 
 	if action and action ~= "" and action ~= " " then 
-		setStabAction(action)
+		stabAction = action
 	end
 end
 
 function offStab()
-	setStabStatus(false)
+	canStab = false
 	EnableTrigger("scanDisableStab",false)
 end
 
@@ -10017,35 +9722,35 @@ function onStabAll(action)
 	EnableTrigger("scanDisableStab",true)
 
 	if action and action ~= "" and action ~= " " then 
-		setStabAction(action)
+		stabAction = action
 	end
 	Note("stabAll true")
 end
 
 function offStabAll()
 	stabAll = false
-	setStabStatus(false)
+	canStab = false
 	EnableTrigger("scanDisableStab",false)
 	Note("stabAll false")
 end
 
 function onStabById(action)
-	setStabingById(true)
+	isStabingById = true
 
 	if action and action ~= "" and action ~= " " then 
-		setStabAction(action)
+		stabAction = action
 	end
 end
 
 function offStabById()
-	setStabingById(false)
+	isStabingById = false
 end
 
 function onWalking(action)
 	isKillingWalking = true
 
 	if action and action ~= "" and action ~= " " then 
-		setStabAction(action)
+		stabAction = action
 	end
 end
 
@@ -10101,12 +9806,8 @@ end
 function updateLag(lag)
 	gmcplag = tonumber(lag)
 	
-	--Note("gmcplag " .. tostring(gmcplag) .. " " .. tostring(gmcplag == 0))
-	--Note("lag0Cast " .. tostring(lag0Cast) .. " " .. tostring(lag0Cast == true))
-	--Note("isKilling() " .. tostring(isKilling()) .. " " .. tostring(isKilling() == true))
-	
-	if gmcplag == 0 and lag0Cast == true and isKilling() == true then
-		setKilling(false)
+	if gmcplag == 0 and lag0Cast == true and killing == true then
+		killing = false
 		SendNoEcho("mm")	
 	end
 end
@@ -10120,7 +9821,7 @@ end
 --Vizier Functions
 function checkVizAction(numvalue)
 	if numvalue == 0 then
-		setVizFinalRiteCasted(false)
+		vizFinalRiteCasted = false
 	elseif numvalue < lowVizHealthLimit and vizDmgOn == true then
 		if getTierChar() == "Hero" and vizFinalRiteCasted == false then
 			castPhlebotomize("")
@@ -10147,20 +9848,20 @@ end
 function castFinalRites(target)
 	Note("casting final rites")
 	Send("c 'final rites' " .. target)
-	setVizFinalRiteCasted(true)
+	vizFinalRiteCasted = true
 end
 
 function castSanguenPax()
 	Note("Casting SanguenPax")
 	Send("c 'sanguen pax' pool")			
-	setVizFinalRiteCasted(false)
+	vizFinalRiteCasted = false
 end
 
 function castVitaeFlux()
 	Note("Casting VitaeFlux")
 	Send("c 'vitae flux' pool")	
 	Send("stance soul")	
-	setVizFinalRiteCasted(false)
+	vizFinalRiteCasted = false
 end
 
 function noticePoolCreated()
@@ -10500,7 +10201,7 @@ function avaliarRescue(rescueCandidate)
 	if found == 1 then
 		Note("")
 		Send("rescue " .. rescueCandidate)
-		setRescue(false)
+		canRescue = false
 	end
 end
 
@@ -10583,9 +10284,9 @@ end
 function defineStabAction(tier)
 	if tier then
 		if tier == "Hero" then
-			setStabAction("backstab")
+			stabAction = "backstab"
 		elseif tier == "Lord" or tier == "Lady" then
-			setStabAction("assassinate")
+			stabAction = "assassinate"
 		end
 	end
 end
@@ -10629,9 +10330,8 @@ function getpassleader(item, atCorpse)
 end
 
 function passleader(item)
-
-	local lead = world.GetVariable("groupleader")
-	local self = world.GetVariable("playername")
+	local lead = GetVariable("groupleader")
+	local self = GetVariable("playername")
 	
 	if lead ~= self then
 		Send("give " .. item .. " " .. lead)
@@ -10777,6 +10477,231 @@ end
 
 function runAfter(delayTime, command)
 	DoAfterSpecial (delayTime, command, sendto.script)
+end
+
+
+--Run counters functions
+
+function counterCommand(args)
+	local arg1, arg2 = ""
+	if string.find(args, " ") ~= nil then
+		arg1 = string.sub(args, 0, string.find(args, " ") - 1)
+		arg2 = string.sub(args, string.find(args, " ") + 1)
+	else
+		arg1 = args
+		arg2 = ""
+	end
+	
+	if arg1 == "add" then
+		if string.upper(arg2) == string.upper(world.GetVariable("playername")) then
+			addTableCounter("You")
+		else
+			addTableCounter(arg2)		
+		end
+	end
+	
+	if arg1 == "clear" or arg1 == "reset" then
+		clearDamList()
+		Note("Dmg cleared")
+	end
+	
+	if arg1 == "show" then
+		calculateTotalDamNum()
+		Note("Monitoring:")
+		
+		for k, v in pairs (damList) do 
+			Note(dmgTableToString(k, v))
+		end	
+	end
+	
+	if arg1 == "populate" then		
+		EnableTrigger("GroupGrabDmg", true)
+		Send("group")
+		runAfter (5, 'EnableTriggerGroup ("Counters", true)')
+		runAfter (5, 'EnableTrigger("GroupGrabDmg", false)')
+	end
+	
+	if arg1 == "report" then
+		calculateTotalDamNum()
+		Note("Monitoring:")
+		
+		for k, v in pairs (damList) do 
+			Send("gt " .. dmgTableToString(k, v))
+		end	
+	end
+end
+
+function dmgTableToString(name, tab)
+	local repName = name
+
+	if repName == "You" then
+		repName = 	GetVariable("playername")
+	end
+	
+	percentDam = string.format("%.1f",(tab["totalDmg"]/totalDamNum)*100) 
+
+	retorno = repName .. " dmg: (|BC|" .. percentDam .. "|N|%)"
+		
+	local verb = ""
+	local val = 0
+	
+	verb = "pathetic"          
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "weak"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "punishing"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "surprising"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "amazing"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "astonishing"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "mauling"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "decimating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "devastating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "pulverizing"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "maiming"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "eviscerating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "mutilating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "disemboweling"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "dismembering"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "massacring"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "mangling"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "demolishing"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "obliterating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "annihilating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "eradicating"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "vaporizing"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "destructive"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "extreme"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "porcine"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "divine"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "daunting"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+	verb = "terminal"
+	val = tab[verb]; if val > 0 then retorno = retorno .. " - |BC|" .. val .. " |N|" .. verb end
+
+	return retorno
+
+ end	
+
+function addTableCounter(name)
+	found = 0
+
+	for k,v in pairs(damList) do
+		if string.upper(k) == string.upper(name) then 
+			found = 1 
+		end
+	end
+	
+	if damList == nil then
+		ColourNote("red", "white", " nil list")
+	end
+	
+	if found == 1 then
+	  ColourNote("red", "white", name .. " already in the dmg list!")
+	else
+		damList[name] = {totalDmg=0, pathetic=0, weak=0, punishing=0, surprising=0, amazing=0, astonishing=0, mauling=0, decimating=0, devastating=0, pulverizing=0, maiming=0, eviscerating=0, mutilating=0, disemboweling=0, dismembering=0, massacring=0, mangling=0, demolishing=0, obliterating=0, annihilating=0, eradicating=0, vaporizing=0, destructive=0, extreme=0, porcine=0, divine=0, daunting=0, terminal=0}
+		SetVariable("monDamList", keys_to_list(damList))
+	end
+	
+	world.ColourNote("red", "white", name .. " has been added!")	
+end
+
+function findDamage(line)
+	for i = 1, table.getn(dverbs) do
+		if string.find(line, dverbs[i]) ~= nil then
+			local fWord = string.sub(line, 0, string.find(line, " ") - 1)
+			
+			for k, v in pairs (damList) do 
+				if string.find(string.upper(fWord), string.upper(k)) ~= nil then
+					local sFind = string.find(line, dverbs[i])
+					local dVerb = string.sub(line, sFind, string.find(line, " ", sFind))	
+					addDamage(k, dVerb)
+					return
+				end
+			end
+		end
+	end
+end
+
+function addDamage(person, verb)
+	local dam = 0	
+	local minVerb = string.lower(string.match(verb, "%a+"))
+	local modPerson = ""
+	
+	if person == "Your" then
+		modPerson = "You"
+	else
+		modPerson = person
+	end
+	
+	modPerson = firstToUpper(string.lower(modPerson))
+	
+	for i = 1, table.getn(dverbs) do
+		if string.find(verb, dverbs[i]) ~= nil then
+			dam = tonumber(dvalues[i])
+		end
+	end
+	
+	local currTotalDmg = damList[modPerson]["totalDmg"]
+	local currVerbDmg = damList[modPerson][minVerb]
+	
+	damList[modPerson]["totalDmg"] = currTotalDmg + dam
+	damList[modPerson][minVerb] = currVerbDmg + 1
+end
+
+function calculateTotalDamNum()
+	totalDamNum = 0
+	
+	for k, v in pairs (damList) do 
+		totalDamNum = totalDamNum + v["totalDmg"]
+	end	
+end
+
+function addExp(value)
+	gainedxp = gainedxp + tonumber(value)
+	expKills = expKills + 1
+	UpdateInfoBar()
+end
+
+function afterLevel(hpgain, managain, pracgain)
+	Note("")
+	Send("emote increases in power!! |by|" .. hpgain .. " |n|hps, |by|" .. managain .. " |n|mana, |by|" .. pracgain .. " |n|practices.")
+	Send("save")
+	gainedlevel = gainedlevel + 1
+end
+
+function runreport()
+	Send("gtell |bw|Run stats: |bc|" .. gainedxp .. " |bw|xp, |bc|" .. gainedlevel .. " |bw|level(s).")
+end
+
+function runreset()
+	gainedxp = 0
+	gainedlevel = 0
+	UpdateInfoBar()
+	Note("Counters reseted")
 end
 
 --End functions
