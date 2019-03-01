@@ -2563,7 +2563,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubName("%1","an_clay")</send>
+  <send>SubName("%1","an clay")</send>
   </trigger>
   <trigger
    enabled="y"

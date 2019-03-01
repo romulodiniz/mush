@@ -3428,11 +3428,12 @@ c decept elemental
    expand_variables="y"
    group="runcounter"
    keep_evaluating="y"
-   match="*Your gain is: */* hp, */* m, */* mv */* prac."
+   match="^Your gain is\: (.*?)\/(.*?) hp\, (.*?)\/(.*?) m\, (.*?)\/(.*?) mv (.*?)\/(.*?) prac\.$"
+   regexp="y"
    send_to="12"
    sequence="100"
   >
-  <send>afterLevel("%2","%4","%8")</send>
+  <send>afterLevel("%1","%3","%7")</send>
   </trigger>
   <trigger
    group="autorc"
