@@ -8605,6 +8605,10 @@ theme = {
 
 -- Initial setup function
 
+function OnPluginInstall ()
+	setup()
+end
+
 function setup()
 	addWeaponsAlt("Bom", "UNHA STICK")
 	addWeaponsAlt("Bom", "GARRA STICK")
@@ -8625,7 +8629,7 @@ function setup()
 end
 
 function setupWin()
-	local mwWidth = 485
+	local mwWidth = 500
 	local mwHeight = 500
 	local mwFlag = miniwin.create_transparent --use 6 on production, 2 on tests
 
@@ -9375,10 +9379,8 @@ function addRoomList(name)
 	table.insert (roomList, name)
 end
 
-function addGroupie(name, hp, maxHp, mana, maxMana, leader, align, class, race, level)
-	--Note("groupList[" .. name .. "] = {hp=" .. hp .. ", maxHp=" .. maxHp .. ", mana=" .. mana .. ", maxMana=" .. maxMana)
-	--Romulo - aqui está ok
-	groupList[name] = {hp=hp, maxHp=maxHp, mana=mana, maxMana=maxMana, leader=leader, align=align, class=class, race=race, level=level}
+function addGroupie(name, hp, maxHp, mana, maxMana, leader, align, class, race, level, position)
+	groupList[name] = {hp=hp, maxHp=maxHp, mana=mana, maxMana=maxMana, leader=leader, align=align, class=class, race=race, level=level, position=position}
 end
 
 function remGroupie(name)
@@ -9495,17 +9497,12 @@ function drawCharStatus()
 	movewindow.save_state (win)
 	setupWin()
 	
-	--WindowRectOp (win, miniwin.rect_fill, 0, 0, 0, 0, ColourNameToRGB(mwBgColor))
-	
 	--Note("tab " .. tprint(sortedGroupList))
 	
 	for k, v in ipairs (sortedGroupList) do 
 
 		k1 = v
 		v1 = groupList[v]
-		
-		--tprint(v1)
-		--Note(k1)
 		
 		if (v1 ~= nil and v1.hp ~= nil) then
 			hpLeftSize = barWidth - barWidth*v1.hp/v1.maxHp
@@ -9522,14 +9519,10 @@ function drawCharStatus()
 			leaderText = " "
 			if v1.leader == "true" then
 				leaderText = "*"
-				--Note("p0 ")
-				--Note("p0.1 " .. string.upper(k1))
-				--Note("p0.2 " .. world.GetVariable ("groupleader"))
 
 				if string.upper(k1) ~= string.upper(world.GetVariable("groupleader")) then
 					updateGroupLeader(k1)
 				end
-				--Note("p1")
 			end
 			
 			nameText = string.format(nameFormat, leaderText .. " " .. k1)
@@ -9540,10 +9533,22 @@ function drawCharStatus()
 			raceText = v1.race
 			
 			levelText = string.format(levelFormat, v1.level)
+			
+			positionText = "."
+			
+			if v1.position == "Stand" then
+				positionText = "S"
+			elseif v1.position == "Rest" then
+				positionText = "R"
+			elseif v1.position == "Fight" then
+				positionText = "F"
+			elseif v1.position == "Sleep" then
+				positionText = "Z"
+			end
 
 			text1 = nameText .. ': ' .. hpText .. ' Hp'
 			text2 = manaText .. ' Ma'
-			text3 = raceText .. " " .. classText .. " " .. levelText
+			text3 = raceText .. " " .. classText .. " " .. levelText .. " " .. positionText
 
 			WindowText (win, "f",
                 text1,   -- text
@@ -10736,7 +10741,7 @@ function runreset()
 end
 
 --End functions
-setup()
+--setup()
 
 
 
