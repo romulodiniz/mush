@@ -9282,21 +9282,29 @@ function setGmcpMobName(value)
 	gmcpmobname = value
 end
 
-function setGmcpHp(value)
-	gmcphp = value
+function setGmcpVitals(hpValue, maxhpValue, monhpValue, maxmonhpValue, lagValue)
+	if hpValue ~= nil then
+		gmcphp = hpValue
+	end
+	
+	if maxhpValue ~= nil then
+		gmcpmaxhp = maxhpValue
+	end
+	
+	if monhpValue ~= nil then
+		gmcpmonhp = monhpValue
+	end
+	
+	if maxmonhpValue ~= nil then
+		gmcpmaxmonhp = maxmonhpValue
+	end
+	
+	if hpValue ~= nil then
+		updateLag(lagValue)
+	end
 end
 
-function setGmcpMaxHp(value)
-	gmcpmaxhp = value
-end
 
-function setGmcpMonHp(value)
-	gmcpmonhp = value
-end
-
-function setGmcpMaxMonHp(value)
-	gmcpmaxmonhp = value
-end
 
 --Functions to get values
 function isMday()

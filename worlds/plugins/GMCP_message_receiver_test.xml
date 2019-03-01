@@ -41,30 +41,11 @@ function gotCharacterVitals (vitals)
   
 	local hp = tonumber (vitals.hp)
 	local maxhp = tonumber (vitals.maxhp)
-	local lag = tonumber (vitals.lag)
 	local monhp = tonumber (vitals.monhp)
 	local maxmonhp = tonumber (vitals.maxmonhp)
-
-	if hp ~= nil then
-		execScript("setGmcpHp", hp)
-	end
+	local lag = tonumber (vitals.lag)
 	
-	if maxhp ~= nil then
-		execScript("setGmcpMaxHp", maxhp)	
-	end	
-	
-	if lag ~= nil then
-		execScript("updateLag", lag)
-	end	
-	
-	if monhp ~= nil then
-		execScript("setGmcpMonHp", monhp)
-	end	
-
-	if maxmonhp ~= nil then
-		execScript("setGmcpMaxMonHp", maxmonhp)
-	end	
-
+	CallPlugin ("3a023d177bc699161cab5075", "setGmcpVitals", hp, maxhp, monhp, maxmonhp, lag)
 end  -- gotCharacterVitals
 
 function ExecuteNoEcho (command)
