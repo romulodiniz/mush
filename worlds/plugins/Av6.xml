@@ -9266,22 +9266,6 @@ function setVizLimits(lowValue, highValue)
 	Note("Viz limits set to min " .. lowValue .. ", max " .. highValue)
 end
 
-function setGmcpSancTime(value)
-	gmcpsanctime = value
-end
-
-function setGmcpSpellsTime(value)
-	gmcpspellstime = value
-end
-
-function setGmcpMobLvl(value)
-	gmcpmoblvl = value
-end
-
-function setGmcpMobName(value)
-	gmcpmobname = value
-end
-
 function setGmcpVitals(hpValue, maxhpValue, monhpValue, maxmonhpValue, lagValue)
 	if hpValue ~= nil then
 		gmcphp = hpValue
@@ -9304,7 +9288,45 @@ function setGmcpVitals(hpValue, maxhpValue, monhpValue, maxmonhpValue, lagValue)
 	end
 end
 
+function setGmcpStatus(moblvlValue, mobnameValue, mobhealthValue, sanctimeValue, spellstimeValue, charclassValue, charraceValue, playernameValue, shapetimeValue)
+	if moblvlValue ~= nil then
+		gmcpmoblvl = moblvlValue
+	end
+	
+	if mobnameValue ~= nil then
+		gmcpmobname = mobnameValue
+	end
 
+	if mobhealthValue ~= nil then
+		updateMobHealth(mobhealthValue)
+	end
+
+	if sanctimeValue ~= nil then
+		gmcpsanctime = sanctimeValue
+	end
+	
+	if spellstimeValue ~= nil then
+		gmcpspellstime = spellstimeValue
+	end
+	
+	if charclassValue ~= nil then
+		detectClass(charclassValue)
+	end
+
+	if charraceValue ~= nil then
+		detectRace(charraceValue)
+	end
+
+	if playernameValue ~= nil then
+		charLogin(playernameValue)
+	end
+
+	if shapetimeValue ~= nil then
+		checkShape(shapetimeValue)
+	end
+	
+	UpdateInfoBar()
+end
 
 --Functions to get values
 function isMday()
@@ -9822,7 +9844,7 @@ function updateLag(lag)
 end
 
 function checkShape (leftTime)
-	if leftTime == "25" then
+	if leftTime == 25 then
 		shapeNext()
 	end
 end

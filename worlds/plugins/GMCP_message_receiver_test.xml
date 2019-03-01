@@ -35,9 +35,6 @@ end -- getStats
 
 function gotCharacterVitals (vitals)
   --tprint (vitals)
-
-  --example:
-  --print ("HP is now:", tonumber (vitals.hp))
   
 	local hp = tonumber (vitals.hp)
 	local maxhp = tonumber (vitals.maxhp)
@@ -62,11 +59,9 @@ function gotCharacterStatus (status)
 	charclass = status.class
 	charrace = status.race
 	
-	--Note("p1 " .. charclass)
-	
-	moblvl = status.opponent_level
+	moblvl = tonumber (status.opponent_level)
 	mobname = status.opponent_name
-	mobhealth = status.opponent_health
+	mobhealth = tonumber (status.opponent_health)
 	
 	tableaffect = status.affects
 	
@@ -77,59 +72,21 @@ function gotCharacterStatus (status)
 		sanctime = ""
 		
 		if tableaffect["sanctuary"] ~= nil then
-			sanctime = tableaffect["sanctuary"]
+			sanctime = tonumber (tableaffect["sanctuary"])
 		end
 		
 		if tableaffect["iron monk"] ~= nil then
-			sanctime = tableaffect["iron monk"]
+			sanctime = tonumber (tableaffect["iron monk"])
 		end
 		
 		if tableaffect["shapeshift"] ~= nil then
-			shapetime = tableaffect["shapeshift"]
+			shapetime = tonumber (tableaffect["shapeshift"])
 		end
 		
-		spellstime = tableaffect.foci
+		spellstime = tonumber (tableaffect.foci)
 	end
 	
-	if moblvl ~= nil then
-		execScript("setGmcpMobLvl", moblvl)
-	end
-	
-	if mobname ~= nil then
-		execScript("setGmcpMobName", mobname)
-	end
-
-	if mobhealth ~= nil then
-		execScript("updateMobHealth", mobhealth)
-	end
-
-	if sanctime ~= nil then
-		execScript("setGmcpSancTime", sanctime)
-	end
-	
-	if spellstime ~= nil then
-		execScript("setGmcpSpellsTime", spellstime)
-	end
-	
-	if charclass ~= nil then
-		execScript("detectClass", charclass)
-	end
-
-	if charrace ~= nil then
-		execScript("detectRace", charrace)
-	end
-
-	if playername ~= nil then
-		execScript("charLogin", playername)
-	end
-
-	if shapetime ~= nil then
-		execScript("checkShape", shapetime)
-	end
-	
-	--ExecuteNoEcho("/UpdateInfoBar()")
-	CallPlugin ("3a023d177bc699161cab5075", "UpdateInfoBar")
-	
+	CallPlugin ("3a023d177bc699161cab5075", "setGmcpStatus", moblvl, mobname, mobhealth, sanctime, spellstime, charclass, charrace, playername, shapetime)
 end  -- gotCharacterStatus
 
 function execScript(func, param)
