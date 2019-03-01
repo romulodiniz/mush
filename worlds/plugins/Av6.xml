@@ -1269,8 +1269,8 @@ Execute("cq")
    send_to="12"
    sequence="100"
   >
-  <send>if isMday() == false then
-
+  <send>
+  if isMday() == false then
   indexToRemove = -1
 
   if rescuelist == nil then
@@ -1278,14 +1278,14 @@ Execute("cq")
   end
 
   for i = 1, #rescuelist do
-    if string.lower(rescuelist[i]) == string.lower("%2") then 
+	if string.lower(rescuelist[i]) == string.lower("%1") then 
       indexToRemove = i 
     end
   end
 
   if indexToRemove ~= -1 then
     table.remove(rescuelist, indexToRemove)
-    ColourNote("red", "white", "%2" .. " removed from rescue list!")
+    ColourNote("red", "white", "%1" .. " removed from rescue list!")
   end
 
 end</send>
