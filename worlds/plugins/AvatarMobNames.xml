@@ -7513,7 +7513,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAggie("%1","Colossus")</send>
+  <send>SubNameAggie("%1","Collosus")</send>
   </trigger>
   <trigger
    enabled="y"

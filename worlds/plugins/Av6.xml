@@ -332,6 +332,17 @@ c plane thorn</send>
   <send>cast 'saving grace'</send>
   </trigger>
   <trigger
+   enabled="y"
+   expand_variables="y"
+   group="repeat"
+   keep_evaluating="y"
+   match="You failed your vile touch due to lack of concentration!"
+   send_to="10"
+   sequence="100"
+  >
+  <send>cast 'vile touch'</send>
+  </trigger>  
+  <trigger
    expand_variables="y"
    group="classcle"
    keep_evaluating="y"
@@ -4959,7 +4970,8 @@ ColourNote("red", "white", "Lotto list cleared")</send>
    sequence="100"
   >
   <send>disabledStabName = false
-EnableTrigger("stabNameControl",false)</send>
+EnableTrigger("stabNameControl",false)
+EnableTrigger("scanDisableStab",true)</send>
   </trigger>
   <trigger
    custom_colour="9"
@@ -5355,8 +5367,7 @@ execActionQueue()</send>
    send_to="12"
    sequence="100"
   >
-  <send>remLotto("%1")
-remGroupie("%1")</send>
+  <send>remGroupie("%1")</send>
   </trigger>
   <trigger
    custom_colour="3"
@@ -5925,7 +5936,8 @@ Execute("bbb")</send>
    name="scanDisableStab"
   >
   <send>disabledStabName = true
-EnableTrigger("stabNameControl",true)</send>
+EnableTrigger("stabNameControl",true)
+EnableTrigger("scanDisableStab",false)</send>
   </trigger>
   <trigger
    enabled="y"
@@ -6032,7 +6044,7 @@ Note("Tier set to %1")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/setWindowFilter()")</send>
+  <send>scriptToAllWorlds("setWindowFilter")</send>
   </alias>
   <alias
    match="shapeadd *"
@@ -6370,7 +6382,7 @@ Note("vizdmg off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/ssv()")
+  <send>scriptToAllWorlds("ssv")
 </send>
   </alias>
   <alias
@@ -6678,7 +6690,7 @@ leadership switch mastermind</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castmm()")
+  <send>scriptToAllWorlds("castmm")
 </send>
   </alias>
   <alias
@@ -6925,7 +6937,7 @@ spit</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castms()")
+  <send>scriptToAllWorlds("castms")
 </send>
   </alias>
   <alias
@@ -7090,12 +7102,14 @@ Note("keepSanc on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendOrder("ica","c plane %1") 
+  <send>
+sendOrder("ica","c plane %1") 
 sendOrder("bid","c plane %1") 
 sendOrder("ravengar","c plane %1") 
 
 sendOrder("grande","rest") 
 sendOrder("boi","rest") 
+sendOrder("zup","rest") 
 
 Send("gt send raposao %1")
 Send("gt send xingu %1")
@@ -7107,6 +7121,7 @@ Send("gt send larin %1")
 
 Send("gt send grande %1")
 Send("gt send boi %1")
+Send("gt send zup %1")
 
 sendOrder("blackmail","c plane %1") 
 sendOrder("dois","c plane %1")</send>
@@ -7130,7 +7145,7 @@ sendOrder("dois","c plane %1")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/bt()")
+  <send>scriptToAllWorlds("bt")
 </send>
   </alias>
   <alias
@@ -7245,7 +7260,7 @@ planeTo("%2")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/bte()")
+  <send>scriptToAllWorlds("bte")
 </send>
   </alias>
   <alias
@@ -7369,7 +7384,7 @@ quicken off</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castps()")
+  <send>scriptToAllWorlds("castps")
 </send>
   </alias>
   <alias
@@ -7598,7 +7613,7 @@ Note("autotrackwalk true")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castcc('%1')")
+  <send>scriptToAllWorlds("castcc %1")
 </send>
   </alias>
   <alias
@@ -7630,7 +7645,7 @@ Note("vizdmg on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castcla()")
+  <send>sendToAllWorlds("castcla")
 </send>
   </alias>
   <alias
@@ -7766,7 +7781,7 @@ Note("Miraar off")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castrc('@playername')")</send>
+  <send>scriptToAllWorlds("castrc @playername")</send>
   </alias>
   <alias
    match="offportal"
@@ -7813,7 +7828,7 @@ Note("Set leadership")
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/aug('%1')")
+  <send>scriptToAllWorlds("aug %1")
 </send>
   </alias>
   <alias
@@ -8141,7 +8156,7 @@ Note("keep alert on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castdd('%1')")
+  <send>scriptToAllWorlds("castdd %1")
 </send>
   </alias>
   <alias
@@ -8189,7 +8204,7 @@ Execute("score")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castpan()")
+  <send>scriptToAllWorlds("castpan")
 </send>
   </alias>
   <alias
@@ -8210,7 +8225,7 @@ Execute("score")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("/castpc()")
+  <send>scriptToAllWorlds("castpc")
 </send>
   </alias>
   <alias
@@ -8548,6 +8563,7 @@ barHeight = 7
 text1Begin = 1
 text2Begin = leftBarBegin + 44
 text3Begin = leftBarBegin + 193
+text4Begin = leftBarBegin + 275
 lowVizHealthLimit = 40
 highVizHealthLimit = 70
 
@@ -8951,6 +8967,7 @@ function setupClassASN()
 	EnableTriggerGroup ("autoalert", true)
 	canStab = true
 	EnableTriggerGroup ("autostab", true)
+	EnableTrigger("scanDisableStab", true)
 end
 
 function setupClassBLD()
@@ -9070,6 +9087,7 @@ function setupClassBCI()
 	canStab = true
 	EnableTriggerGroup ("autoalert", true)
 	EnableTriggerGroup ("autostab", true)
+	EnableTrigger("scanDisableStab", true)
 end
 
 function setupClassROG()
@@ -9089,6 +9107,7 @@ function setupClassROG()
 	EnableTriggerGroup ("autoalert", true)
 	canStab = true
 	EnableTriggerGroup ("autostab", true)
+	EnableTrigger("scanDisableStab", true)
 end
 
 function setupClassFUS()
@@ -9535,20 +9554,26 @@ function drawCharStatus()
 			levelText = string.format(levelFormat, v1.level)
 			
 			positionText = "."
+			positionColor = "cyan"
 			
-			if v1.position == "Stand" then
+			if v1.position == "Stand" or v1.position == "Busy" then
 				positionText = "S"
+				positionColor = "cyan"
 			elseif v1.position == "Rest" then
 				positionText = "R"
+				positionColor = "limegreen"
 			elseif v1.position == "Fight" then
 				positionText = "F"
+				positionColor = "red"
 			elseif v1.position == "Sleep" then
 				positionText = "Z"
+				positionColor = "white"
 			end
 
 			text1 = nameText .. ': ' .. hpText .. ' Hp'
 			text2 = manaText .. ' Ma'
-			text3 = raceText .. " " .. classText .. " " .. levelText .. " " .. positionText
+			text3 = raceText .. " " .. classText .. " " .. levelText
+			text4 = positionText
 
 			WindowText (win, "f",
                 text1,   -- text
@@ -9566,6 +9591,12 @@ function drawCharStatus()
                 text3,   -- text
                 text3Begin,count*mwLineSize, 0, 0,        -- rectangle
                 ColourNameToRGB (mwFontColor), -- colour
+                false)              -- not Unicode
+
+			WindowText (win, "f",
+                text4,   -- text
+                text4Begin,count*mwLineSize, 0, 0,        -- rectangle
+                ColourNameToRGB (positionColor), -- colour
                 false)              -- not Unicode
 				
 			WindowRectOp (win, miniwin.rect_fill, leftBarBegin, count*mwLineSize+upBarShift, leftBarBegin+hpTakenSize, count*mwLineSize+upBarShift+barHeight, ColourNameToRGB(mwPositiveColorBar))
@@ -9771,6 +9802,8 @@ function offStabAll()
 end
 
 function onStabById(action)
+	EnableTrigger("scanDisableStab",true)
+	
 	isStabingById = true
 
 	if action and action ~= "" and action ~= " " then 
@@ -10395,6 +10428,12 @@ end
 function sendToAllWorlds(command)
 	for k, v in pairs (GetWorldIdList ()) do 
 		GetWorldById (v):Execute (command)
+	end
+end
+
+function scriptToAllWorlds(command)
+	for k, v in pairs (GetWorldIdList ()) do 
+		GetWorldById (v):Execute ("px " .. command)
 	end
 end
 

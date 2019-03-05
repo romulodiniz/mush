@@ -1679,7 +1679,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("crumpled note")</send>
+  <send>SubNameAlleg("a crumpled note")</send>
   </trigger>
   <trigger
    custom_colour="11"
