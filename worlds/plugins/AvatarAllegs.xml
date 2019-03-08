@@ -1119,7 +1119,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("an incantation note")</send>
+  <send>SubNameAlleg("a incantation note")</send>
   </trigger>
   <trigger
    enabled="y"

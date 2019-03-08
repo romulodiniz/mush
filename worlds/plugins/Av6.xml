@@ -7645,7 +7645,7 @@ Note("vizdmg on")</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>sendToAllWorlds("castcla")
+  <send>scriptToAllWorlds("castcla")
 </send>
   </alias>
   <alias
@@ -10084,8 +10084,8 @@ function ssv()
 end
 
 function setWindowFilter()
-	Execute("oo offwindow")
-	Execute("oo onfilter")
+	Execute("offwindow")
+	Execute("onfilter")
 
 	if GetVariable("playerclass") == "PRS" then
 		Execute("onwindow")
