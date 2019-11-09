@@ -164,6 +164,15 @@
   <send>tell asmoday comm %1</send>
   </alias>
   <alias
+   match="tts *"
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>tell sulfuron xxxorder %1</send>
+  </alias>
+  <alias
    match="ttt *"
    enabled="y"
    expand_variables="y"
@@ -171,7 +180,7 @@
    keep_evaluating="y"
    sequence="100"
   >
-  <send>tell beaux comm %1</send>
+  <send>tell tilly comm %1</send>
   </alias>
 </aliases>
 

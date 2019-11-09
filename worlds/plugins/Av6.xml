@@ -655,6 +655,7 @@ chainrescue = true</send>
   <send>rescue %1</send>
   </trigger>
 
+<!--
   <trigger
    expand_variables="y"
    group="autorescue"
@@ -665,6 +666,7 @@ chainrescue = true</send>
    sequence="100">
   <send>avaliarRescue("%1")</send>
   </trigger>
+  -->
   
   <trigger
    enabled="y"
@@ -6658,7 +6660,6 @@ last Xingu
 last Zingu
 last Ica
 last Lollis
-last Tuga
 last Raposao
 last Capelao
 last Mecao
@@ -6690,6 +6691,7 @@ last Diniz
 last Rang
 last Belo
 last Amenadiel
+last Vizionary
 </send>
   </alias>
 
@@ -10463,6 +10465,7 @@ function openWorlds(group)
       --openWorld("Tuga")
       --openWorld("Uno")
       --openWorld("Vinyl")
+      --openWorld("Vizionary")
       --openWorld("Way")
       --openWorld("Williamtell")
       --openWorld("Xing")
@@ -10474,26 +10477,25 @@ function openWorlds(group)
    if group == "Main" then
       openWorld("Hoje")
       openWorld("Aff")
+      openWorld("Amenadiel")
+      openWorld("Bid")
       openWorld("Boi")
-      openWorld("Bom")
       openWorld("Cabeca")
       openWorld("Cagao")
       openWorld("Capelao")
-      openWorld("Diniz")
       openWorld("Duno")
-      openWorld("Fido")
+      openWorld("Flecha")
       openWorld("Grande")
       openWorld("Ica")
       openWorld("Indio")
       openWorld("Juvenal")
       openWorld("Kubrick")
-      openWorld("Larin")
       openWorld("Lollis")
-      openWorld("Mago")
       openWorld("Mal")
       openWorld("Maybe")
       openWorld("Motta")
       openWorld("Quatro")
+      openWorld("Rang")
       openWorld("Raposao")
       openWorld("Ravengar")
       openWorld("Romulo")
@@ -10501,24 +10503,33 @@ function openWorlds(group)
       openWorld("Tuazd")
       openWorld("Tuga")
       openWorld("Uno")
-      openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
-      openWorld("Zup")   
+      openWorld("Zingu")
+      openWorld("Zup")    
+ 
    elseif group == "Camp" then
+
+   elseif group == "Tina" then
+
+   elseif group == "Lonestar" then
       openWorld("Arroz")
-      openWorld("Bid")
       openWorld("Blackmail")
+      openWorld("Boi")
+      openWorld("Bom")
+      openWorld("Diniz")
       openWorld("Dois")
       openWorld("Fantasma")
       openWorld("Feiticeiro")
-      openWorld("Flecha")
       openWorld("Iforgot")
       openWorld("Lais")
+      openWorld("Larin")
       openWorld("Letigo")
+      openWorld("Lollis")
       openWorld("Luccian")
       openWorld("Lud")
+      openWorld("Mago")
       openWorld("Mecao")
       openWorld("Medo")
       openWorld("Meiodia")
@@ -10528,19 +10539,16 @@ function openWorlds(group)
       openWorld("Pequeno")
       openWorld("Remo")
       openWorld("Romeu")
+      openWorld("Romulo")
       openWorld("Sombrero")
       openWorld("Tele")
       openWorld("Vinyl")
       openWorld("Yay")
-      openWorld("Zingu")
-
-   elseif group == "Tinacular" then
-
-   elseif group == "Cronin" then
-   
    elseif group == "All" then
       openWorld("Aff")
+      openWorld("Amenadiel")
       openWorld("Arroz")
+      openWorld("Belo")
       openWorld("Bid")
       openWorld("Blackmail")
       openWorld("Boi")
@@ -10581,6 +10589,7 @@ function openWorlds(group)
       openWorld("Papapop")
       openWorld("Pequeno")
       openWorld("Quatro")
+      openWorld("Rang")
       openWorld("Raposao")
       openWorld("Ravengar")
       openWorld("Remo")
@@ -10593,13 +10602,14 @@ function openWorlds(group)
       openWorld("Tuga")
       openWorld("Uno")
       openWorld("Vinyl")
+      openWorld("Vizionary")
       openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
       openWorld("Yay")
       openWorld("Zingu")
-      openWorld("Zup")   
+      openWorld("Zup")         
    end
    
 end 

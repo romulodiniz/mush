@@ -13,10 +13,10 @@
    beep_sound="C:\Windows\media\Windows Logon.wav"
    chat_name="Name-not-set"
    command_stack_character="="
-   id="91bf4f3258da779c609e4ca4"
+   id="16a2db8a5893f63f8bf939d5"
    input_font_name="Courier"
    mapping_failure="Alas, you cannot go *"
-   name="AvatarLeader"
+   name="Nul"
    new_activity_sound="(No sound)"
    output_font_name="Courier New"
    proxy_server="127.0.0.1"
@@ -70,7 +70,7 @@
    input_text_colour="black"
    keep_commands_on_same_line="y"
    keypad_enable="y"
-   max_output_lines="300000"
+   max_output_lines="10000"
    mud_can_change_link_colour="y"
    mud_can_change_options="y"
    note_text_colour="#060000"
@@ -122,61 +122,6 @@
    muclient_version="5.05"
    world_file_version="15"
   >
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   keep_evaluating="y"
-   match="xxxHidden anxiety is DEAD!!"
-   send_to="12"
-   sequence="100"
-  >
-  <send>Execute("put serum xmain")
-Execute("drop memo")
-DoAfterSpecial (5, "sleep", sendto.execute)
-DoAfterSpecial (330, "st=xq", sendto.execute)
-</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   keep_evaluating="y"
-   match="xxxThe protective aura fades from around your body."
-   send_to="10"
-   sequence="100"
-  >
-  <send>px addActionQueue rat
-rat</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   keep_evaluating="y"
-   match="xxxYou are surrounded by a black aura."
-   send_to="10"
-   sequence="100"
-  >
-  <send>px remActionQueue rat</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   match="xxxYou failed your flash due to lack of concentration!"
-   omit_from_output="y"
-   send_to="10"
-   sequence="100"
-  >
-  <send>fff</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   keep_evaluating="y"
-   match="xxxYour mystical barrier shimmers and is gone."
-   send_to="10"
-   sequence="100"
-  >
-  <send>mb</send>
-  </trigger>
 </triggers>
 
 <!-- aliases -->
@@ -195,17 +140,6 @@ rat</send>
    sequence="90"
   >
   <send>CallPlugin ("3a023d177bc699161cab5075", "%1", "%2")</send>
-  </alias>
-  <alias
-   match="px * * *"
-   enabled="y"
-   expand_variables="y"
-   group="Scripts"
-   send_to="12"
-   keep_evaluating="y"
-   sequence="90"
-  >
-  <send>CallPlugin ("3a023d177bc699161cab5075", "%1", "%2", "%3")</send>
   </alias>
   <alias
    match="px *"
@@ -230,16 +164,6 @@ rat</send>
   <send>tell asmoday comm %1</send>
   </alias>
   <alias
-   match="ttc *"
-   enabled="y"
-   expand_variables="y"
-   group="Orders"
-   keep_evaluating="y"
-   sequence="100"
-  >
-  <send>tell crik comm %1</send>
-  </alias>
-  <alias
    match="ttt *"
    enabled="y"
    expand_variables="y"
@@ -247,17 +171,7 @@ rat</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>tell typhus comm %1</send>
-  </alias>
-  <alias
-   match="ttw *"
-   enabled="y"
-   expand_variables="y"
-   group="Orders"
-   keep_evaluating="y"
-   sequence="100"
-  >
-  <send>tell whang comm %1</send>
+  <send>tell beaux comm %1</send>
   </alias>
 </aliases>
 
@@ -351,6 +265,11 @@ rat</send>
 
   </macro>
 
+  <macro name="F2+Ctrl" type="send_now" >
+  <send>go3</send>
+
+  </macro>
+
   <macro name="logout" type="send_now" >
   <send>LOGOUT</send>
 
@@ -358,6 +277,11 @@ rat</send>
 
   <macro name="quit" type="send_now" >
   <send>QUIT</send>
+
+  </macro>
+
+  <macro name="F1+Ctrl" type="send_now" >
+  <send>go2</send>
 
   </macro>
 </macros>
@@ -368,7 +292,6 @@ rat</send>
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="playername">RANG</variable>
 </variables>
 
 <!-- colours -->
@@ -570,10 +493,10 @@ rat</send>
 
 <!-- plugins -->
 <include name="captureChat.xml" plugin="y" />
-<include name="GMCP_handler_NJG.xml" plugin="y" />
-<include name="reconnecter.xml" plugin="y" />
+<include name="Reconnecter.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
-<include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
+<include name="GMCP_message_receiver_test.xml" plugin="y" />
+<include name="GMCP_handler_NJG.xml" plugin="y" />
 </muclient>
