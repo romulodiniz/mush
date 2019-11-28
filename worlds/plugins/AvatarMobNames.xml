@@ -8040,6 +8040,16 @@
    sequence="100">
   <send>SubNameLord("%1","guard")</send>
   </trigger>
+  
+  <trigger
+   enabled="y"
+   group="mobnames_air"
+   match="*The sultan lazes regally here."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Sultan")</send>
+  </trigger>  
 
   <trigger
    enabled="y"
@@ -12524,6 +12534,26 @@
   <trigger
    enabled="y"
    group="mobnames_kzin"
+   match="*The dark priest called Skelth stands quietly, dressed in black."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Skelth")</send>
+  </trigger>  
+  
+  <trigger
+   enabled="y"
+   group="mobnames_kzin"
+   match="*Kalysis, a psion of the highest order, studies the room intently."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Kalysis")</send>
+  </trigger>    
+  
+  <trigger
+   enabled="y"
+   group="mobnames_kzin"
    match="*A rabid kzinti foams at the mouth and slams into the walls!"
    omit_from_output="y"
    send_to="12"
@@ -15865,6 +15895,26 @@
    send_to="12"
    sequence="100">
   <send>SubNameLord("%1","water")</send>
+  </trigger>
+
+  <trigger
+   enabled="y"
+   group="mobnames_water"
+   match="*One of the Ice Efreet's pet ice hounds, Frostbite, snarls and attacks!"
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Frostbite")</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   group="mobnames_water"
+   match="*One of the Ice Efreets pet ice hounds, Blizzard, snarls and attacks!"
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Blizzard")</send>
   </trigger>
   
   <trigger

@@ -456,6 +456,7 @@ end
 
    <!--  keeplogin  -->   
   <!--
+
   <trigger
    enabled="y"
    custom_colour="5"
@@ -464,7 +465,7 @@ end
    match="*Telnet: avatar.outland.org 3000*"
    send_to="10"
    sequence="100">
-  <send>bar</send>
+  <send>arvore</send>
   </trigger>
 -->
 

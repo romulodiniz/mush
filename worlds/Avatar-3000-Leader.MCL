@@ -126,6 +126,16 @@
    enabled="y"
    expand_variables="y"
    keep_evaluating="y"
+   match="^Already playing\.$"
+   regexp="y"
+   sequence="100"
+  >
+  <send>yes</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
    match="xxxHidden anxiety is DEAD!!"
    send_to="12"
    sequence="100"
@@ -572,8 +582,8 @@ rat</send>
 <include name="captureChat.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
 <include name="reconnecter.xml" plugin="y" />
-<include name="AvatarAllegs.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
+<include name="AvatarAllegs.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
 </muclient>

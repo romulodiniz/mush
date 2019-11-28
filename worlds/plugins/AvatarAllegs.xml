@@ -1346,7 +1346,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("the staff of the lower planes")</send>
+  <send>SubNameAlleg("the staff of the lower planes","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
