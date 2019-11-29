@@ -5879,6 +5879,17 @@ ColourNote("red", "white", "Shape List cleared")</send>
   </alias>
 
   <alias
+   match="cv *"
+   enabled="y"
+   group="Outros"
+   send_to="12"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>checkVar("%1")</send>
+  </alias>
+
+  <alias
    match="offtarget"
    enabled="y"
    group="triggertoggler"
@@ -10758,6 +10769,11 @@ function getHpPercentage()
 end
 
 --Utility functions
+function checkVar(name)
+   local myVar = safeStringValue(GetVariable(name))
+   Note(myVar)
+end
+
 function keys_to_list(tab)
   local tmp = {}
 
