@@ -9354,9 +9354,9 @@ function checkRoom()
 	end
 	
 	if table.getn(missedList) == 0 then
-		SendNoEcho("gt Everyone here")
+		Note("Everyone here")
 	elseif table.getn(missedList) > 0 then
-		SendNoEcho("gt Missing list: " .. listToString(missedList))
+		Note("Missing list: " .. listToString(missedList))
 	end
 	
 end
