@@ -14780,7 +14780,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameLord("%1","gi")</send>
+  <send>SubNameLord("%1","gish")</send>
   </trigger>
   
 <!--  mobnames_stone  -->    

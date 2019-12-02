@@ -1310,7 +1310,7 @@
    send_to="12"
    sequence="100"
   >
-  <send>SubNameAlleg("stone platemail")</send>
+  <send>SubNameAlleg("stone platemail","locker")</send>
   </trigger>
   <trigger
    custom_colour="11"
