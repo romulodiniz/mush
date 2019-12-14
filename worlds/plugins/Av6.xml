@@ -2328,6 +2328,17 @@ put rattle xmain</send>
    expand_variables="y"
    group="corp_loot"
    keep_evaluating="y"
+   match="You get a small wooden giftbox tied with a bright velvet ribbon from corpse of *"
+   send_to="12"
+   sequence="100">
+  <send>SendNoEcho("drop giftbox")</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="corp_loot"
+   keep_evaluating="y"
    match="A trunk of stone is DEAD!!"
    send_to="12"
    sequence="100">
@@ -9859,9 +9870,18 @@ function updateMobHealth(value)
 	
 	if GetVariable("playerclass") == "VIZ" then
 		checkVizAction(numvalue)
-	elseif awfulCast == true and numvalue < 15 and numvalue > 0 and isTriggerOn("autocast") == true then
+	elseif awfulCast == true and killing == true and numvalue < 15 and numvalue > 0 and isTriggerOn("autocast") == true then
 		Send("mm")
+        killing = false
 	end
+
+--	if gmcplag == 0 and lag0Cast == true and killing == true and awfulCast == false and isTriggerOn("autocast") == true then
+--		killing = false
+--		lag0Cast = false
+--		scriptAfter(3, 'lag0Cast = true')
+--		Send("mm")
+--	end
+
 end
 
 function updateSancTime(p_sancTime)
@@ -9883,7 +9903,7 @@ function updateLag(lag)
 	if gmcplag == 0 and lag0Cast == true and killing == true and awfulCast == false and isTriggerOn("autocast") == true then
 		killing = false
 		lag0Cast = false
-		scriptAfter(2, 'lag0Cast = true')
+		scriptAfter(3, 'lag0Cast = true')
 		Send("mm")
 	end
 end
@@ -10489,20 +10509,22 @@ function openWorlds(group)
    if group == "Main" then
       openWorld("Hoje")
       openWorld("Aff")
-      openWorld("Amenadiel")
+      openWorld("Arroz")
       openWorld("Bid")
       openWorld("Boi")
       openWorld("Cabeca")
-      openWorld("Cagao")
       openWorld("Capelao")
+      openWorld("Dois")
       openWorld("Duno")
-      openWorld("Flecha")
+      openWorld("Fido")
       openWorld("Grande")
       openWorld("Ica")
       openWorld("Indio")
       openWorld("Juvenal")
       openWorld("Kubrick")
       openWorld("Lollis")
+      openWorld("Luccian")
+      openWorld("Mago")
       openWorld("Mal")
       openWorld("Maybe")
       openWorld("Motta")
@@ -10511,37 +10533,29 @@ function openWorlds(group)
       openWorld("Raposao")
       openWorld("Ravengar")
       openWorld("Romulo")
-      openWorld("Tinna")
       openWorld("Tuazd")
-      openWorld("Tuga")
       openWorld("Uno")
+      openWorld("Vinyl")
+      openWorld("Way")    
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
-      openWorld("Zingu")
-      openWorld("Zup")    
  
    elseif group == "Camp" then
-
-   elseif group == "Tina" then
-
-   elseif group == "Lonestar" then
-      openWorld("Arroz")
-      openWorld("Blackmail")
-      openWorld("Boi")
-      openWorld("Bom")
       openWorld("Diniz")
-      openWorld("Dois")
+      openWorld("Amenadiel")
+      openWorld("Belo")
+      openWorld("Blackmail")
+      openWorld("Bom")
+      openWorld("Cagao")
       openWorld("Fantasma")
       openWorld("Feiticeiro")
+      openWorld("Flecha")
       openWorld("Iforgot")
       openWorld("Lais")
       openWorld("Larin")
       openWorld("Letigo")
-      openWorld("Lollis")
-      openWorld("Luccian")
       openWorld("Lud")
-      openWorld("Mago")
       openWorld("Mecao")
       openWorld("Medo")
       openWorld("Meiodia")
@@ -10550,12 +10564,14 @@ function openWorlds(group)
       openWorld("Papapop")
       openWorld("Pequeno")
       openWorld("Remo")
-      openWorld("Romeu")
-      openWorld("Romulo")
       openWorld("Sombrero")
       openWorld("Tele")
-      openWorld("Vinyl")
+      openWorld("Tinna")
+      openWorld("Tuga")
+      openWorld("Vizionary")
       openWorld("Yay")
+      openWorld("Zingu")
+      openWorld("Zup")         
    elseif group == "All" then
       openWorld("Aff")
       openWorld("Amenadiel")

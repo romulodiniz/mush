@@ -125,6 +125,14 @@
   <trigger
    enabled="y"
    expand_variables="y"
+   match="Mayflower, Explorer and Trailblazer exclaims 'Follow me for Ocean Transport!'"
+   sequence="100"
+  >
+  <send>fol mayf</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
    keep_evaluating="y"
    match="^Already playing\.$"
    regexp="y"
@@ -583,7 +591,7 @@ rat</send>
 <include name="GMCP_handler_NJG.xml" plugin="y" />
 <include name="reconnecter.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
+<include name="AvatarAllegs.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
-<include name="AvatarAllegs.xml" plugin="y" />
 </muclient>

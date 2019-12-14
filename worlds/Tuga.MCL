@@ -122,6 +122,22 @@
    muclient_version="5.05"
    world_file_version="15"
   >
+  <trigger
+   expand_variables="y"
+   match="The protective aura fades from around your body."
+   sequence="100"
+  >
+  <send>wake
+ps</send>
+  </trigger>
+  <trigger
+   expand_variables="y"
+   match="Your Aura of Holiness fades..."
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfterSpecial (30, "wake=preachup", sendto.execute)</send>
+  </trigger>
 </triggers>
 
 <!-- aliases -->

@@ -70,7 +70,7 @@
    input_text_colour="black"
    keep_commands_on_same_line="y"
    keypad_enable="y"
-   max_output_lines="10000"
+   max_output_lines="200000"
    mud_can_change_link_colour="y"
    mud_can_change_options="y"
    note_text_colour="#060000"
@@ -122,6 +122,15 @@
    muclient_version="5.05"
    world_file_version="15"
   >
+  <trigger
+   expand_variables="y"
+   match="The Burning Phoenix is DEAD!!"
+   send_to="12"
+   sequence="100"
+  >
+  <send>DoAfterSpecial (5, "oo sleep", sendto.execute)
+DoAfterSpecial (300, "oo wake", sendto.execute)</send>
+  </trigger>
 </triggers>
 
 <!-- aliases -->
