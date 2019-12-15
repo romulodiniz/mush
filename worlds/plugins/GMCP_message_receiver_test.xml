@@ -52,9 +52,17 @@ function ExecuteNoEcho (command)
   SetOption ("display_my_input", 1)
 end -- function
 
+function getAffectHour(affect)
+	--Note('affect ' .. affect)
+
+	local forLengthText = string.match(affect, 'for %d+ hours')
+	local matchedText = string.match(forLengthText , '%d+')
+	return tonumber (matchedText)
+end
+
 function gotCharacterStatus (status)
 	--tprint (status)
-	
+
 	playername = status.character_name
 	
 	charclass = status.class
@@ -73,19 +81,21 @@ function gotCharacterStatus (status)
 		spellstime = ""
 		sanctime = ""
 		
-		if tableaffect["sanctuary"] ~= nil then
-			sanctime = tonumber (tableaffect["sanctuary"])
+		if tableaffect["Spell: sanctuary"] ~= nil then
+			sanctime = getAffectHour(tableaffect["Spell: sanctuary"])
 		end
 		
-		if tableaffect["iron monk"] ~= nil then
-			sanctime = tonumber (tableaffect["iron monk"])
+		if tableaffect["Spell: iron monk"] ~= nil then
+			sanctime = getAffectHour(tableaffect["Spell: iron monk"])
 		end
 		
-		if tableaffect["shapeshift"] ~= nil then
-			shapetime = tonumber (tableaffect["shapeshift"])
+		if tableaffect["Racial: shapeshift"] ~= nil then
+			shapetime = getAffectHour(tableaffect["Racial: shapeshift"])
 		end
 		
-		spellstime = tonumber (tableaffect.foci)
+		if tableaffect["Spell: foci"] ~= nil then
+			spellstime = getAffectHour(tableaffect["Spell: foci"])
+		end
 	end
 	
 	CallPlugin ("3a023d177bc699161cab5075", "setGmcpStatus", moblvl, mobname, mobhealth, sanctime, spellstime, charclass, charrace, charlevel, playername, shapetime)

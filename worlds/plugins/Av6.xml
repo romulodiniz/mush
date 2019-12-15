@@ -465,7 +465,7 @@ end
    match="*Telnet: avatar.outland.org 3000*"
    send_to="10"
    sequence="100">
-  <send>arvore</send>
+  <send>nul</send>
   </trigger>
 -->
 
