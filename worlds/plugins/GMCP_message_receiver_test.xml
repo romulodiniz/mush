@@ -23,6 +23,7 @@
 
 require "tprint"
 require "json"
+require "re"
   
 function getStats (what)
   result, value = CallPlugin("3e7dedbe37e44942dd46d264", "gmcpval", what)
@@ -53,11 +54,8 @@ function ExecuteNoEcho (command)
 end -- function
 
 function getAffectHour(affect)
-	--Note('affect ' .. affect)
-
-	local forLengthText = string.match(affect, 'for %d+ hours')
-	local matchedText = string.match(forLengthText , '%d+')
-	return tonumber (matchedText)
+	--Note(affect)
+	return tonumber (string.match (affect, ".*for (%d+) hours"))
 end
 
 function gotCharacterStatus (status)
