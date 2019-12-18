@@ -4526,7 +4526,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameAggie("%1","goat")</send>
+  <send>SubName("%1","goat (Animal Quest)")</send>
   </trigger>
 
   <trigger
