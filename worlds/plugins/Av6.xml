@@ -104,6 +104,17 @@ end
    enabled = "y"
    ignore_case="y"
    keep_evaluating="y"
+   match="*hit enter to continue*"
+   send_to="12"
+   sequence="100">
+  <send>afterLogin()</send>
+  </trigger>
+
+  <trigger
+   group="autoLogin"
+   enabled = "y"
+   ignore_case="y"
+   keep_evaluating="y"
    match="*Please *vote for Avatar!*"
    send_to="12"
    sequence="100">
@@ -1578,8 +1589,8 @@ end</send>
   <send>remActionQueue("c prayer 'Malice aura'")</send>
   </trigger>  
   
-	<trigger
    enabled="y"
+	<trigger
    group="classpal"
    keep_evaluating="y"
    match="You slowly come out of your rage."
@@ -10440,138 +10451,45 @@ end
 -- Auxiliary functions
 function openWorlds(group)
 
+   if group == "Main" then
+      --openWorld("Hoje")
       --openWorld("Aff")
       --openWorld("Amenadiel")
-      --openWorld("Arroz")
-      --openWorld("Belo")
       --openWorld("Bid")
-      --openWorld("Blackmail")
       --openWorld("Boi")
-      --openWorld("Bom")
       --openWorld("Cabeca")
-      --openWorld("Cagao")
       --openWorld("Capelao")
-      --openWorld("Diniz")
       --openWorld("Dois")
       --openWorld("Duno")
-      --openWorld("Fantasma")
-      --openWorld("Feiticeiro")
       --openWorld("Fido")
-      --openWorld("Flecha")
       --openWorld("Grande")
-      --openWorld("Hoje")
       --openWorld("Ica")
-      --openWorld("Iforgot")
       --openWorld("Indio")
       --openWorld("Juvenal")
       --openWorld("Kubrick")
-      --openWorld("Lais")
       --openWorld("Larin")
-      --openWorld("Letigo")
       --openWorld("Lollis")
       --openWorld("Luccian")
-      --openWorld("Lud")
       --openWorld("Mago")
       --openWorld("Mal")
+      --openWorld("Mazikeen")
       --openWorld("Maybe")
-      --openWorld("Mecao")
-      --openWorld("Medo")
-      --openWorld("Meiodia")
-      --openWorld("Motta")
-      --openWorld("Noone")
-      --openWorld("Opa")
-      --openWorld("Padre")
-      --openWorld("Papapop")
-      --openWorld("Pequeno")
+      --openWorld("Null")
       --openWorld("Quatro")
       --openWorld("Rang")
       --openWorld("Raposao")
       --openWorld("Ravengar")
-      --openWorld("Remo")
-      --openWorld("Romeu")
       --openWorld("Romulo")
-      --openWorld("Sombrero")
-      --openWorld("Tele")
-      --openWorld("Tinna")
       --openWorld("Tuazd")
-      --openWorld("Tuga")
-      --openWorld("Uno")
-      --openWorld("Vinyl")
       --openWorld("Vizionary")
       --openWorld("Way")
       --openWorld("Williamtell")
       --openWorld("Xing")
       --openWorld("Xingu")
-      --openWorld("Yay")
-      --openWorld("Zingu")
-      --openWorld("Zup")
-
-   if group == "Main" then
-      openWorld("Hoje")
-      openWorld("Aff")
-      openWorld("Arroz")
-      openWorld("Bid")
-      openWorld("Boi")
-      openWorld("Cabeca")
-      openWorld("Capelao")
-      openWorld("Dois")
-      openWorld("Duno")
-      openWorld("Fido")
-      openWorld("Grande")
-      openWorld("Ica")
-      openWorld("Indio")
-      openWorld("Juvenal")
-      openWorld("Kubrick")
-      openWorld("Lollis")
-      openWorld("Luccian")
-      openWorld("Mago")
-      openWorld("Mal")
-      openWorld("Maybe")
-      openWorld("Motta")
-      openWorld("Quatro")
-      openWorld("Rang")
-      openWorld("Raposao")
-      openWorld("Ravengar")
-      openWorld("Romulo")
-      openWorld("Tuazd")
-      openWorld("Uno")
-      openWorld("Vinyl")
-      openWorld("Way")    
-      openWorld("Williamtell")
-      openWorld("Xing")
-      openWorld("Xingu")
  
    elseif group == "Camp" then
-      openWorld("Diniz")
-      openWorld("Amenadiel")
-      openWorld("Belo")
-      openWorld("Blackmail")
-      openWorld("Bom")
-      openWorld("Cagao")
-      openWorld("Fantasma")
-      openWorld("Feiticeiro")
-      openWorld("Flecha")
-      openWorld("Iforgot")
-      openWorld("Lais")
-      openWorld("Larin")
-      openWorld("Letigo")
-      openWorld("Lud")
-      openWorld("Mecao")
-      openWorld("Medo")
-      openWorld("Meiodia")
-      openWorld("Noone")
-      openWorld("Padre")
-      openWorld("Papapop")
-      openWorld("Pequeno")
-      openWorld("Remo")
-      openWorld("Sombrero")
-      openWorld("Tele")
-      openWorld("Tinna")
-      openWorld("Tuga")
-      openWorld("Vizionary")
-      openWorld("Yay")
-      openWorld("Zingu")
-      openWorld("Zup")         
+      --openWorld("Diniz")
+   
    elseif group == "All" then
       openWorld("Aff")
       openWorld("Amenadiel")
@@ -10606,12 +10524,14 @@ function openWorlds(group)
       openWorld("Lud")
       openWorld("Mago")
       openWorld("Mal")
+      openWorld("Mazikeen")
       openWorld("Maybe")
       openWorld("Mecao")
       openWorld("Medo")
       openWorld("Meiodia")
       openWorld("Motta")
       openWorld("Noone")
+      openWorld("Null")
       openWorld("Opa")
       openWorld("Padre")
       openWorld("Papapop")
@@ -10637,7 +10557,8 @@ function openWorlds(group)
       openWorld("Xingu")
       openWorld("Yay")
       openWorld("Zingu")
-      openWorld("Zup")         
+      openWorld("Zup")
+       
    end
    
 end 

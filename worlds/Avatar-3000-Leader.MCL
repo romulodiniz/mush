@@ -551,6 +551,6 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
 <include name="reconnecter.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
-<include name="Av6.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
+<include name="Av6.xml" plugin="y" />
 </muclient>

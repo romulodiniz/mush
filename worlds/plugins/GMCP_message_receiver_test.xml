@@ -54,8 +54,12 @@ function ExecuteNoEcho (command)
 end -- function
 
 function getAffectHour(affect)
-	--Note(affect)
+	--Note("AFF" .. affect)
 	return tonumber (string.match (affect, ".*for (%d+) hours"))
+end
+
+local function startsWith(str, start)
+   return str:sub(1, #start) == start
 end
 
 function gotCharacterStatus (status)
@@ -75,7 +79,7 @@ function gotCharacterStatus (status)
 	
 	shapetime = nil
 
-	if tableaffect ~= nil then
+	if tableaffect ~= nil and startsWith(tostring(status.affects),"function") == false then
 		spellstime = ""
 		sanctime = ""
 		
@@ -302,20 +306,9 @@ handlers = {
     ["char.items.remove"]     = gotItemRemove,
     ["char.items.add"]     	  = gotItemAdd,
 	["char.group.list"]       = gotGroupieAdd,
-	--["char.name"]           = gotCharacterName,
     ["char.items.list"]       = gotCharacterItemList,
-  --["char.afflictions.list"] = gotCharacterAfflictionsList,
-  --["char.afflictions.add"]  = gotCharacterAfflictionsAdd,
-  --["char.afflictions.remove"] = gotCharacterAfflictionsRemove,
-  --["char.defences.list"]    = gotCharacterDefencesList,
-  --["char.defences.add"]     = gotCharacterDefencesAdd,
-  
-  --["room.info"]             = gotRoomInfo,
-  ["room.players"]            = gotRoomPlayers,
-  --["room.wrongdir"]         = gotWrongDirection,
-  --["room.removeplayer"]     = gotRemovePlayer,
-  ["room.addplayer"]        = gotAddPlayer
-  
+    ["room.players"]            = gotRoomPlayers,
+    ["room.addplayer"]        = gotAddPlayer
   } -- end of handlers
   
 function OnPluginBroadcast (msg, id, name, text)
