@@ -44,6 +44,8 @@ function gotCharacterVitals (vitals)
 	local maxmonhp = tonumber (vitals.maxmonhp)
 	local lag = tonumber (vitals.lag)
 	
+	--Execute("gmcpalias test(" .. hp .. "," .. lag ..")")
+	
 	CallPlugin ("3a023d177bc699161cab5075", "setGmcpVitals", hp, maxhp, monhp, maxmonhp, lag)
 end  -- gotCharacterVitals
 

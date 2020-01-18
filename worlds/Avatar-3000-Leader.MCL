@@ -185,6 +185,17 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
   <send>CallPlugin ("3a023d177bc699161cab5075", "%1", "%2", "%3")</send>
   </alias>
   <alias
+   match="gmcpalias *"
+   enabled="y"
+   expand_variables="y"
+   send_to="12"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>--Note(%1)
+%1</send>
+  </alias>
+  <alias
    match="px *"
    enabled="y"
    expand_variables="y"
@@ -194,6 +205,17 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
    sequence="100"
   >
   <send>CallPlugin ("3a023d177bc699161cab5075", "%1")</send>
+  </alias>
+  <alias
+   match="teste"
+   enabled="y"
+   expand_variables="y"
+   variable="teste"
+   send_to="9"
+   keep_evaluating="y"
+   sequence="100"
+  >
+  <send>aaa</send>
   </alias>
   <alias
    match="tta *"
@@ -346,6 +368,7 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
    world_file_version="15"
   >
   <variable name="playername">RANG</variable>
+  <variable name="teste">aaa</variable>
 </variables>
 
 <!-- colours -->
@@ -551,6 +574,6 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
 <include name="reconnecter.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
-<include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
+<include name="GMCP_message_receiver_test.xml" plugin="y" />
 </muclient>
