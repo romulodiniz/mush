@@ -2405,7 +2405,8 @@ function SubNameAlleg(name, moreInfo)
 		ColourNote ("orange", "black", "Allegaagse says '" .. name .. " (" .. moreInfo .. ")'")
 	end
 
-	SetClipboard(name)
+	SetClipboard("")
+  SetClipboard(name)
 end
 
 

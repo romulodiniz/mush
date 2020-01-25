@@ -476,7 +476,7 @@ end
    match="*Telnet: avatar.outland.org 3000*"
    send_to="10"
    sequence="100">
-  <send>nul</send>
+  <send>bar</send>
   </trigger>
 -->
 
@@ -6727,7 +6727,7 @@ last Belo
 last Amenadiel
 last Vizionary
 last Nul
-last Mazikeen
+last Bar
 </send>
   </alias>
 
@@ -6980,6 +6980,7 @@ Send("gt send indio %1")
 Send("gt send lollis %1")
 Send("gt send quatro %1")
 Send("gt send larin %1")
+Send("gt send bar %1")	  
 
 Send("gt send grande %1")
 Send("gt send boi %1")
