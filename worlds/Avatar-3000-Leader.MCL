@@ -10,7 +10,7 @@
 
    auto_say_override_prefix="-"
    auto_say_string="say "
-   beep_sound="C:\Windows\media\Windows Logon.wav"
+   beep_sound="Z:\data\music\A-Tone-His_Self-1266414414.wav"
    chat_name="Name-not-set"
    command_stack_character="="
    id="91bf4f3258da779c609e4ca4"
@@ -570,10 +570,10 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
 
 <!-- plugins -->
 <include name="captureChat.xml" plugin="y" />
-<include name="GMCP_handler_NJG.xml" plugin="y" />
 <include name="Reconnecter.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
-<include name="Av6.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
+<include name="GMCP_handler_NJG.xml" plugin="y" />
+<include name="Av6.xml" plugin="y" />
 </muclient>

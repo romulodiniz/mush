@@ -16,13 +16,7 @@
    requires="5.05"
    version="1.0"
    >
-
 </plugin>
-
-
-<!--  Get our standard constants -->
-
-<include name="C:\mushclient\worlds\plugins\constants.lua"/>
 
 <!--  Triggers  -->
 
@@ -476,7 +470,7 @@ end
    match="*Telnet: avatar.outland.org 3000*"
    send_to="10"
    sequence="100">
-  <send>bar</send>
+  <send>hoje</send>
   </trigger>
 -->
 
@@ -3611,6 +3605,16 @@ SendNoEcho("emo |bw| Fatigue gone: %1")</send>
   </trigger>
 
   <trigger
+   enabled="y"
+   expand_variables="y"
+   group="mday"
+   keep_evaluating="y"
+   match="You have nothing to shoot!"
+   sequence="100">
+  <send>emote has nothing to shoot!</send>
+  </trigger>
+
+  <trigger
    expand_variables="y"
    group="mday"
    keep_evaluating="y"
@@ -3966,11 +3970,11 @@ south</send>
    expand_variables="y"
    group="Outros"
    keep_evaluating="y"
-   match="* tells the group 'sleep'"
+   match="* tell* the group 'sleep'"
    sequence="100">
   <send>sleep</send>
   </trigger>
-  
+
   <trigger
    enabled="y"
    group="Outros"
@@ -5679,14 +5683,14 @@ execActionQueue()</send>
    keep_evaluating="y"
    match="You are already standing.*"
    sequence="100">
-  <send>cast inno</send>
+  <send>cast 'emotive drain'</send>
   </trigger>
   
   <trigger
    expand_variables="y"
    group="tingle"
    keep_evaluating="y"
-   match="The tranquility of this place prevents your action.*"
+   match="One of your Exhaust timers has elapsed. (emotive drain)*"
    sequence="100">
   <send>stand</send>
   </trigger>
@@ -5706,9 +5710,9 @@ executeAfter (300, "stand=stand")</send>
    expand_variables="y"
    group="tingle"
    keep_evaluating="y"
-   match="You feel more confidence in your ability with innocence.*"
+   match="You feel more confidence in your ability with emotive drain.*"
    sequence="100">
-  <send>slearn innocence
+  <send>slearn emotive
 stand</send>
   </trigger>
 
@@ -5716,16 +5720,16 @@ stand</send>
    expand_variables="y"
    group="tingle"
    keep_evaluating="y"
-   match="You have practiced innocence to * percent.*"
+   match="You have practiced emotive drain to * percent.*"
    sequence="100">
-  <send>t self |BW|tingled innocence to %1 percent</send>
+  <send>t self |BW|tingled emotive drain to %1 percent</send>
   </trigger>
   
   <trigger
    expand_variables="y"
    group="tingle"
    keep_evaluating="y"
-   match="You failed your innocence due to lack of concentration!"
+   match="You failed your emotive drain due to lack of concentration!"
    sequence="100">
   <send>stand</send>
   </trigger>
@@ -5734,7 +5738,7 @@ stand</send>
    expand_variables="y"
    group="tingle"
    keep_evaluating="y"
-   match="You do not have enough mana to cast flash.*"
+   match="You do not have enough mana to cast emotive drain.*"
    sequence="100">
   <send>sleep</send>
   </trigger>
@@ -5743,7 +5747,7 @@ stand</send>
    expand_variables="y"
    group="tingle"
    keep_evaluating="y"
-   match="Everything turns negative for a second!*"
+   match="XXXYou emotionally drain * affects from Hoje.*"
    sequence="100">
   <send>stand</send>
   </trigger>
@@ -9469,7 +9473,7 @@ function autoSetRescue()
 			   classText == "ROG" or classText == "FUS" or classText == "CLE" or classText == "VIZ" then
 			   
 			   addRescue(k)
-            elseif classText == "PAL" and isMday() == true then
+            elseif (classText == "PAL" or classText == "WAR" or classText == "BOD") and isMday() == true then
                addRescue(k)
             end
 		end
@@ -10458,13 +10462,12 @@ function openWorlds(group)
       openWorld("Hoje")
       openWorld("Aff")
       openWorld("Amenadiel")
-      openWorld("Arroz")
 	  openWorld("Bar")
 	  openWorld("Bid")
-      openWorld("Boi")
+      openWorld("Bom")
       openWorld("Cabeca")
-      openWorld("Capelao")
-      openWorld("Dois")
+      openWorld("Cagao")
+	  openWorld("Capelao")
       openWorld("Duno")
       openWorld("Fido")
       openWorld("Grande")
@@ -10472,9 +10475,9 @@ function openWorlds(group)
       openWorld("Indio")
       openWorld("Juvenal")
       openWorld("Kubrick")
-      openWorld("Lollis")
+      openWorld("Larin")
+	  openWorld("Lollis")
       openWorld("Luccian")
-      openWorld("Mago")
       openWorld("Mal")
       openWorld("Maybe")
 	  openWorld("Motta")
@@ -10483,16 +10486,47 @@ function openWorlds(group)
       openWorld("Raposao")
       openWorld("Ravengar")
       openWorld("Romulo")
-      openWorld("Tuazd")
+      openWorld("Tinna")
+	  openWorld("Tuazd")
       openWorld("Uno")
       openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
- 
-   elseif group == "Camp" then
-      --openWorld("Diniz")
-   
+   elseif group == "Alt" then
+	  openWorld("Sombrero")
+      openWorld("Arroz")
+      openWorld("Blackmail")
+      openWorld("Boi")
+      openWorld("Diniz")
+      openWorld("Dois")
+      openWorld("Flecha")
+      openWorld("Iforgot")
+      openWorld("Lais")
+      openWorld("Letigo")
+      openWorld("Lud")
+      openWorld("Mago")
+      openWorld("Mecao")
+      openWorld("Meiodia")
+      openWorld("Noone")
+      openWorld("Null")
+      openWorld("Papapop")
+      openWorld("Pequeno")
+      openWorld("Remo")
+      openWorld("Tuga")
+      openWorld("Vinyl")
+      openWorld("Vizionary")
+      openWorld("Yay")
+      openWorld("Zup")
+elseif group == "Camp" then		
+	  openWorld("Romeu")
+	  openWorld("Belo")
+	  openWorld("Tele")
+	  openWorld("Fantasma")
+      openWorld("Feiticeiro")
+	  openWorld("Medo")
+	  openWorld("Zingu")
+	 openWorld("Padre")
    elseif group == "All" then
       openWorld("Aff")
       openWorld("Amenadiel")
@@ -10562,7 +10596,6 @@ function openWorlds(group)
       openWorld("Yay")
       openWorld("Zingu")
       openWorld("Zup")
-       
    end
    
 end 
