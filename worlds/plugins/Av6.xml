@@ -6886,6 +6886,7 @@ setbuffer 200000
 oo s-
 oo chats hide
 chats show
+onvizpool
 master
 gorder
 </send>
