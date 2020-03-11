@@ -6535,13 +6535,14 @@ end&#9;</send>
    keep_evaluating="y"
    sequence="100"
   >
-  <send>wake Ica
+  <send>wake Ravengar
 wake Bid
 wake Sombrero
+wake Nul
 wake Maybe
 wake Raposao
 wake Xingu
-wake Ravengar</send>
+</send>
   </alias>
 
   <alias
@@ -6882,7 +6883,6 @@ setwf
 oo autorescue
 oo setBuffer 10000
 setbuffer 200000
-oo buddyset reset
 oo s-
 oo chats hide
 chats show

@@ -1,5 +1,6 @@
 mushclient_prefs.sqlite
 logs/
 worlds/plugins/state/
+worlds/plugins/a/
 password.txt
 MUSHclient.ini
