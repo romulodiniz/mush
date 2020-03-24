@@ -656,7 +656,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameAggie("%1","BOSS2")</send>
+  <send>SubNameAggie("%1","revenant BOSS")</send>
   </trigger>
 
   <trigger

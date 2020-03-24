@@ -8955,9 +8955,6 @@ function setupClassMAG()
 	EnableTriggerGroup ("autosend", true)
 	EnableTriggerGroup ("autoportal", true)	
 
-	--if GetVariable("playername") == "Mal" then
-		--lag0Cast = false
-	--end
 	
 end
 
