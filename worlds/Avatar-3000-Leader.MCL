@@ -126,6 +126,15 @@
    enabled="y"
    expand_variables="y"
    keep_evaluating="y"
+   match="* tells the group '2s'"
+   sequence="100"
+  >
+  <send>s=s</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
    match="^Already playing\.$"
    regexp="y"
    sequence="100"
@@ -569,11 +578,11 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
 </printing>
 
 <!-- plugins -->
-<include name="captureChat.xml" plugin="y" />
 <include name="Reconnecter.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
+<include name="captureChat.xml" plugin="y" />
 </muclient>

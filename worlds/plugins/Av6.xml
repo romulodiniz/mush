@@ -2311,17 +2311,6 @@ put rattle xmain</send>
    expand_variables="y"
    group="corp_loot"
    keep_evaluating="y"
-   match="*A clear ball of crystal stands here glowing softly."
-   send_to="12"
-   sequence="100">
-  <send>getpassleader("ball", false)</send>
-  </trigger>   
-  
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   group="corp_loot"
-   keep_evaluating="y"
    match="You get a small wooden lockbox from corpse of *"
    send_to="12"
    sequence="100">
@@ -4811,6 +4800,17 @@ shapeNext()</send>
    sequence="100">
   <send>cast 'saving grace'</send>
   </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="repeat"
+   keep_evaluating="y"
+   match="You failed your nightcloak due to lack of concentration!"
+   send_to="10"
+   sequence="100">
+  <send>cast nightcloak</send>
+  </trigger>
 
   <trigger
    enabled="y"
@@ -6680,7 +6680,6 @@ cast pardon</send>
   <send>last Lais
 last Luccian
 last Cagao
-last Tinna
 last Ravengar
 last Xing
 last Tele
@@ -6706,7 +6705,6 @@ last Tuazd
 last Kubrick
 last Dois
 last Pequeno
-last Duno
 last Romulo
 last Uno
 last Grande
@@ -6733,6 +6731,8 @@ last Amenadiel
 last Vizionary
 last Nul
 last Bar
+last Mazikeen
+Last Luci
 </send>
   </alias>
 
@@ -9149,6 +9149,7 @@ function setupClassSHF()
 	end
     
 	setGroupValue("classmonshf", true)
+	EnableTriggerGroup ("iskilling", true)
 	EnableTriggerGroup ("autopick", true)
 	EnableTriggerGroup ("autoalert", true)
 	EnableTriggerGroup ("autogetsteel", true)
@@ -9721,7 +9722,7 @@ function killAfterEmote(leader, target)
 		currentTarget = target
 		
 		if isBashOn == true then
-			Send("wear shield=bash=st=wear " .. offhandName)
+			Send("wear shield=bash=st=rem shield=wear " .. offhandName)
 		end
 	end
 end
@@ -10462,13 +10463,13 @@ function openWorlds(group)
       openWorld("Amenadiel")
 	  openWorld("Bar")
 	  openWorld("Bid")
+	  openWorld("Boi")
       openWorld("Bom")
       openWorld("Cabeca")
       openWorld("Cagao")
 	  openWorld("Capelao")
       openWorld("Duno")
       openWorld("Fido")
-      openWorld("Grande")
       openWorld("Ica")
       openWorld("Indio")
       openWorld("Juvenal")
@@ -10476,8 +10477,9 @@ function openWorlds(group)
       openWorld("Larin")
 	  openWorld("Lollis")
       openWorld("Luccian")
-      openWorld("Mal")
+	  openWorld("Luci")
       openWorld("Maybe")
+	  openWorld("Mazikeen")
 	  openWorld("Motta")
       openWorld("Quatro")
       openWorld("Rang")
@@ -10487,44 +10489,36 @@ function openWorlds(group)
       openWorld("Tinna")
 	  openWorld("Tuazd")
       openWorld("Uno")
-      openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
    elseif group == "Alt" then
-	  openWorld("Sombrero")
       openWorld("Arroz")
       openWorld("Blackmail")
-      openWorld("Boi")
       openWorld("Diniz")
       openWorld("Dois")
+	  openWorld("Feiticeiro")
       openWorld("Flecha")
+	  openWorld("Grande")
       openWorld("Iforgot")
-      openWorld("Lais")
-      openWorld("Letigo")
-      openWorld("Lud")
       openWorld("Mago")
-      openWorld("Mecao")
+      openWorld("Mal")
+	  openWorld("Mecao")
+	  openWorld("Medo")
       openWorld("Meiodia")
       openWorld("Noone")
       openWorld("Null")
       openWorld("Papapop")
       openWorld("Pequeno")
-      openWorld("Remo")
+	  openWorld("Romeu")
+      openWorld("Sombrero")
       openWorld("Tuga")
       openWorld("Vinyl")
       openWorld("Vizionary")
-      openWorld("Yay")
-      openWorld("Zup")
-elseif group == "Camp" then		
-	  openWorld("Romeu")
-	  openWorld("Belo")
-	  openWorld("Tele")
-	  openWorld("Fantasma")
-      openWorld("Feiticeiro")
-	  openWorld("Medo")
-	  openWorld("Zingu")
-	 openWorld("Padre")
+      openWorld("Way")
+	  openWorld("Yay")
+      openWorld("Zingu")
+	  openWorld("Zup")
    elseif group == "All" then
       openWorld("Aff")
       openWorld("Amenadiel")
@@ -10556,6 +10550,7 @@ elseif group == "Camp" then
       openWorld("Larin")
       openWorld("Letigo")
       openWorld("Lollis")
+	  openWorld("Luci")
       openWorld("Luccian")
       openWorld("Lud")
       openWorld("Mago")

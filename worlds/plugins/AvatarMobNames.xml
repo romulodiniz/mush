@@ -14797,6 +14797,47 @@
   <trigger
    enabled="y"
    group="mobnames_stone"
+   match="*With eyes like night, the gish leader plots atrocities."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Gaius")</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   group="mobnames_stone"
+   match="*A huge demon pounds on the table with the pommel of his sword."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Elaxor radiance")</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   group="mobnames_stone"
+   match="*Alastar rises at your interruption, obviously displeased."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Alastar")</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   group="mobnames_stone"
+   match="*With a hungry look, a mad kzin pounds on the table with his shoe."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Bellius")</send>
+  </trigger>
+  
+  
+  <trigger
+   enabled="y"
+   group="mobnames_stone"
    match="*One of the Citadel's guardians patrols the area."
    omit_from_output="y"
    send_to="12"
