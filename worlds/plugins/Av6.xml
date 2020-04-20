@@ -8991,12 +8991,11 @@ function setupClassBCI()
 		EnableTriggerGroup ("q_frenzy", true)
 	else
 		EnableTriggerGroup ("q_frenzy_quicken", true)
+		EnableTriggerGroup ("autoalert", true)
+		EnableTriggerGroup ("autostab", true)
+		canStab = true
+		EnableTrigger("scanDisableStab", true)
 	end
-	
-	canStab = true
-	EnableTriggerGroup ("autoalert", true)
-	EnableTriggerGroup ("autostab", true)
-	EnableTrigger("scanDisableStab", true)
 end
 
 function setupClassROG()

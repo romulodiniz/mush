@@ -1566,7 +1566,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameAggie("%1","BOSS7")</send>
+  <send>SubNameAggie("%1","Hydra")</send>
   </trigger>
 
   <trigger
@@ -13108,7 +13108,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameLord("%1","kzin")</send>
+  <send>SubNameLord("%1","kzin)</send>
   </trigger>  
   
   <trigger
@@ -14801,7 +14801,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameLord("%1","Gaius")</send>
+  <send>SubNameLord("%1","Gaius platemail")</send>
   </trigger>
   
   <trigger
@@ -15244,6 +15244,26 @@
    send_to="12"
    sequence="100">
   <send>SubNameLord("%1","invoker")</send>
+  </trigger>
+
+  <trigger
+   enabled="y"
+   group="mobnames_tart"
+   match="*A statue of a Demon Lord stands here."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Anthraxus")</send>
+  </trigger>
+
+  <trigger
+   enabled="y"
+   group="mobnames_tart"
+   match="*A statue of a 5-headed Dragon looks far above you."
+   omit_from_output="y"
+   send_to="12"
+   sequence="100">
+  <send>SubNameLord("%1","Tiamat")</send>
   </trigger>
 
   <trigger

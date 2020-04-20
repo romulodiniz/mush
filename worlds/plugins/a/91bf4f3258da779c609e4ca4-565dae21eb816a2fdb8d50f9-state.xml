@@ -14,14 +14,14 @@
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="WINDOW_HEIGHT">527</variable>
-  <variable name="WINDOW_WIDTH">333</variable>
+  <variable name="WINDOW_HEIGHT">540</variable>
+  <variable name="WINDOW_WIDTH">351</variable>
   <variable name="date_format">[%H:%M:%S] </variable>
   <variable name="echo">true</variable>
   <variable name="enabled">true</variable>
   <variable name="mw_565dae21eb816a2fdb8d50f9_windowflags">2</variable>
   <variable name="mw_565dae21eb816a2fdb8d50f9_windowmode">0</variable>
-  <variable name="mw_565dae21eb816a2fdb8d50f9_windowx">1005</variable>
+  <variable name="mw_565dae21eb816a2fdb8d50f9_windowx">902</variable>
   <variable name="mw_565dae21eb816a2fdb8d50f9_windowy">6</variable>
   <variable name="timestamp">true</variable>
 </variables>
