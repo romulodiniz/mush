@@ -2970,7 +2970,13 @@ end
    sequence="100"
    send_to="12">
   <send>remActionQueue("gh1")
-executeAfter(120, "px addActionQueue gh2")</send>
+  
+	if isMday() then
+		executeAfter(120, "px addActionQueue gh2")
+	else
+		addActionQueue("gh2")
+		Execute("gh2")
+	end</send>
   </trigger>
   
   <trigger
@@ -2981,6 +2987,35 @@ executeAfter(120, "px addActionQueue gh2")</send>
    sequence="100"
    send_to="12">
   <send>remActionQueue("gh2")</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="harvest"
+   match="You failed your grim harvest due to lack of concentration!"
+   sequence="100"
+   send_to="12">
+  <send>
+	foundGH2 = 0
+
+	if actionQueue == nil then
+	  actionQueue = {}
+	end
+
+	for i = 1, #actionQueue do
+	  if string.lower(actionQueue[i]) == "gh2" then 
+		foundGH2 = 1 
+		break
+	  end
+	end
+
+	if foundGH2 == 0 then
+		Execute("gh1")
+	else
+		Execute("gh2")
+	end
+  </send>
   </trigger>
   
    <!--  hero_quest  -->
@@ -3985,7 +4020,7 @@ south</send>
   </trigger>
   
   <trigger
-   enabled="y"
+   enabled="n"
    expand_variables="y"
    group="Outros"
    keep_evaluating="y"
@@ -4721,16 +4756,6 @@ addWeaponsAlt(GetVariable("playername"),"%2")</send>
   <send>execActionQueue()</send>
   </trigger>
 
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   group="rampage"
-   match="Your killing spree has come to an end."
-   sequence="100"
-   send_to="12">
-<send>addActionQueue("ur1")</send>
-  </trigger>
-
   <!--  RaceDRC  -->
   <trigger
    expand_variables="y"
@@ -4772,6 +4797,16 @@ shapeNext()</send>
    enabled="y"
    expand_variables="y"
    group="rampage"
+   match="Your killing spree has come to an end."
+   sequence="100"
+   send_to="12">
+	<send>addActionQueue("ur1")</send>
+  </trigger>
+
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="rampage"
    match="Tor surrounds you with a malevolent blessing."
    sequence="100"
    send_to="12">
@@ -4788,6 +4823,36 @@ shapeNext()</send>
    send_to="12">
   <send>remActionQueue("ur2")</send>
   </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="harvest"
+   match="You failed your unholy rampage due to lack of concentration!"
+   sequence="100"
+   send_to="12">
+  <send>
+	foundUR2 = 0
+
+	if actionQueue == nil then
+	  actionQueue = {}
+	end
+
+	for i = 1, #actionQueue do
+	  if string.lower(actionQueue[i]) == "ur2" then 
+		foundUR2 = 1 
+		break
+	  end
+	end
+
+	if foundUR2 == 0 then
+		Execute("ur1")
+	else
+		Execute("ur2")
+	end
+  </send>
+  </trigger>  
+  
   
     <!--  repeat  -->
   <trigger
@@ -5677,6 +5742,16 @@ execActionQueue()</send>
   </trigger>
 
   <!--  tingle  -->
+
+   <trigger
+   expand_variables="y"
+   group="tingle"
+   keep_evaluating="y"
+   match="You can't take the bright sunlight!*"
+   sequence="100">
+  <send>wake=c 'dark embrace'</send>
+  </trigger>
+
    <trigger
    expand_variables="y"
    group="tingle"
@@ -5703,7 +5778,7 @@ execActionQueue()</send>
    send_to="12"
    sequence="100">
   <send>Execute("save")
-executeAfter (300, "stand=stand")</send>
+executeAfter (480, "stand=stand")</send>
   </trigger>
   
   <trigger
@@ -5751,8 +5826,9 @@ stand</send>
    sequence="100">
   <send>stand</send>
   </trigger>
- 
+
 </triggers>
+
 
 <!--  Aliases  -->
 
@@ -8831,12 +8907,11 @@ function setupClassSOR()
 	EnableTriggerGroup ("singlecaster", true)
 	EnableTriggerGroup ("iskilling", true)
 	EnableTriggerGroup ("autocast", true)
+	lag0Cast = true
 
-	if (GetVariable("playername") == "Hoje" and isMday() == false) then
+	if GetVariable("playername") == "Hoje" then
+		EnableTriggerGroup ("harvest", true)
 		lag0Cast = false
-		EnableTriggerGroup ("iskilling", false)
-	else
-		lag0Cast = true
 	end
 end
 
@@ -9045,10 +9120,6 @@ function setupClassCLE()
 	EnableTriggerGroup ("autorc", true)	
 	EnableTriggerGroup ("autostartsalv", true)
 	EnableTriggerGroup ("autosend", true)
-	
-	if (GetVariable("playername") == "Vinyl") then
-		EnableTriggerGroup ("harvest", true)
-	end
 end
 
 function setupClassVIZ()	
@@ -9654,7 +9725,6 @@ function addLotto(name, showlotto)
 	if showlotto == true then
 		showLotto()
 	end
-	
 	
 end
 
@@ -10701,6 +10771,7 @@ function planeTo(text)
 
 	if matchedText ~= nil and string.len(matchedText) > 1 then
 		SetVariable("currentPlane", text)
+		clearLottoNames()
 		groupStatsUpdateAction()
 		Execute("cast plane " .. text)
 	else

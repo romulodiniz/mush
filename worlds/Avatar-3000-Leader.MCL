@@ -77,6 +77,7 @@
    omit_date_from_save_files="y"
    output_font_height="9"
    output_font_weight="400"
+   output_font_charset="1"
    paste_delay_per_lines="1"
    pixel_offset="1"
    port="3000"
@@ -129,6 +130,16 @@
    sequence="100"
   >
   <send>s=s</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   keep_evaluating="y"
+   match="You can't take the bright sunlight!"
+   sequence="100"
+  >
+  <send>st
+daem</send>
   </trigger>
   <trigger
    enabled="y"
@@ -581,7 +592,7 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
-<include name="captureChat.xml" plugin="y" />
-<include name="Av6.xml" plugin="y" />
 <include name="AvatarMobNames.xml" plugin="y" />
+<include name="Av6.xml" plugin="y" />
+<include name="captureChat.xml" plugin="y" />
 </muclient>
