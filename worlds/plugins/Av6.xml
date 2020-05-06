@@ -2681,7 +2681,9 @@ put corpse xmain</send>
    match="* drops a perfect *."
    send_to="12"
    sequence="100">
-  <send>getpassleader("perfect", false)</send>
+  <send>if isMday() then
+		getpassleader("perfect", false)
+	end </send>
   </trigger>
 
   <trigger
@@ -2934,6 +2936,42 @@ counterCommand("add " .. p)</send>
    expand_variables="y"
    group="GAG"
    match="* doesn't require Clarification."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="GAG"
+   match="The grim aura disappears."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="GAG"
+   match="A grim aura envelops you."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="GAG"
+   match="An unholy aura of rampage empowers you."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="GAG"
+   match="The rampage aura disappears."
    omit_from_output="y"
    sequence="100">
   </trigger>
@@ -4921,16 +4959,6 @@ shapeNext()</send>
   <send>cast 'stone fist'</send>
   </trigger>
 	
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   group="repeat"
-   keep_evaluating="y"
-   match="You failed your unholy rampage due to lack of concentration!"
-   sequence="100">
-  <send>cast 'unholy rampage'</send>
-  </trigger>
-  
   <trigger
    enabled="y"
    expand_variables="y"
@@ -9961,13 +9989,6 @@ function updateMobHealth(value)
         killing = false
 	end
 
---	if gmcplag == 0 and lag0Cast == true and killing == true and awfulCast == false and isTriggerOn("autocast") == true then
---		killing = false
---		lag0Cast = false
---		scriptAfter(3, 'lag0Cast = true')
---		Send("mm")
---	end
-
 end
 
 function updateSancTime(p_sancTime)
@@ -10066,7 +10087,7 @@ function checkVizHeal(maxMana, hpMon, monName)
   if altMana > 10000 then
      hpmon = tonumber(hpMon)
 
-     if hpmon ~= nil and hpmon < 10000 and hpmon > 1000  then
+     if hpmon ~= nil and hpmon < 10000 and hpmon > 1000 and killing == true then
         Execute("c comf " .. monName) 
      end
   end
