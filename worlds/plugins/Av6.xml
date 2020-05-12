@@ -2943,7 +2943,7 @@ counterCommand("add " .. p)</send>
   <trigger
    enabled="y"
    expand_variables="y"
-   group="GAG"
+   group="mday"
    match="The grim aura disappears."
    omit_from_output="y"
    sequence="100">
@@ -2952,7 +2952,7 @@ counterCommand("add " .. p)</send>
   <trigger
    enabled="y"
    expand_variables="y"
-   group="GAG"
+   group="mday"
    match="A grim aura envelops you."
    omit_from_output="y"
    sequence="100">
@@ -2961,7 +2961,7 @@ counterCommand("add " .. p)</send>
   <trigger
    enabled="y"
    expand_variables="y"
-   group="GAG"
+   group="mday"
    match="An unholy aura of rampage empowers you."
    omit_from_output="y"
    sequence="100">
@@ -2970,12 +2970,48 @@ counterCommand("add " .. p)</send>
   <trigger
    enabled="y"
    expand_variables="y"
-   group="GAG"
+   group="mday"
    match="The rampage aura disappears."
    omit_from_output="y"
    sequence="100">
   </trigger>
   
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="mday"
+   match="The artificer blessing aura disappears."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="mday"
+   match="The aura of malice disappears."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="mday"
+   match="An aura of malice empowers you."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="mday"
+   match="You are blessed with an affinity for material objects."
+   omit_from_output="y"
+   sequence="100">
+  </trigger>
+
     <!--  gurney  -->
   <trigger
    group="gurney"
@@ -6836,7 +6872,8 @@ last Vizionary
 last Nul
 last Bar
 last Mazikeen
-Last Luci
+last Luci
+last Chelm
 </send>
   </alias>
 
@@ -7364,6 +7401,16 @@ quicken off</send>
   </alias>
 
   <alias
+   regexp="y"
+   match="calm(n|s|e|w|u|d)"
+   enabled="y"
+   group="Outros"
+   sequence="100"
+  >
+  <send>quicken 9=c calm=%1=quicken off</send>
+  </alias>
+
+  <alias
    match="ps"
    expand_variables="y"
    group="mday"
@@ -7505,6 +7552,7 @@ end
    sequence="100"
   >
   <send>EnableTriggerGroup ("q_frenzy", false)
+  EnableTriggerGroup ("q_frenzy_quicken", false)
 Note("keepFrenzy off")</send>
   </alias>
 
@@ -10558,41 +10606,43 @@ function openWorlds(group)
       openWorld("Cabeca")
       openWorld("Cagao")
 	  openWorld("Capelao")
-      openWorld("Duno")
+	  openWorld("Dois")
       openWorld("Fido")
-      openWorld("Ica")
+      openWorld("Grande")
+	  openWorld("Ica")
       openWorld("Indio")
       openWorld("Juvenal")
       openWorld("Kubrick")
       openWorld("Larin")
 	  openWorld("Lollis")
       openWorld("Luccian")
-	  openWorld("Luci")
+	  openWorld("Mal")
       openWorld("Maybe")
-	  openWorld("Mazikeen")
 	  openWorld("Motta")
       openWorld("Quatro")
       openWorld("Rang")
       openWorld("Raposao")
       openWorld("Ravengar")
       openWorld("Romulo")
-      openWorld("Tinna")
 	  openWorld("Tuazd")
       openWorld("Uno")
+	  openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
    elseif group == "Alt" then
-      openWorld("Arroz")
+      openWorld("Sombrero")
+	  openWorld("Arroz")
       openWorld("Blackmail")
-      openWorld("Diniz")
-      openWorld("Dois")
+      openWorld("Chelm")
+	  openWorld("Diniz")
+      openWorld("Duno")
+	  openWorld("Fantasma")
 	  openWorld("Feiticeiro")
       openWorld("Flecha")
-	  openWorld("Grande")
       openWorld("Iforgot")
       openWorld("Mago")
-      openWorld("Mal")
+      openWorld("Mazikeen")
 	  openWorld("Mecao")
 	  openWorld("Medo")
       openWorld("Meiodia")
@@ -10600,13 +10650,12 @@ function openWorlds(group)
       openWorld("Null")
       openWorld("Papapop")
       openWorld("Pequeno")
+	  openWorld("Remo")
 	  openWorld("Romeu")
-      openWorld("Sombrero")
+      openWorld("Tele")
       openWorld("Tuga")
       openWorld("Vinyl")
       openWorld("Vizionary")
-      openWorld("Way")
-	  openWorld("Yay")
       openWorld("Zingu")
 	  openWorld("Zup")
    elseif group == "All" then
