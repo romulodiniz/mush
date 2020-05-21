@@ -2025,6 +2025,16 @@ scriptAfter(10, 'EnableTrigger("shattertrigger", true)')</send>
   <send>scriptAfter(1, 'lag0Cast = true')</send>
   </trigger>
   
+	<!--  classrip  -->
+    <trigger
+   expand_variables="y"
+   group="classrip"
+   match="You have been KILLED!!"
+   sequence="100">
+  <send>stand
+extend</send>
+  </trigger>
+  
    <!--  classshf  -->
   <trigger
    group="classshf"
@@ -2885,7 +2895,7 @@ counterCommand("add " .. p)</send>
    custom_colour="6"
    expand_variables="y"
    group="detectClass"
-   match="^Level \d+\(\d+\) .* (Sorcerer|Druid|Ranger|Warrior|Priest|Assassin|Bladedancer|Paladin|Wizard|Bodyguard|Archer|Psionicist|Mage|Monk|Mindbender|Stormlord|Black Circle Initiate|Berserker|Rogue|Fusilier|Shadowfist|Cleric|Vizier)    Exp/TNL:.*$"
+   match="^Level \d+\(\d+\) .* (Sorcerer|Druid|Ranger|Warrior|Priest|Assassin|Bladedancer|Paladin|Wizard|Bodyguard|Archer|Psionicist|Mage|Monk|Mindbender|Stormlord|Black Circle Initiate|Berserker|Rogue|Fusilier|Shadowfist|Cleric|Vizier|Ripper)    Exp/TNL:.*$"
    regexp="y"
    send_to="12"
    sequence="100">
@@ -3919,7 +3929,16 @@ beep self</send>
    keep_evaluating="y"
    match="You have to stand up before you do that"
    sequence="100">
-  <send>wake</send>
+  <send>wake=quicken off</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   group="Outros"
+   keep_evaluating="y"
+   match="* bashed into you and you go down!"
+   sequence="100">
+  <send>wake=quicken off</send>
   </trigger>
   
   <trigger
@@ -8817,6 +8836,7 @@ function resetClasses()
 	setGroupValue("classshf", false)
 	setGroupValue("classcle", false)
 	setGroupValue("classviz", false)
+	setGroupValue("classrip", false)
 	
 	setGroupValue("classmonshf", false)
 end
@@ -8951,6 +8971,7 @@ function detectClass(className)
 	elseif className == "Shadowfist" then setupClassSHF()
 	elseif className == "Cleric"  then setupClassCLE()
 	elseif className == "Vizier"  then setupClassVIZ()
+	elseif className == "Ripper"  then setupClassRIP()
 	end	
 end
 
@@ -9239,6 +9260,26 @@ function setupClassWAR()
 	local name = GetVariable("playername")
 	
 	if name == "Grande" or name == "Boi" or name == "Zup" or name == "Iforgot" or name == "Diniz" then
+		EnableTriggerGroup ("autorest", true)
+	end
+	
+end
+
+function setupClassRIP()
+	Note("setupClassRIP")
+	SetVariable("playerclass","RIP")
+	setGroupValue ("classrip", true)
+	EnableTriggerGroup ("iskilling", true)
+	
+	if getTierChar() == "Hero" then
+		EnableTriggerGroup ("q_frenzy", true)
+	else
+		EnableTriggerGroup ("q_frenzy_quicken", true)
+	end
+	
+	local name = GetVariable("playername")
+	
+	if name == "Chicken" then
 		EnableTriggerGroup ("autorest", true)
 	end
 	
