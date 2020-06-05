@@ -14,19 +14,19 @@
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="currentPlane">thorn</variable>
+  <variable name="currentPlane"></variable>
   <variable name="dverbsIntensity">intensity|viciousness|strength|passion|force|power|might|ferocity|rage|savagery|brutality</variable>
   <variable name="dverbsShort">pathetic|weak|punishing|surprising|amazing|astonishing|mauling|decimating|devastating|pulverizing|maiming|eviscerating|mutilating|disemboweling|dismembering|massacring|mangling|demolishing|obliterating|annihilating|eradicating|vaporizing|destructive|extreme|porcine|divine|daunting|terminal</variable>
   <variable name="gravitasMob"></variable>
-  <variable name="groupleader">Chicken</variable>
+  <variable name="groupleader">Maybe</variable>
   <variable name="lastdirmoved"></variable>
   <variable name="monDamList">You</variable>
   <variable name="mw_statusAlts_windowflags">2</variable>
   <variable name="mw_statusAlts_windowmode">0</variable>
   <variable name="mw_statusAlts_windowx">398</variable>
   <variable name="mw_statusAlts_windowy">5</variable>
-  <variable name="playerclass">SOR</variable>
-  <variable name="playername">Chicken</variable>
+  <variable name="playerclass">PAL</variable>
+  <variable name="playername">Xing</variable>
   <variable name="strOrder">xxxorder</variable>
 </variables>
 </muclient>

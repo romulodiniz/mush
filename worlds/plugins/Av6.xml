@@ -1755,9 +1755,11 @@ end
    match="* surrounds * with a telekinetic sink."
    send_to="12"
    sequence="100">
-  <send>lag0Cast = false
+  <send>
+lag0Cast = false
 SetVariable("gravitasMob", "%1")
 Note("Cast off, gravitas mob: " .. "%1")</send>
+
   </trigger>
 
   <trigger
@@ -5870,7 +5872,8 @@ executeAfter (480, "stand=stand")</send>
    keep_evaluating="y"
    match="You feel more confidence in your ability with emotive drain.*"
    sequence="100">
-  <send>slearn emotive
+  <send>save
+slearn emotive
 stand</send>
   </trigger>
 
@@ -6838,7 +6841,6 @@ cast pardon</send>
   >
   <send>last Lais
 last Luccian
-last Cagao
 last Ravengar
 last Xing
 last Tele
@@ -6847,7 +6849,6 @@ last Lud
 last Indio
 last Williamtell
 last Feiticeiro
-last Bom
 last Flecha
 last Cabeca
 last Remo
@@ -6857,10 +6858,8 @@ last Xingu
 last Zingu
 last Ica
 last Lollis
-last Raposao
 last Capelao
 last Mecao
-last Tuazd
 last Kubrick
 last Dois
 last Pequeno
@@ -6893,6 +6892,8 @@ last Bar
 last Mazikeen
 last Luci
 last Chelm
+last Foo
+last Bro
 </send>
   </alias>
 
@@ -9656,8 +9657,7 @@ function autoSetRescue()
 			if classText == "SOR" or classText == "DRU" or classText == "PRS" or classText == "ASN" or 
 			   classText == "BLD" or classText == "WZD" or classText == "ARC" or classText == "PSI" or 
 			   classText == "MAG" or classText == "MND" or classText == "STM" or classText == "BCI" or 
-			   classText == "ROG" or classText == "FUS" or classText == "CLE" or classText == "VIZ" then
-			   
+			   classText == "ROG" or classText == "FUS" or classText == "CLE" or classText == "VIZ" or classText == "RIP" then
 			   addRescue(k)
             elseif (classText == "PAL" or classText == "WAR" or classText == "BOD") and isMday() == true then
                addRescue(k)
@@ -10099,7 +10099,7 @@ function updateLag(lag)
 	if gmcplag == 0 and lag0Cast == true and killing == true and awfulCast == false and isTriggerOn("autocast") == true then
 		killing = false
 		lag0Cast = false
-		scriptAfter(3, 'lag0Cast = true')
+		scriptAfter(1, 'lag0Cast = true')
 		Send("mm")
 	end
 end

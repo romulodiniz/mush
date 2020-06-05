@@ -8939,7 +8939,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameLord("%1","advisor")</send>
+  <send>SubNameLord("%1","advisor exotic")</send>
   </trigger>
 
   <trigger
@@ -9745,7 +9745,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameLord("%1","advisor")</send>
+  <send>SubNameLord("%1","advisor balls")</send>
   </trigger>  
   
   <trigger
