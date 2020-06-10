@@ -13,10 +13,10 @@
    beep_sound="C:\Windows\media\Windows Logon.wav"
    chat_name="Name-not-set"
    command_stack_character="="
-   id="b1b5b26ef2a4215d27ddf17a"
+   id="072e7a159748771f01e1a9ee"
    input_font_name="Courier"
    mapping_failure="Alas, you cannot go *"
-   name="Diniz"
+   name="Bro"
    new_activity_sound="(No sound)"
    output_font_name="Courier New"
    proxy_server="127.0.0.1"
@@ -122,15 +122,6 @@
    muclient_version="5.05"
    world_file_version="15"
   >
-  <trigger
-   expand_variables="y"
-   match="The Burning Phoenix is DEAD!!"
-   send_to="12"
-   sequence="100"
-  >
-  <send>DoAfterSpecial (5, "oo sleep", sendto.execute)
-DoAfterSpecial (300, "oo wake", sendto.execute)</send>
-  </trigger>
 </triggers>
 
 <!-- aliases -->

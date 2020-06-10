@@ -122,6 +122,16 @@
    muclient_version="5.05"
    world_file_version="15"
   >
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   match="The Inferno Dragon is DEAD!!"
+   sequence="100"
+  >
+  <send>skin
+save
+</send>
+  </trigger>
 </triggers>
 
 <!-- aliases -->

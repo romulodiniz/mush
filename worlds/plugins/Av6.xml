@@ -2037,6 +2037,14 @@ scriptAfter(10, 'EnableTrigger("shattertrigger", true)')</send>
 extend</send>
   </trigger>
   
+    <trigger
+   expand_variables="y"
+   group="classrip"
+   match="*You stop using natural claws.*"
+   sequence="100">
+  <send>extend</send>
+  </trigger>
+  
    <!--  classshf  -->
   <trigger
    group="classshf"
@@ -6850,7 +6858,6 @@ last Indio
 last Williamtell
 last Feiticeiro
 last Flecha
-last Cabeca
 last Remo
 last Juvenal
 last Bid
@@ -6894,6 +6901,7 @@ last Luci
 last Chelm
 last Foo
 last Bro
+last Chicken
 </send>
   </alias>
 
@@ -7153,6 +7161,8 @@ Send("gt send boi %1")
 Send("gt send zup %1")
 Send("gt send iforgot %1")
 Send("gt send diniz %1")
+
+Send("gt send chicken %1")
 
 sendOrder("ica","c plane %1") 
 sendOrder("bid","c plane %1") 
@@ -9271,12 +9281,7 @@ function setupClassRIP()
 	SetVariable("playerclass","RIP")
 	setGroupValue ("classrip", true)
 	EnableTriggerGroup ("iskilling", true)
-	
-	if getTierChar() == "Hero" then
-		EnableTriggerGroup ("q_frenzy", true)
-	else
-		EnableTriggerGroup ("q_frenzy_quicken", true)
-	end
+	EnableTriggerGroup ("q_frenzy", true)
 	
 	local name = GetVariable("playername")
 	
@@ -9655,11 +9660,12 @@ function autoSetRescue()
 			classText = v.class
 			
 			if classText == "SOR" or classText == "DRU" or classText == "PRS" or classText == "ASN" or 
-			   classText == "BLD" or classText == "WZD" or classText == "ARC" or classText == "PSI" or 
+			   classText == "SLD" or classText == "WZD" or classText == "ARC" or classText == "PSI" or 
 			   classText == "MAG" or classText == "MND" or classText == "STM" or classText == "BCI" or 
-			   classText == "ROG" or classText == "FUS" or classText == "CLE" or classText == "VIZ" or classText == "RIP" then
+			   classText == "ROG" or classText == "FUS" or classText == "CLE" or classText == "VIZ" then
 			   addRescue(k)
-            elseif (classText == "PAL" or classText == "WAR" or classText == "BOD") and isMday() == true then
+            elseif (classText == "BLD" or classText == "PAL" or classText == "WAR" or classText == "BOD" or 
+			   classText == "RIP") and isMday() == true then
                addRescue(k)
             end
 		end
@@ -10625,9 +10631,6 @@ function SubNameLord(pref, name)
 			Execute(stabAction .. " " .. name)	
 		elseif canStab == true then --quem define é a classe, pode ser desabilitado pelo offstab
 			Execute(stabAction .. " " .. name)
-			if isMday() then
-				Execute(stabAction .. " 2." .. name)
-			end
 		end
 	end
 
@@ -10643,11 +10646,11 @@ function openWorlds(group)
 	  openWorld("Bar")
 	  openWorld("Bid")
 	  openWorld("Boi")
-      openWorld("Bom")
-      openWorld("Cabeca")
-      openWorld("Cagao")
+      openWorld("Bro")
 	  openWorld("Capelao")
+	  openWorld("Chicken")
 	  openWorld("Dois")
+      openWorld("Feiticeiro")
       openWorld("Fido")
       openWorld("Grande")
 	  openWorld("Ica")
@@ -10659,46 +10662,44 @@ function openWorlds(group)
       openWorld("Luccian")
 	  openWorld("Mal")
       openWorld("Maybe")
+	  openWorld("Mazikeen")
 	  openWorld("Motta")
       openWorld("Quatro")
       openWorld("Rang")
-      openWorld("Raposao")
       openWorld("Ravengar")
       openWorld("Romulo")
-	  openWorld("Tuazd")
       openWorld("Uno")
 	  openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
       openWorld("Xingu")
+      openWorld("Zup")	  
    elseif group == "Alt" then
       openWorld("Sombrero")
-	  openWorld("Arroz")
-      openWorld("Blackmail")
-      openWorld("Chelm")
+	  openWorld("Belo")
+	  openWorld("Blackmail")
+      openWorld("Bom")
+	  openWorld("Cabeca")
+	  openWorld("Chelm")
 	  openWorld("Diniz")
       openWorld("Duno")
-	  openWorld("Fantasma")
-	  openWorld("Feiticeiro")
-      openWorld("Flecha")
+	  openWorld("Flecha")
       openWorld("Iforgot")
+      openWorld("Luci")
+	  openWorld("Lud")
       openWorld("Mago")
-      openWorld("Mazikeen")
 	  openWorld("Mecao")
 	  openWorld("Medo")
-      openWorld("Meiodia")
       openWorld("Noone")
       openWorld("Null")
-      openWorld("Papapop")
       openWorld("Pequeno")
-	  openWorld("Remo")
 	  openWorld("Romeu")
       openWorld("Tele")
-      openWorld("Tuga")
+      openWorld("Tuazd")
+	  openWorld("Tuga")
       openWorld("Vinyl")
       openWorld("Vizionary")
-      openWorld("Zingu")
-	  openWorld("Zup")
+      openWorld("Yay")
    elseif group == "All" then
       openWorld("Aff")
       openWorld("Amenadiel")
@@ -10709,9 +10710,11 @@ function openWorlds(group)
       openWorld("Blackmail")
       openWorld("Boi")
       openWorld("Bom")
+	  openWorld("Bro")
       openWorld("Cabeca")
       openWorld("Cagao")
       openWorld("Capelao")
+	  openWorld("Chicken")
       openWorld("Diniz")
       openWorld("Dois")
       openWorld("Duno")
