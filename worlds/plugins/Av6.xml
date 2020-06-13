@@ -4974,6 +4974,17 @@ shapeNext()</send>
    expand_variables="y"
    group="repeat"
    keep_evaluating="y"
+   match="You failed your improved invis due to lack of concentration!"
+   send_to="10"
+   sequence="100">
+  <send>cast 'improved invis'</send>
+  </trigger>
+  
+  <trigger
+   enabled="y"
+   expand_variables="y"
+   group="repeat"
+   keep_evaluating="y"
    match="You failed your nightcloak due to lack of concentration!"
    send_to="10"
    sequence="100">
