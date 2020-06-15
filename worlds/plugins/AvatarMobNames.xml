@@ -9805,7 +9805,7 @@
    omit_from_output="y"
    send_to="12"
    sequence="100">
-  <send>SubNameLord("%1","advisor")</send>
+  <send>SubNameLord("%1","advisor books")</send>
   </trigger>  
   
   <trigger
@@ -11974,7 +11974,6 @@
    enabled="y"
    group="mobnames_karn"
    match="*One of Fluent's advisors accidentally trips and crashes to the floor."
-   omit_from_output="y"
    send_to="12"
    sequence="100">
   <send>SubNameLord("%1","advisor")</send>
