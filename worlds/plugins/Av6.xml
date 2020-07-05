@@ -2997,6 +2997,17 @@ counterCommand("add " .. p)</send>
   </trigger>
   
   <trigger
+   expand_variables="y"
+   group="mday"
+   enabled="y"
+   keep_evaluating="y"
+   match="* tell* the group 'on run'"
+   send_to="10"
+   sequence="100">
+  <send>self</send>
+  </trigger>
+  
+  <trigger
    enabled="y"
    expand_variables="y"
    group="mday"
@@ -3631,6 +3642,7 @@ SendNoEcho("emo |bw| Fatigue gone: %1")</send>
    group="mday"
    keep_evaluating="y"
    match="* tells the group 'xplane *'"
+   send_to="10"
    sequence="100">
   <send>c plane %2</send>
   </trigger>
@@ -6721,8 +6733,6 @@ wake Bid
 wake Sombrero
 wake Nul
 wake Maybe
-wake Raposao
-wake Xingu
 </send>
   </alias>
 
@@ -6872,7 +6882,6 @@ last Flecha
 last Remo
 last Juvenal
 last Bid
-last Xingu
 last Zingu
 last Ica
 last Lollis
@@ -7045,7 +7054,6 @@ Note("vizfinalrites on")</send>
   >
   <send>ooo @prsName preachup
 gt on run
-oo self
 gt rest
 </send>
   </alias>
@@ -7158,9 +7166,6 @@ Note("keepSanc on")</send>
    sequence="100"
   >
   <send>
-Send("gt send raposao %1")
-Send("gt send xingu %1")
-
 Send("gt send indio %1")
 Send("gt send lollis %1")
 Send("gt send quatro %1")
@@ -10659,9 +10664,10 @@ function openWorlds(group)
 	  openWorld("Boi")
       openWorld("Bro")
 	  openWorld("Capelao")
+	  openWorld("Chelm")
 	  openWorld("Chicken")
 	  openWorld("Dois")
-      openWorld("Feiticeiro")
+	  openWorld("Evil")
       openWorld("Fido")
       openWorld("Grande")
 	  openWorld("Ica")
@@ -10683,108 +10689,48 @@ function openWorlds(group)
 	  openWorld("Way")
       openWorld("Williamtell")
       openWorld("Xing")
-      openWorld("Xingu")
-      openWorld("Zup")	  
-   elseif group == "Alt" then
-      openWorld("Sombrero")
-	  openWorld("Belo")
+      openWorld("Yay")	  
+   elseif group == "Cron" then
+      openWorld("Romeu")
 	  openWorld("Blackmail")
-      openWorld("Bom")
 	  openWorld("Cabeca")
-	  openWorld("Chelm")
 	  openWorld("Diniz")
       openWorld("Duno")
+	  openWorld("Fantasma")
+	  openWorld("Feiticeiro")
 	  openWorld("Flecha")
       openWorld("Iforgot")
+	  openWorld("Lais")
+	  openWorld("Letigo")
       openWorld("Luci")
 	  openWorld("Lud")
-      openWorld("Mago")
 	  openWorld("Mecao")
-	  openWorld("Medo")
       openWorld("Noone")
-      openWorld("Null")
-      openWorld("Pequeno")
-	  openWorld("Romeu")
+	  openWorld("Papapop")
+	  openWorld("Pequeno")
+	  openWorld("Raposao")
+	  openWorld("Sombrero")
       openWorld("Tele")
       openWorld("Tuazd")
 	  openWorld("Tuga")
       openWorld("Vinyl")
-      openWorld("Vizionary")
-      openWorld("Yay")
-   elseif group == "All" then
-      openWorld("Aff")
-      openWorld("Amenadiel")
+	  openWorld("Xingu")
+	  openWorld("Zigu")
+      openWorld("Zup")
+   elseif group == "Camp" then
+      openWorld("Null")
       openWorld("Arroz")
-      openWorld("Bar")
 	  openWorld("Belo")
-      openWorld("Bid")
-      openWorld("Blackmail")
-      openWorld("Boi")
       openWorld("Bom")
-	  openWorld("Bro")
-      openWorld("Cabeca")
       openWorld("Cagao")
-      openWorld("Capelao")
-	  openWorld("Chicken")
-      openWorld("Diniz")
-      openWorld("Dois")
-      openWorld("Duno")
-      openWorld("Fantasma")
-      openWorld("Feiticeiro")
-      openWorld("Fido")
-      openWorld("Flecha")
-      openWorld("Grande")
-      openWorld("Hoje")
-      openWorld("Ica")
-      openWorld("Iforgot")
-      openWorld("Indio")
-      openWorld("Juvenal")
-      openWorld("Kubrick")
-      openWorld("Lais")
-      openWorld("Larin")
-      openWorld("Letigo")
-      openWorld("Lollis")
-	  openWorld("Luci")
-      openWorld("Luccian")
-      openWorld("Lud")
       openWorld("Mago")
-      openWorld("Mal")
-      openWorld("Mazikeen")
-      openWorld("Maybe")
-      openWorld("Mecao")
       openWorld("Medo")
       openWorld("Meiodia")
-      openWorld("Motta")
-      openWorld("Noone")
-      openWorld("Null")
-      openWorld("Opa")
       openWorld("Padre")
-      openWorld("Papapop")
-      openWorld("Pequeno")
-      openWorld("Quatro")
-      openWorld("Rang")
-      openWorld("Raposao")
-      openWorld("Ravengar")
       openWorld("Remo")
-      openWorld("Romeu")
-      openWorld("Romulo")
-      openWorld("Sombrero")
-      openWorld("Tele")
       openWorld("Tinna")
-      openWorld("Tuazd")
-      openWorld("Tuga")
-      openWorld("Uno")
-      openWorld("Vinyl")
       openWorld("Vizionary")
-      openWorld("Way")
-      openWorld("Williamtell")
-      openWorld("Xing")
-      openWorld("Xingu")
-      openWorld("Yay")
-      openWorld("Zingu")
-      openWorld("Zup")
    end
-   
 end 
 
 function openWorld(name)

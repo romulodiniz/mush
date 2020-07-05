@@ -102,6 +102,7 @@
    tool_tip_visible_time="5000"
    tool_tip_start_time="400"
    treeview_triggers="y"
+   treeview_aliases="y"
    treeview_timers="y"
    underline_hyperlinks="y"
    unpause_on_send="y"
@@ -136,15 +137,6 @@
    sequence="100"
   >
   <send>s=s</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   expand_variables="y"
-   ignore_case="y"
-   match="*Zaffer*"
-   omit_from_output="y"
-   sequence="100"
-  >
   </trigger>
   <trigger
    enabled="y"
@@ -637,7 +629,7 @@ DoAfterSpecial (330, "st=xq", sendto.execute)
 <include name="GMCP_message_receiver_test.xml" plugin="y" />
 <include name="AvatarAllegs.xml" plugin="y" />
 <include name="GMCP_handler_NJG.xml" plugin="y" />
-<include name="captureChat.xml" plugin="y" />
-<include name="AvatarMobNames.xml" plugin="y" />
 <include name="Av6.xml" plugin="y" />
+<include name="AvatarMobNames.xml" plugin="y" />
+<include name="captureChat.xml" plugin="y" />
 </muclient>

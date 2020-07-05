@@ -88,6 +88,7 @@ USAGE:
     enabled="y"
     match="^(\w*)\> (.*?)$"
 	omit_from_output="y"
+	keep_evaluating="y"
     regexp="y"
 	script="chats"
     sequence="100"
